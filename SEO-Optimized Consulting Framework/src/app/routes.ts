@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router";
 import { Home } from "./pages/Home";
 import { Services } from "./pages/Services";
+import { Projects } from "./pages/Projects";
 import { CaseStudyDrone } from "./pages/CaseStudyDrone";
 import { CaseStudyNLP } from "./pages/CaseStudyNLP";
 import { About } from "./pages/About";
@@ -15,6 +16,10 @@ export const router = createBrowserRouter([
   {
     path: "/services",
     Component: Services,
+  },
+  {
+    path: "/projects",
+    Component: Projects,
   },
   {
     path: "/case-study/drone-classification",

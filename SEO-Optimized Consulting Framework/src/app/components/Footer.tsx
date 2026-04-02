@@ -1,17 +1,14 @@
 import { Link } from "react-router";
 import { Linkedin, Github, Mail, Phone, MapPin } from "lucide-react";
-import logo from "../../imports/Pantera_Claw.png";
 
 export function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-300">
+    <footer className="bg-gray-900 text-gray-300 border-t border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center mb-4">
-              <img src={logo} alt="Pantera Claw" className="h-10 md:h-12 brightness-0 invert" />
-            </div>
+
             <p className="text-gray-400 mb-4">
               AI & Data Consulting — databases, dashboards, agentic workflows, and advanced analytics for companies ready to put their data to work.
             </p>
@@ -20,7 +17,7 @@ export function Footer() {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-blue-500 transition-colors"
+                className="text-gray-400 hover:text-yellow-400 transition-colors"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="h-6 w-6" />
@@ -29,7 +26,7 @@ export function Footer() {
                 href="https://github.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-blue-500 transition-colors"
+                className="text-gray-400 hover:text-yellow-400 transition-colors"
                 aria-label="GitHub"
               >
                 <Github className="h-6 w-6" />
@@ -39,25 +36,25 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-white mb-4">Quick Links</h3>
+            <h3 className="text-yellow-400 mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/" className="text-gray-400 hover:text-blue-500 transition-colors">
+                <Link to="/" className="text-gray-400 hover:text-yellow-400 transition-colors">
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/services" className="text-gray-400 hover:text-blue-500 transition-colors">
+                <Link to="/services" className="text-gray-400 hover:text-yellow-400 transition-colors">
                   Services
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="text-gray-400 hover:text-blue-500 transition-colors">
+                <Link to="/about" className="text-gray-400 hover:text-yellow-400 transition-colors">
                   About
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-gray-400 hover:text-blue-500 transition-colors">
+                <Link to="/contact" className="text-gray-400 hover:text-yellow-400 transition-colors">
                   Contact
                 </Link>
               </li>
@@ -66,18 +63,18 @@ export function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-white mb-4">Contact</h3>
+            <h3 className="text-yellow-400 mb-4">Contact</h3>
             <ul className="space-y-2">
               <li className="flex items-start">
-                <Phone className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0" />
+                <Phone className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0 text-yellow-400" />
                 <span className="text-gray-400">801.898.0911</span>
               </li>
               <li className="flex items-start">
-                <Mail className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0" />
+                <Mail className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0 text-yellow-400" />
                 <span className="text-gray-400">chrisjames313801@gmail.com</span>
               </li>
               <li className="flex items-start">
-                <MapPin className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0" />
+                <MapPin className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0 text-yellow-400" />
                 <span className="text-gray-400">Salt Lake City, Utah</span>
               </li>
             </ul>

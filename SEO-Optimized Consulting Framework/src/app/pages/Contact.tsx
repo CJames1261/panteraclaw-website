@@ -26,61 +26,61 @@ export function Contact() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-black">
       <Header />
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-blue-50 to-indigo-50 py-16">
+        <section className="bg-gradient-to-br from-black to-gray-900 py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-4xl md:text-5xl text-center mb-6 text-gray-900">
+            <h1 className="text-4xl md:text-5xl text-center mb-6 text-white">
               Let's Build Something Extraordinary
             </h1>
-            <p className="text-xl text-center text-gray-700 max-w-3xl mx-auto">
+            <p className="text-xl text-center text-gray-300 max-w-3xl mx-auto">
               Ready to deploy mission-critical AI systems? Schedule a consultation to discuss your project.
             </p>
           </div>
         </section>
 
         {/* Contact Content */}
-        <section className="py-16 bg-white">
+        <section className="py-16 bg-black">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               {/* Contact Information */}
               <div>
-                <h2 className="text-3xl mb-6 text-gray-900">Get in Touch</h2>
-                <p className="text-lg text-gray-700 mb-8">
-                  Whether you're exploring agentic AI workflows, need high-precision ML models, or require 
-                  DoD-compliant data systems, we're here to help. Reach out to discuss your project requirements 
+                <h2 className="text-3xl mb-6 text-white">Get in Touch</h2>
+                <p className="text-lg text-gray-300 mb-8">
+                  Whether you're exploring agentic AI workflows, need high-precision ML models, or require
+                  DoD-compliant data systems, we're here to help. Reach out to discuss your project requirements
                   and learn how Pantera Claw can deliver production-ready solutions.
                 </p>
 
                 <div className="space-y-6">
                   <div className="flex items-start">
-                    <Phone className="h-6 w-6 text-blue-600 mr-4 mt-1 flex-shrink-0" />
+                    <Phone className="h-6 w-6 text-yellow-400 mr-4 mt-1 flex-shrink-0" />
                     <div>
-                      <h3 className="text-lg mb-1 text-gray-900">Phone</h3>
-                      <a href="tel:+18018980911" className="text-gray-700 hover:text-blue-600 transition-colors">
+                      <h3 className="text-lg mb-1 text-white">Phone</h3>
+                      <a href="tel:+18018980911" className="text-gray-300 hover:text-yellow-400 transition-colors">
                         801.898.0911
                       </a>
                     </div>
                   </div>
 
                   <div className="flex items-start">
-                    <Mail className="h-6 w-6 text-blue-600 mr-4 mt-1 flex-shrink-0" />
+                    <Mail className="h-6 w-6 text-yellow-400 mr-4 mt-1 flex-shrink-0" />
                     <div>
-                      <h3 className="text-lg mb-1 text-gray-900">Email</h3>
-                      <a href="mailto:chrisjames313801@gmail.com" className="text-gray-700 hover:text-blue-600 transition-colors">
+                      <h3 className="text-lg mb-1 text-white">Email</h3>
+                      <a href="mailto:chrisjames313801@gmail.com" className="text-gray-300 hover:text-yellow-400 transition-colors">
                         chrisjames313801@gmail.com
                       </a>
                     </div>
                   </div>
 
                   <div className="flex items-start">
-                    <MapPin className="h-6 w-6 text-blue-600 mr-4 mt-1 flex-shrink-0" />
+                    <MapPin className="h-6 w-6 text-yellow-400 mr-4 mt-1 flex-shrink-0" />
                     <div>
-                      <h3 className="text-lg mb-1 text-gray-900">Location</h3>
-                      <p className="text-gray-700">
+                      <h3 className="text-lg mb-1 text-white">Location</h3>
+                      <p className="text-gray-300">
                         Salt Lake City, Utah<br />
                         Serving the Silicon Slopes and beyond
                       </p>
@@ -88,20 +88,20 @@ export function Contact() {
                   </div>
                 </div>
 
-                <div className="mt-12 bg-blue-50 p-6 rounded-lg border border-blue-200">
-                  <h3 className="text-xl mb-3 text-gray-900">Business Hours</h3>
-                  <p className="text-gray-700 mb-2">Monday - Friday: 9:00 AM - 6:00 PM MST</p>
-                  <p className="text-gray-700">Saturday - Sunday: By appointment</p>
+                <div className="mt-12 bg-gray-900 p-6 rounded-lg border border-yellow-400/30">
+                  <h3 className="text-xl mb-3 text-white">Business Hours</h3>
+                  <p className="text-gray-300 mb-2">Monday - Friday: 9:00 AM - 6:00 PM MST</p>
+                  <p className="text-gray-300">Saturday - Sunday: By appointment</p>
                 </div>
               </div>
 
               {/* Contact Form */}
               <div>
-                <div className="bg-gray-50 p-8 rounded-lg border border-gray-200">
-                  <h2 className="text-2xl mb-6 text-gray-900">Send us a Message</h2>
+                <div className="bg-gray-900 p-8 rounded-lg border border-gray-700">
+                  <h2 className="text-2xl mb-6 text-white">Send us a Message</h2>
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
-                      <label htmlFor="name" className="block text-sm mb-2 text-gray-700">
+                      <label htmlFor="name" className="block text-sm mb-2 text-gray-300">
                         Name *
                       </label>
                       <input
@@ -111,13 +111,13 @@ export function Contact() {
                         required
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all"
+                        className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:ring-2 focus:ring-yellow-400 focus:border-transparent outline-none transition-all"
                         placeholder="Your name"
                       />
                     </div>
 
                     <div>
-                      <label htmlFor="email" className="block text-sm mb-2 text-gray-700">
+                      <label htmlFor="email" className="block text-sm mb-2 text-gray-300">
                         Email *
                       </label>
                       <input
@@ -127,13 +127,13 @@ export function Contact() {
                         required
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all"
+                        className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:ring-2 focus:ring-yellow-400 focus:border-transparent outline-none transition-all"
                         placeholder="your.email@company.com"
                       />
                     </div>
 
                     <div>
-                      <label htmlFor="company" className="block text-sm mb-2 text-gray-700">
+                      <label htmlFor="company" className="block text-sm mb-2 text-gray-300">
                         Company
                       </label>
                       <input
@@ -142,13 +142,13 @@ export function Contact() {
                         name="company"
                         value={formData.company}
                         onChange={handleChange}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all"
+                        className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:ring-2 focus:ring-yellow-400 focus:border-transparent outline-none transition-all"
                         placeholder="Your company"
                       />
                     </div>
 
                     <div>
-                      <label htmlFor="message" className="block text-sm mb-2 text-gray-700">
+                      <label htmlFor="message" className="block text-sm mb-2 text-gray-300">
                         Message *
                       </label>
                       <textarea
@@ -158,14 +158,14 @@ export function Contact() {
                         value={formData.message}
                         onChange={handleChange}
                         rows={6}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all resize-none"
+                        className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:ring-2 focus:ring-yellow-400 focus:border-transparent outline-none transition-all resize-none"
                         placeholder="Tell us about your project..."
                       />
                     </div>
 
                     <button
                       type="submit"
-                      className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center text-lg"
+                      className="w-full bg-yellow-400 text-black px-6 py-3 rounded-lg hover:bg-yellow-500 transition-colors flex items-center justify-center text-lg font-semibold"
                     >
                       Send Message
                       <Send className="ml-2 h-5 w-5" />
@@ -173,7 +173,7 @@ export function Contact() {
                   </form>
                 </div>
 
-                <p className="text-sm text-gray-600 mt-4 text-center">
+                <p className="text-sm text-gray-500 mt-4 text-center">
                   By submitting this form, you agree to be contacted by Pantera Claw regarding your inquiry.
                 </p>
               </div>
@@ -182,27 +182,27 @@ export function Contact() {
         </section>
 
         {/* Service Areas */}
-        <section className="py-16 bg-gray-50">
+        <section className="py-16 bg-gray-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl text-center mb-12 text-gray-900">
+            <h2 className="text-3xl text-center mb-12 text-white">
               Service Areas
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
               <div>
-                <h3 className="text-xl mb-3 text-gray-900">Utah Tech Corridor</h3>
-                <p className="text-gray-700">
+                <h3 className="text-xl mb-3 text-yellow-400">Utah Tech Corridor</h3>
+                <p className="text-gray-300">
                   Salt Lake City, Silicon Slopes, Lehi, Provo, Utah County, and surrounding areas
                 </p>
               </div>
               <div>
-                <h3 className="text-xl mb-3 text-gray-900">Remote Consulting</h3>
-                <p className="text-gray-700">
+                <h3 className="text-xl mb-3 text-yellow-400">Remote Consulting</h3>
+                <p className="text-gray-300">
                   Nationwide AI consulting services for enterprise and government clients
                 </p>
               </div>
               <div>
-                <h3 className="text-xl mb-3 text-gray-900">On-Site Support</h3>
-                <p className="text-gray-700">
+                <h3 className="text-xl mb-3 text-yellow-400">On-Site Support</h3>
+                <p className="text-gray-300">
                   Available for critical deployments and strategic projects requiring in-person collaboration
                 </p>
               </div>
