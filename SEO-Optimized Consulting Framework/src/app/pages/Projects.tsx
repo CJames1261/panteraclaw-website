@@ -2,6 +2,7 @@ import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { Link } from "react-router";
 import { ArrowRight, FlaskConical, AudioLines, Database, Info } from "lucide-react";
+import logo from "../../imports/Pantera_Claw.png";
 
 export function Projects() {
   return (
@@ -11,8 +12,16 @@ export function Projects() {
       <main className="flex-1">
 
         {/* Hero */}
-        <section className="bg-gradient-to-br from-black to-gray-900 py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <section className="relative bg-gradient-to-br from-black to-gray-900 py-16 overflow-hidden">
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <img
+              src={logo}
+              alt=""
+              aria-hidden="true"
+              className="w-[600px] md:w-[800px] max-w-full opacity-[0.15] select-none"
+            />
+          </div>
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <p className="text-yellow-400 tracking-wide uppercase text-sm mb-4">Portfolio</p>
             <h1 className="text-4xl md:text-5xl text-white mb-6">
               Solutions Lab

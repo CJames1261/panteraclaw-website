@@ -189,69 +189,21 @@ export function Home() {
           </div>
         </section>
 
-        {/* Mid-Section CTA */}
-        <section className="py-14 bg-gray-900 border-y border-yellow-400/20">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div>
-              <h2 className="text-2xl md:text-3xl mb-2 text-white">Not sure where to start?</h2>
-              <p className="text-gray-300 text-lg">
-                Book a free 30-minute consultation and we'll map the fastest path to ROI.
-              </p>
-            </div>
-            <Link
-              to="/contact"
-              className="inline-flex items-center justify-center bg-yellow-400 text-black px-8 py-4 rounded-lg hover:bg-yellow-500 transition-colors text-lg whitespace-nowrap flex-shrink-0 font-semibold"
-            >
-              Let's Talk
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
-          </div>
-        </section>
-
-        {/* Case Studies */}
-        <section className="py-20 bg-black">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl text-white mb-3">
-                Case Studies
-              </h2>
-              <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-                Technical demos and proof of concepts showing what we can build for you.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <CaseStudyCard
-                metric="98%"
-                metricLabel="Classification Accuracy"
-                title="Drone Sound Classification"
-                description="Advanced audio classification using MFCCs and Mel spectrograms, achieving 98% accuracy in real-time drone identification."
-                link="/case-study/drone-classification"
-              />
-              <CaseStudyCard
-                metric="10×"
-                metricLabel="Faster Data Access"
-                title="NLP-to-SQL for the Enterprise"
-                description="GPU-accelerated application enabling non-technical users to query complex databases using natural language — no SQL required."
-                link="/case-study/nlp-sql"
-              />
-            </div>
-          </div>
-        </section>
-
-        {/* Final CTA */}
+        {/* CTA */}
         <section className="py-20 bg-gray-900 border-t border-yellow-400/20">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl md:text-4xl mb-4 text-white">
-              Ready to Put Your Data to Work?
+              Ready to Get Started?
             </h2>
             <p className="text-xl mb-8 text-gray-300">
-              Let's build the systems that turn your data into a competitive advantage.
+              Whether you know exactly what you need or aren't sure where to begin —
+              book a free consultation and we'll map out the right solution for your business.
             </p>
             <Link
               to="/contact"
               className="inline-flex items-center justify-center bg-yellow-400 text-black px-8 py-4 rounded-lg hover:bg-yellow-500 transition-colors text-lg font-semibold"
             >
-              Schedule Your Free Consultation
+              Schedule a Free Consultation
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </div>

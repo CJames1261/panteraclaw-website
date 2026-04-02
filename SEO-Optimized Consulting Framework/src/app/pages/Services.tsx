@@ -41,6 +41,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 
+import logo from "../../imports/Pantera_Claw.png";
 import segImg1 from "../../imports/image.png";
 import segImg2 from "../../imports/image-2.png";
 import segImg3 from "../../imports/image-3.png";
@@ -402,8 +403,16 @@ export function Services() {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-black to-gray-900 py-16 md:py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="relative bg-gradient-to-br from-black to-gray-900 py-16 md:py-20 overflow-hidden">
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <img
+              src={logo}
+              alt=""
+              aria-hidden="true"
+              className="w-[600px] md:w-[800px] max-w-full opacity-[0.15] select-none"
+            />
+          </div>
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h1 className="text-4xl md:text-5xl text-center mb-6 text-white">
               AI Consulting Services
             </h1>
