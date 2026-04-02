@@ -70,8 +70,8 @@ export function Contact() {
                     <Mail className="h-6 w-6 text-blue-600 mr-4 mt-1 flex-shrink-0" />
                     <div>
                       <h3 className="text-lg mb-1 text-gray-900">Email</h3>
-                      <a href="mailto:info@panteraclaw.com" className="text-gray-700 hover:text-blue-600 transition-colors">
-                        info@panteraclaw.com
+                      <a href="mailto:chrisjames313801@gmail.com" className="text-gray-700 hover:text-blue-600 transition-colors">
+                        chrisjames313801@gmail.com
                       </a>
                     </div>
                   </div>
