@@ -1,124 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Database Creation — Animation Preview</title>
+  <meta charset="UTF-8"/>
+  <title>Data Pipeline</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * { margin:0; padding:0; box-sizing:border-box; }
     body {
-      background: #000;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      font-family: 'Segoe UI', monospace;
-      color: white;
+      background:#020617;
+      display:flex; flex-direction:column;
+      align-items:center; justify-content:center;
+      min-height:100vh;
+      font-family:'Segoe UI',system-ui,sans-serif;
+      gap:16px;
     }
-    h1 { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.15em; color: #facc15; margin-bottom: 6px; }
-    p.subtitle { font-size: 0.8rem; color: #4ade80; font-weight: 600; margin-bottom: 20px; letter-spacing: 0.05em; }
-    canvas { border-radius: 16px; display: block; }
-    #status { margin-top: 14px; font-size: 0.8rem; color: #9ca3af; letter-spacing: 0.05em; min-height: 1.2em; }
-    #replay-btn {
-      margin-top: 16px;
-      background: transparent;
-      border: 1px solid #374151;
-      color: #9ca3af;
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 7px 20px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: border-color 0.2s, color 0.2s;
-      display: none;
-    }
-    #replay-btn:hover { border-color: #facc15; color: #facc15; }
+    .label { color:#475569; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; }
+    canvas { display:block; border-radius:20px; }
   </style>
 </head>
 <body>
-  <div style="height:90vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;opacity:0.4;">
-    <div style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.15em;color:#facc15;">Pantera Claw</div>
-    <div style="font-size:1.1rem;color:#94a3b8;">↓ Scroll down to see the animation</div>
-  </div>
-
-  <h1>Database Management</h1>
-  <p class="subtitle">We turn raw messy data into a clean, structured database</p>
-  <canvas id="c" width="700" height="460"></canvas>
-  <div id="status">Scroll to start...</div>
-  <button id="replay-btn">↺ Replay</button>
-
+  <div class="label">Data Pipeline — From Raw Input to Business Intelligence</div>
+  <canvas id="c" width="1100" height="580"></canvas>
 <script>
-const canvas   = document.getElementById('c');
-const ctx      = canvas.getContext('2d');
+const canvas = document.getElementById('c');
+const ctx    = canvas.getContext('2d');
 const W = canvas.width, H = canvas.height;
-const statusEl = document.getElementById('status');
-const replayBtn= document.getElementById('replay-btn');
 
-// ── Raw chaotic data (left side) ──────────────────────────────────────────────
-const rawPool = [
-  'john.doe@email.com','$142.50','2024-03-12','PROD-881','cust_4421',
-  'NULL','New York','jane@co.com','99','2024-01-08','PROD-203',
-  'cust_0093','$8.99','Chicago','NULL','smith@biz.org','$310.00',
-  '2024-02-28','PROD-554','cust_7712','Los Angeles','NULL','$55.20',
-  'alex@mail.com','2024-03-01','PROD-109','cust_2281','$201.75','NULL',
-  'Miami','sara@net.com','PROD-772','$18.40','cust_9901','2024-01-15',
-  'Dallas','NULL','raj@corp.io','$88.00','2024-02-10','PROD-340',
-  'cust_3350','NULL','Seattle','$430.10','kim@data.ai','2024-03-20',
+// ── Layout ────────────────────────────────────────────────────────────────────
+const CARD_W  = 195, CARD_H = 400;
+const CARD_Y  = (H - CARD_H) / 2;           // 90  — left card top
+const GAP     = (W - 4 * CARD_W) / 5;       // 64
+const CARD_X  = Array.from({length:4}, (_,i) => GAP + i*(CARD_W+GAP));
+const CARD_CX = CARD_X.map(x => x + CARD_W/2);
+const TOP_H   = 175;
+const ICON_Y  = CARD_Y + TOP_H * 0.53;      // icon center for full cards
+
+// Right column — two stacked compact cards, total height = CARD_H
+const RIGHT_GAP = 22;
+const CARD_H_R  = (CARD_H - RIGHT_GAP) / 2; // ~189
+const TOP_H_R   = 90;
+const CARD_Y_BI = CARD_Y;
+const CARD_Y_AA = CARD_Y + CARD_H_R + RIGHT_GAP;
+const ICON_Y_BI = CARD_Y_BI + TOP_H_R * 0.62;
+const ICON_Y_AA = CARD_Y_AA + TOP_H_R * 0.62;
+
+// DB card center — origin of the two diagonal arrows
+const DB_CENTER_X = CARD_X[2] + CARD_W;
+const DB_CENTER_Y = CARD_Y + CARD_H / 2;
+
+// ── Stages ────────────────────────────────────────────────────────────────────
+const STAGES = [
+  { color:'#94a3b8', step:1, title:'Raw Data',           subtitle:'Unstructured Input',    lines:['Scattered records,','nulls & errors'],        draw:drawRawIcon       },
+  { color:'#3b82f6', step:2, title:'Clean Tables',       subtitle:'Normalized Schema',     lines:['Typed columns,','relational keys'],           draw:drawTableIcon     },
+  { color:'#facc15', step:3, title:'Database',           subtitle:'Centralized Storage',   lines:['Indexed, scalable,','query-optimized'],       draw:drawDatabaseIcon  },
+  { color:'#4ade80', step:4, title:'BI Dashboard',       subtitle:'Business Intelligence', lines:['Real-time metrics,','actionable analytics'],  draw:drawBIIcon        },
+  { color:'#a78bfa', step:5, title:'Advanced Analytics', subtitle:'Predictive Modeling',   lines:['ML models,','causal inference'],              draw:drawAnalyticsIcon },
 ];
 
-// ── Clean table definition ─────────────────────────────────────────────────────
-const tables = [
-  {
-    name: 'customers',
-    color: '#3b82f6',
-    x: 0.04, y: 0.12, w: 0.28,
-    cols: ['cust_id', 'name', 'email', 'city'],
-    rows: [
-      ['cust_0093', 'Jane Smith',  'jane@co.com',    'Chicago'    ],
-      ['cust_2281', 'Alex Brown',  'alex@mail.com',  'Los Angeles'],
-      ['cust_3350', 'Raj Patel',   'raj@corp.io',    'Seattle'    ],
-      ['cust_4421', 'John Doe',    'john.doe@...',   'New York'   ],
-      ['cust_7712', 'Sara Lee',    'sara@net.com',   'Miami'      ],
-    ],
-  },
-  {
-    name: 'products',
-    color: '#a855f7',
-    x: 0.36, y: 0.12, w: 0.26,
-    cols: ['prod_id', 'name', 'price'],
-    rows: [
-      ['PROD-109', 'Widget A',  '$201.75'],
-      ['PROD-203', 'Widget B',  '$8.99'  ],
-      ['PROD-340', 'Widget C',  '$88.00' ],
-      ['PROD-554', 'Widget D',  '$310.00'],
-      ['PROD-772', 'Widget E',  '$18.40' ],
-      ['PROD-881', 'Widget F',  '$142.50'],
-    ],
-  },
-  {
-    name: 'orders',
-    color: '#14b8a6',
-    x: 0.66, y: 0.12, w: 0.30,
-    cols: ['order_id', 'cust_id', 'prod_id', 'date'],
-    rows: [
-      ['ORD-001', 'cust_4421', 'PROD-881', '2024-03-12'],
-      ['ORD-002', 'cust_0093', 'PROD-203', '2024-01-08'],
-      ['ORD-003', 'cust_7712', 'PROD-554', '2024-02-28'],
-      ['ORD-004', 'cust_2281', 'PROD-109', '2024-03-01'],
-      ['ORD-005', 'cust_9901', 'PROD-772', '2024-01-15'],
-    ],
-  },
-];
+let hoveredCard = -1;
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
-function lerp(a,b,t){ return a+(b-a)*t; }
-function easeOut(t){ return 1-(1-t)*(1-t)*(1-t); }
-function easeInOut(t){ return t<0.5?2*t*t:-1+(4-2*t)*t; }
-function clamp(v,a,b){ return Math.max(a,Math.min(b,v)); }
-
-function roundRect(x,y,w,h,r){
+function rr(x,y,w,h,r){
   ctx.beginPath();
   ctx.moveTo(x+r,y); ctx.lineTo(x+w-r,y);
   ctx.arcTo(x+w,y,x+w,y+r,r); ctx.lineTo(x+w,y+h-r);
@@ -127,316 +68,287 @@ function roundRect(x,y,w,h,r){
   ctx.arcTo(x,y,x+r,y,r); ctx.closePath();
 }
 
-// ── Chaos particles ───────────────────────────────────────────────────────────
-function buildParticles(){
-  const arr = [];
-  for(let i=0; i<rawPool.length; i++){
-    arr.push({
-      text: rawPool[i],
-      x: 60 + Math.random()*(W-120),
-      y: 60 + Math.random()*(H-120),
-      vx: (Math.random()-0.5)*0.6,
-      vy: (Math.random()-0.5)*0.6,
-      alpha: 0.15 + Math.random()*0.5,
-      size: 9 + Math.random()*3,
-      color: rawPool[i]==='NULL' ? '#ef4444' : '#64748b',
-      absorbed: false,
-      absorbT: 0,
-      ax: 0, ay: 0,
-    });
-  }
-  return arr;
-}
-let particles = buildParticles();
-
-// ── State ─────────────────────────────────────────────────────────────────────
-// 0: chaos hold
-// 1: chaos → sucked into tables
-// 2: tables build (header + rows pop in)
-// 3: hold with connection lines
-let phase = 0, tick = 0, phaseTimer = 0, animRunning = false;
-let tableReveal = 0;      // 0→1 overall table fade-in progress
-let rowTimers   = [];     // per-table row reveal progress
-let connAlpha   = 0;
-let checkAlpha  = 0;
-
-const CHAOS_HOLD   = 90;
-const SUCK_DUR     = 140;
-const BUILD_DUR    = 180;
-const CONN_DELAY   = 60;
-
-tables.forEach(() => rowTimers.push(0));
-
-// ── Draw raw chaos layer ───────────────────────────────────────────────────────
-function drawChaos(globalAlpha){
-  particles.forEach(p => {
-    if(p.absorbed) return;
-    ctx.save();
-    ctx.globalAlpha = p.alpha * globalAlpha;
-    ctx.font = `${p.size}px monospace`;
-    ctx.fillStyle = p.color;
-    ctx.fillText(p.text, p.x, p.y);
-    ctx.restore();
-  });
-}
-
-// ── Draw a table ──────────────────────────────────────────────────────────────
-const ROW_H  = 22;
-const HEAD_H = 28;
-const PAD    = 8;
-
-function drawTable(t, revealProgress, rowProgress){
-  const x  = t.x * W;
-  const y  = t.y * H;
-  const tw = t.w * W;
-  const totalRows = t.rows.length;
-  const visibleRows = Math.floor(rowProgress * totalRows);
-  const partialRow  = (rowProgress * totalRows) % 1;
-  const th = HEAD_H + (visibleRows + (partialRow>0?1:0)) * ROW_H + PAD;
-
+// ── Icons ─────────────────────────────────────────────────────────────────────
+function drawRawIcon(cx, cy, color) {
+  const iw=52,ih=66,fold=13,r=5,x=cx-iw/2,y=cy-ih/2;
   ctx.save();
-  ctx.globalAlpha = easeOut(revealProgress);
-
-  // drop shadow
-  ctx.shadowColor = t.color + '55';
-  ctx.shadowBlur  = 18;
-
-  // table bg
-  ctx.fillStyle = '#0f172a';
-  roundRect(x, y, tw, HEAD_H + totalRows*ROW_H + PAD, 8); ctx.fill();
-  ctx.strokeStyle = t.color + '66'; ctx.lineWidth = 1;
-  roundRect(x, y, tw, HEAD_H + totalRows*ROW_H + PAD, 8); ctx.stroke();
-  ctx.shadowBlur = 0;
-
-  // header
-  ctx.fillStyle = t.color + '22';
-  roundRect(x, y, tw, HEAD_H, 8); ctx.fill();
-  ctx.strokeStyle = t.color + '88'; ctx.lineWidth = 1;
-  ctx.beginPath(); ctx.moveTo(x, y+HEAD_H); ctx.lineTo(x+tw, y+HEAD_H); ctx.stroke();
-
-  ctx.font = 'bold 11px monospace'; ctx.fillStyle = t.color;
-  ctx.fillText(t.name, x+PAD+2, y+HEAD_H-9);
-
-  // column headers
-  const colW = (tw - PAD*2) / t.cols.length;
-  ctx.font = 'bold 9px monospace'; ctx.fillStyle = '#475569';
-  t.cols.forEach((col, ci) => {
-    ctx.fillText(col.toUpperCase(), x+PAD + ci*colW, y+HEAD_H+14);
-  });
-
-  // divider under col headers
-  ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 1;
-  ctx.beginPath(); ctx.moveTo(x+PAD, y+HEAD_H+18); ctx.lineTo(x+tw-PAD, y+HEAD_H+18); ctx.stroke();
-
-  // rows
-  for(let ri=0; ri<visibleRows; ri++){
-    const ry = y + HEAD_H + 20 + ri*ROW_H;
-    if(ri % 2 === 1){
-      ctx.fillStyle = '#ffffff05';
-      ctx.fillRect(x+1, ry-10, tw-2, ROW_H);
+  ctx.shadowColor=color+'55'; ctx.shadowBlur=18;
+  ctx.fillStyle='#1e293b';
+  ctx.beginPath();
+  ctx.moveTo(x+r,y); ctx.lineTo(x+iw-fold,y); ctx.lineTo(x+iw,y+fold);
+  ctx.lineTo(x+iw,y+ih-r); ctx.arcTo(x+iw,y+ih,x+iw-r,y+ih,r);
+  ctx.lineTo(x+r,y+ih); ctx.arcTo(x,y+ih,x,y+ih-r,r);
+  ctx.lineTo(x,y+r); ctx.arcTo(x,y,x+r,y,r); ctx.closePath();
+  ctx.fill(); ctx.strokeStyle=color+'55'; ctx.lineWidth=1.5; ctx.stroke(); ctx.shadowBlur=0;
+  ctx.fillStyle=color+'22';
+  ctx.beginPath(); ctx.moveTo(x+iw-fold,y); ctx.lineTo(x+iw,y+fold); ctx.lineTo(x+iw-fold,y+fold); ctx.closePath(); ctx.fill();
+  ctx.strokeStyle=color+'44'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(x+iw-fold,y); ctx.lineTo(x+iw-fold,y+fold); ctx.lineTo(x+iw,y+fold); ctx.stroke();
+  const lines=[{w:30,err:false},{w:16,err:true},{w:38,err:false},{w:12,err:true},{w:24,err:false},{w:34,err:false},{w:18,err:true}];
+  const jit=[2,-1,3,-2,1,-3,2];
+  lines.forEach((l,i)=>{
+    ctx.fillStyle=(l.err?'#ef4444':'#475569')+'bb';
+    ctx.fillRect(x+7+jit[i],y+20+i*7,l.w,3.5);
+    if(l.err){
+      ctx.strokeStyle='#ef444488'; ctx.lineWidth=1;
+      const ex=x+7+jit[i]+l.w+5,ey=y+20+i*7+1;
+      ctx.beginPath(); ctx.moveTo(ex,ey); ctx.lineTo(ex+5,ey+4); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(ex+5,ey); ctx.lineTo(ex,ey+4); ctx.stroke();
     }
-    ctx.font = '9.5px monospace';
-    t.rows[ri].forEach((val, ci) => {
-      const isId = ci===0;
-      ctx.fillStyle = isId ? t.color + 'cc' : '#94a3b8';
-      ctx.fillText(val, x+PAD + ci*colW, ry+4);
-    });
-  }
-
-  // partial row typing effect
-  if(partialRow > 0 && visibleRows < totalRows){
-    const ri = visibleRows;
-    const ry = y + HEAD_H + 20 + ri*ROW_H;
-    ctx.font = '9.5px monospace';
-    t.rows[ri].forEach((val, ci) => {
-      const chars = Math.floor(partialRow * val.length);
-      const isId  = ci===0;
-      ctx.fillStyle = isId ? t.color + 'cc' : '#94a3b8';
-      ctx.fillText(val.slice(0, chars) + (chars<val.length?'▌':''), x+PAD + ci*colW, ry+4);
-    });
-  }
-
+  });
   ctx.restore();
 }
 
-// ── Draw connection lines between tables ──────────────────────────────────────
-function drawConnections(alpha){
-  if(alpha < 0.01) return;
-  // customers → orders  (cust_id)
-  // products  → orders  (prod_id)
-  const connections = [
-    { from: 0, to: 2, label: 'cust_id', color: '#3b82f6' },
-    { from: 1, to: 2, label: 'prod_id', color: '#a855f7' },
-  ];
-
-  connections.forEach(c => {
-    const a = tables[c.from], b = tables[c.to];
-    const x1 = (a.x + a.w) * W;
-    const y1 = (a.y + 0.08) * H;
-    const x2 = b.x * W;
-    const y2 = (b.y + 0.12) * H;
-    const mx = (x1+x2)/2;
-
-    ctx.save();
-    ctx.globalAlpha = alpha;
-    ctx.strokeStyle = c.color + 'aa';
-    ctx.lineWidth   = 1.5;
-    ctx.setLineDash([4,4]);
-    ctx.beginPath();
-    ctx.moveTo(x1, y1);
-    ctx.bezierCurveTo(mx, y1, mx, y2, x2, y2);
-    ctx.stroke();
-    ctx.setLineDash([]);
-
-    // label
-    ctx.font = 'bold 9px monospace';
-    ctx.fillStyle = c.color;
-    ctx.fillText(c.label, mx-14, (y1+y2)/2 - 4);
-
-    // arrow head
-    ctx.fillStyle = c.color + 'aa';
-    ctx.beginPath();
-    ctx.moveTo(x2, y2);
-    ctx.lineTo(x2-8, y2-4);
-    ctx.lineTo(x2-8, y2+4);
-    ctx.closePath(); ctx.fill();
-
-    ctx.restore();
-  });
-}
-
-// ── Draw the "database complete" checkmark ─────────────────────────────────────
-function drawCheck(alpha){
-  if(alpha < 0.01) return;
+function drawTableIcon(cx, cy, color) {
+  const tw=78,th=70,cols=3,rows=4,r=5,x=cx-tw/2,y=cy-th/2;
+  const CW=tw/cols,RH=th/rows;
   ctx.save();
-  ctx.globalAlpha = alpha;
-  const cx = W/2, cy = H - 28;
-  ctx.font = '11px Segoe UI'; ctx.fillStyle = '#4ade80';
-  ctx.textAlign = 'center';
-  ctx.fillText('✓ Database structured and ready', cx, cy);
-  ctx.textAlign = 'left';
+  ctx.shadowColor=color+'44'; ctx.shadowBlur=16;
+  ctx.fillStyle='#0f172a'; rr(x,y,tw,th,r); ctx.fill();
+  ctx.strokeStyle=color+'55'; ctx.lineWidth=1.5; rr(x,y,tw,th,r); ctx.stroke(); ctx.shadowBlur=0;
+  ctx.fillStyle=color+'28'; ctx.fillRect(x+1,y+1,tw-2,RH-1);
+  ctx.strokeStyle=color+'66'; ctx.lineWidth=0.8;
+  ctx.beginPath(); ctx.moveTo(x,y+RH); ctx.lineTo(x+tw,y+RH); ctx.stroke();
+  for(let c=0;c<cols;c++){ctx.fillStyle=color+'cc'; ctx.fillRect(x+c*CW+5,y+RH*0.28,CW-10,4);}
+  ctx.strokeStyle='#1e293b66'; ctx.lineWidth=0.8;
+  for(let c=1;c<cols;c++){ctx.beginPath();ctx.moveTo(x+c*CW,y+RH);ctx.lineTo(x+c*CW,y+th);ctx.stroke();}
+  for(let r2=1;r2<rows;r2++){
+    ctx.strokeStyle='#1e293b'; ctx.lineWidth=0.6;
+    ctx.beginPath(); ctx.moveTo(x+1,y+r2*RH); ctx.lineTo(x+tw-1,y+r2*RH); ctx.stroke();
+    if(r2%2===0){ctx.fillStyle='#ffffff06'; ctx.fillRect(x+1,y+r2*RH,tw-2,RH);}
+    for(let c=0;c<cols;c++){
+      ctx.fillStyle=c===0?color+'88':'#47556988';
+      ctx.fillRect(x+c*CW+4,y+r2*RH+(RH-3.5)/2,c===0?CW*0.55:CW*0.38,3.5);
+    }
+  }
   ctx.restore();
 }
 
-// ── Main loop ─────────────────────────────────────────────────────────────────
-function frame(){
-  tick++; phaseTimer++;
-
-  // background
-  ctx.clearRect(0,0,W,H);
-  const bg = ctx.createRadialGradient(W/2,H/2,0,W/2,H/2,W*0.8);
-  bg.addColorStop(0,'#0f172a'); bg.addColorStop(1,'#020617');
-  ctx.fillStyle=bg; ctx.fillRect(0,0,W,H);
-
-  // grid
-  ctx.strokeStyle='#ffffff05'; ctx.lineWidth=1;
-  for(let gx=0;gx<W;gx+=80){ctx.beginPath();ctx.moveTo(gx,0);ctx.lineTo(gx,H);ctx.stroke();}
-  for(let gy=0;gy<H;gy+=80){ctx.beginPath();ctx.moveTo(0,gy);ctx.lineTo(W,gy);ctx.stroke();}
-
-  // ── Phase transitions ──────────────────────────────────────────────────────
-  if(phase===0 && phaseTimer>CHAOS_HOLD){
-    phase=1; phaseTimer=0;
-    statusEl.textContent='Organizing raw data...';
+function drawDatabaseIcon(cx, cy, color) {
+  const rx=34,ry=11,lh=22,nl=3,top=cy-nl*lh/2;
+  ctx.save(); ctx.shadowColor=color+'55'; ctx.shadowBlur=20;
+  for(let i=nl-1;i>=0;i--){
+    const ty=top+i*lh,bright=i===0;
+    ctx.fillStyle=bright?'#0f172a':'rgba(10,18,36,0.85)';
+    ctx.strokeStyle=bright?color+'cc':color+'44'; ctx.lineWidth=1.5;
+    ctx.beginPath();
+    ctx.moveTo(cx-rx,ty+ry); ctx.lineTo(cx-rx,ty+lh);
+    ctx.ellipse(cx,ty+lh,rx,ry,0,Math.PI,0,true);
+    ctx.lineTo(cx+rx,ty+ry); ctx.closePath();
+    ctx.fill(); ctx.stroke();
+    ctx.beginPath(); ctx.ellipse(cx,ty,rx,ry,0,0,Math.PI*2);
+    ctx.fillStyle=bright?color+'2a':color+'12'; ctx.fill();
+    ctx.strokeStyle=bright?color+'cc':color+'44'; ctx.stroke();
   }
-  if(phase===1 && phaseTimer>SUCK_DUR){
-    phase=2; phaseTimer=0;
-    statusEl.textContent='Building database structure...';
-  }
-  if(phase===2 && phaseTimer>BUILD_DUR+CONN_DELAY){
-    phase=3; phaseTimer=0;
-    statusEl.textContent='Database complete ✓';
-    replayBtn.style.display='inline-block';
-  }
+  ctx.shadowBlur=0; ctx.restore();
+}
 
-  // ── Update chaos particles ─────────────────────────────────────────────────
-  const suckProgress = phase>=1 ? clamp(phaseTimer/SUCK_DUR,0,1) : 0;
-
-  particles.forEach((p,pi) => {
-    if(p.absorbed) return;
-    if(phase===0){
-      // drift
-      p.x += p.vx; p.y += p.vy;
-      if(p.x<10||p.x>W-10) p.vx*=-1;
-      if(p.y<10||p.y>H-10) p.vy*=-1;
-    } else if(phase===1){
-      // suck toward nearest table center
-      const ti = pi % tables.length;
-      const t  = tables[ti];
-      const tx = (t.x + t.w/2)*W;
-      const ty = (t.y + 0.15)*H;
-      const ease = easeInOut(suckProgress);
-      p.x = lerp(p.x, tx, 0.04 + ease*0.06);
-      p.y = lerp(p.y, ty, 0.04 + ease*0.06);
-      p.alpha *= 0.985;
-      const dist = Math.hypot(p.x-tx, p.y-ty);
-      if(dist < 12) p.absorbed = true;
-    }
+function drawBIIcon(cx, cy, color) {
+  const BW=86,BH=66,bars=[0.38,0.62,0.48,0.82,1.0,0.72];
+  const n=bars.length,bw=(BW-(n-1)*6)/n,baseY=cy+BH/2,sx=cx-BW/2;
+  ctx.save(); ctx.shadowColor=color+'44'; ctx.shadowBlur=16;
+  bars.forEach((h,i)=>{
+    const bh=h*BH,bx=sx+i*(bw+6),by=baseY-bh;
+    const g=ctx.createLinearGradient(bx,by,bx,baseY);
+    g.addColorStop(0,color+'cc'); g.addColorStop(1,color+'22');
+    ctx.fillStyle=g; rr(bx,by,bw,bh,2); ctx.fill();
+    ctx.strokeStyle=color+'55'; ctx.lineWidth=0.8; ctx.stroke();
   });
-
-  // ── Table reveal progress ──────────────────────────────────────────────────
-  if(phase>=2){
-    const buildT = clamp(phaseTimer/BUILD_DUR, 0, 1);
-    tableReveal = easeOut(buildT);
-    tables.forEach((t,ti) => {
-      const stagger = ti * 0.18;
-      rowTimers[ti] = clamp((buildT - stagger) / (1-stagger) * 1.4, 0, 1);
-    });
-  }
-
-  // ── Connection + check alpha ───────────────────────────────────────────────
-  if(phase===2 && phaseTimer>BUILD_DUR) connAlpha = Math.min(1, connAlpha+0.03);
-  if(phase===3){ connAlpha = Math.min(1, connAlpha+0.03); checkAlpha = Math.min(1, checkAlpha+0.02); }
-
-  // ── Draw ──────────────────────────────────────────────────────────────────
-  // chaos (fades out as tables appear)
-  const chaosFade = phase<=1 ? 1 : Math.max(0, 1 - tableReveal*2);
-  drawChaos(chaosFade);
-
-  // tables
-  if(phase>=2){
-    tables.forEach((t,ti) => drawTable(t, tableReveal, rowTimers[ti]));
-  }
-
-  drawConnections(connAlpha);
-  drawCheck(checkAlpha);
-
-  requestAnimationFrame(frame);
+  ctx.shadowBlur=0;
+  ctx.strokeStyle='#ffffff99'; ctx.lineWidth=1.5; ctx.setLineDash([3,2]);
+  ctx.beginPath();
+  bars.forEach((h,i)=>{const bx=sx+i*(bw+6)+bw/2,by=baseY-h*BH; i?ctx.lineTo(bx,by):ctx.moveTo(bx,by);});
+  ctx.stroke(); ctx.setLineDash([]);
+  bars.forEach((h,i)=>{
+    const last=i===n-1;
+    ctx.fillStyle=last?color:'#ffffff55';
+    ctx.shadowColor=last?color:'transparent'; ctx.shadowBlur=last?8:0;
+    ctx.beginPath(); ctx.arc(sx+i*(bw+6)+bw/2,baseY-h*BH,3.5,0,Math.PI*2); ctx.fill();
+  });
+  ctx.shadowBlur=0;
+  ctx.strokeStyle=color+'55'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(sx-4,baseY+2); ctx.lineTo(sx+BW+4,baseY+2); ctx.stroke();
+  ctx.restore();
 }
 
-// ── Initial static render ─────────────────────────────────────────────────────
-function drawStatic(){
-  ctx.clearRect(0,0,W,H);
-  const bg = ctx.createRadialGradient(W/2,H/2,0,W/2,H/2,W*0.8);
+function drawAnalyticsIcon(cx, cy, color) {
+  // Scatter plot with regression trend line
+  const pts=[{x:-28,y:22},{x:-20,y:10},{x:-14,y:14},{x:-6,y:2},{x:2,y:-6},{x:10,y:-14},{x:18,y:-18},{x:28,y:-26}];
+  ctx.save(); ctx.shadowColor=color+'44'; ctx.shadowBlur=14;
+  ctx.strokeStyle=color+'44'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(cx-34,cy+28); ctx.lineTo(cx+34,cy+28); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(cx-34,cy-30); ctx.lineTo(cx-34,cy+28); ctx.stroke();
+  pts.forEach(p=>{
+    ctx.fillStyle=color+'88'; ctx.shadowBlur=5;
+    ctx.beginPath(); ctx.arc(cx+p.x,cy+p.y,3,0,Math.PI*2); ctx.fill();
+  });
+  ctx.shadowBlur=0;
+  ctx.strokeStyle=color+'cc'; ctx.lineWidth=1.8;
+  ctx.beginPath();
+  pts.forEach((p,i)=>i?ctx.lineTo(cx+p.x,cy+p.y):ctx.moveTo(cx+p.x,cy+p.y));
+  ctx.stroke();
+  ctx.fillStyle=color; ctx.shadowColor=color; ctx.shadowBlur=12;
+  ctx.beginPath(); ctx.arc(cx+pts[pts.length-1].x,cy+pts[pts.length-1].y,4.5,0,Math.PI*2); ctx.fill();
+  ctx.shadowBlur=0; ctx.restore();
+}
+
+// ── Full-height card (left 3) ─────────────────────────────────────────────────
+function drawCard(stage, i) {
+  const cx=CARD_CX[i],x=CARD_X[i],y=CARD_Y,c=stage.color;
+  const hov=i===hoveredCard;
+  ctx.save();
+  ctx.shadowColor=c+(hov?'55':'1a'); ctx.shadowBlur=hov?50:30;
+  ctx.fillStyle=hov?'#111d35':'#0b1221'; rr(x,y,CARD_W,CARD_H,14); ctx.fill();
+  ctx.shadowBlur=0;
+  ctx.save();
+  ctx.beginPath();
+  ctx.moveTo(x+14,y); ctx.lineTo(x+CARD_W-14,y);
+  ctx.arcTo(x+CARD_W,y,x+CARD_W,y+14,14); ctx.lineTo(x+CARD_W,y+TOP_H);
+  ctx.lineTo(x,y+TOP_H); ctx.lineTo(x,y+14); ctx.arcTo(x,y,x+14,y,14); ctx.closePath(); ctx.clip();
+  const tg=ctx.createLinearGradient(x,y,x,y+TOP_H);
+  tg.addColorStop(0,c+(hov?'44':'28')); tg.addColorStop(1,'transparent');
+  ctx.fillStyle=tg; ctx.fillRect(x,y,CARD_W,TOP_H);
+  ctx.restore();
+  ctx.strokeStyle=c+(hov?'99':'33'); ctx.lineWidth=hov?1.5:1; rr(x,y,CARD_W,CARD_H,14); ctx.stroke();
+  const ag=ctx.createLinearGradient(x,y,x+CARD_W,y);
+  ag.addColorStop(0,'transparent'); ag.addColorStop(0.15,c+'dd'); ag.addColorStop(0.85,c+'dd'); ag.addColorStop(1,'transparent');
+  ctx.strokeStyle=ag; ctx.lineWidth=2;
+  ctx.beginPath(); ctx.moveTo(x+14,y+1); ctx.lineTo(x+CARD_W-14,y+1); ctx.stroke();
+  ctx.fillStyle=c+'22'; ctx.strokeStyle=c+'88'; ctx.lineWidth=1.5;
+  ctx.beginPath(); ctx.arc(x+CARD_W-20,y+20,13,0,Math.PI*2); ctx.fill(); ctx.stroke();
+  ctx.font='bold 11px system-ui'; ctx.fillStyle=c; ctx.textAlign='center'; ctx.textBaseline='middle';
+  ctx.fillText(stage.step,x+CARD_W-20,y+20); ctx.textBaseline='alphabetic';
+  stage.draw(cx,ICON_Y,c);
+  ctx.strokeStyle=c+'20'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(x+16,y+TOP_H); ctx.lineTo(x+CARD_W-16,y+TOP_H); ctx.stroke();
+  ctx.font='bold 17px system-ui'; ctx.fillStyle='#ffffff'; ctx.textAlign='center';
+  ctx.fillText(stage.title,cx,y+TOP_H+26);
+  ctx.font='12px system-ui'; ctx.fillStyle=c+'cc';
+  ctx.fillText(stage.subtitle,cx,y+TOP_H+44);
+  ctx.strokeStyle='#1e293b'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(x+22,y+TOP_H+54); ctx.lineTo(x+CARD_W-22,y+TOP_H+54); ctx.stroke();
+  ctx.font='10px system-ui'; ctx.fillStyle='#e2e8f0';
+  stage.lines.forEach((l,li)=>ctx.fillText(l,cx,y+TOP_H+70+li*16));
+  ctx.restore();
+}
+
+// ── Compact card (right stacked pair) ────────────────────────────────────────
+function drawRightCard(stage, cardIdx, cardY, iconY) {
+  const cx=CARD_CX[3],x=CARD_X[3],y=cardY,c=stage.color;
+  const cw=CARD_W,ch=CARD_H_R,th=TOP_H_R;
+  const hov=cardIdx===hoveredCard;
+  ctx.save();
+  ctx.shadowColor=c+(hov?'55':'1a'); ctx.shadowBlur=hov?40:20;
+  ctx.fillStyle=hov?'#111d35':'#0b1221'; rr(x,y,cw,ch,14); ctx.fill();
+  ctx.shadowBlur=0;
+  ctx.save();
+  ctx.beginPath();
+  ctx.moveTo(x+14,y); ctx.lineTo(x+cw-14,y);
+  ctx.arcTo(x+cw,y,x+cw,y+14,14); ctx.lineTo(x+cw,y+th);
+  ctx.lineTo(x,y+th); ctx.lineTo(x,y+14); ctx.arcTo(x,y,x+14,y,14); ctx.closePath(); ctx.clip();
+  const tg=ctx.createLinearGradient(x,y,x,y+th);
+  tg.addColorStop(0,c+(hov?'44':'28')); tg.addColorStop(1,'transparent');
+  ctx.fillStyle=tg; ctx.fillRect(x,y,cw,th);
+  ctx.restore();
+  ctx.strokeStyle=c+(hov?'99':'33'); ctx.lineWidth=hov?1.5:1; rr(x,y,cw,ch,14); ctx.stroke();
+  const ag=ctx.createLinearGradient(x,y,x+cw,y);
+  ag.addColorStop(0,'transparent'); ag.addColorStop(0.15,c+'dd'); ag.addColorStop(0.85,c+'dd'); ag.addColorStop(1,'transparent');
+  ctx.strokeStyle=ag; ctx.lineWidth=2;
+  ctx.beginPath(); ctx.moveTo(x+14,y+1); ctx.lineTo(x+cw-14,y+1); ctx.stroke();
+  ctx.fillStyle=c+'22'; ctx.strokeStyle=c+'88'; ctx.lineWidth=1.5;
+  ctx.beginPath(); ctx.arc(x+cw-18,y+18,11,0,Math.PI*2); ctx.fill(); ctx.stroke();
+  ctx.font='bold 10px system-ui'; ctx.fillStyle=c; ctx.textAlign='center'; ctx.textBaseline='middle';
+  ctx.fillText(stage.step,x+cw-18,y+18); ctx.textBaseline='alphabetic';
+  // Icon scaled down to fit compact card
+  ctx.save(); ctx.translate(cx,iconY); ctx.scale(0.58,0.58); stage.draw(0,0,c); ctx.restore();
+  ctx.strokeStyle=c+'20'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(x+16,y+th); ctx.lineTo(x+cw-16,y+th); ctx.stroke();
+  ctx.font='bold 14px system-ui'; ctx.fillStyle='#ffffff'; ctx.textAlign='center';
+  ctx.fillText(stage.title,cx,y+th+20);
+  ctx.font='11px system-ui'; ctx.fillStyle=c+'cc';
+  ctx.fillText(stage.subtitle,cx,y+th+35);
+  ctx.strokeStyle='#1e293b'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(x+22,y+th+44); ctx.lineTo(x+cw-22,y+th+44); ctx.stroke();
+  ctx.font='10px system-ui'; ctx.fillStyle='#e2e8f0';
+  stage.lines.forEach((l,li)=>ctx.fillText(l,cx,y+th+58+li*15));
+  ctx.restore();
+}
+
+// ── Arrows ────────────────────────────────────────────────────────────────────
+function drawHorizArrow(i) {
+  const x1=CARD_X[i]+CARD_W+10,x2=CARD_X[i+1]-10,y=ICON_Y;
+  const c1=STAGES[i].color,c2=STAGES[i+1].color;
+  const g=ctx.createLinearGradient(x1,y,x2,y);
+  g.addColorStop(0,c1+'88'); g.addColorStop(1,c2+'99');
+  ctx.strokeStyle=g; ctx.lineWidth=1.5;
+  ctx.beginPath(); ctx.moveTo(x1+8,y); ctx.lineTo(x2-4,y); ctx.stroke();
+  ctx.fillStyle=c2+'aa';
+  ctx.beginPath(); ctx.moveTo(x2+8,y); ctx.lineTo(x2,y-5); ctx.lineTo(x2,y+5); ctx.closePath(); ctx.fill();
+  ctx.fillStyle=c1+'88';
+  ctx.beginPath(); ctx.arc(x1+4,y,3,0,Math.PI*2); ctx.fill();
+}
+
+function drawDiagArrow(x1, y1, x2, y2, c1, c2) {
+  const dx=x2-x1,dy=y2-y1,len=Math.hypot(dx,dy);
+  const nx=dx/len,ny=dy/len;
+  const sx=x1+nx*10,sy=y1+ny*10;
+  const ex=x2-nx*12,ey=y2-ny*12;
+  const g=ctx.createLinearGradient(sx,sy,ex,ey);
+  g.addColorStop(0,c1+'88'); g.addColorStop(1,c2+'99');
+  ctx.strokeStyle=g; ctx.lineWidth=1.5;
+  ctx.beginPath(); ctx.moveTo(sx,sy); ctx.lineTo(ex,ey); ctx.stroke();
+  const ang=Math.atan2(dy,dx);
+  ctx.fillStyle=c2+'aa';
+  ctx.save(); ctx.translate(x2-nx*4,y2-ny*4); ctx.rotate(ang);
+  ctx.beginPath(); ctx.moveTo(8,0); ctx.lineTo(0,-5); ctx.lineTo(0,5); ctx.closePath(); ctx.fill();
+  ctx.restore();
+  ctx.fillStyle=c1+'88';
+  ctx.beginPath(); ctx.arc(sx,sy,3,0,Math.PI*2); ctx.fill();
+}
+
+// ── Render ────────────────────────────────────────────────────────────────────
+function draw() {
+  const bg=ctx.createRadialGradient(W/2,H/2,0,W/2,H/2,W*0.65);
   bg.addColorStop(0,'#0f172a'); bg.addColorStop(1,'#020617');
   ctx.fillStyle=bg; ctx.fillRect(0,0,W,H);
-  ctx.strokeStyle='#ffffff05'; ctx.lineWidth=1;
+  ctx.strokeStyle='#ffffff04'; ctx.lineWidth=1;
   for(let gx=0;gx<W;gx+=80){ctx.beginPath();ctx.moveTo(gx,0);ctx.lineTo(gx,H);ctx.stroke();}
   for(let gy=0;gy<H;gy+=80){ctx.beginPath();ctx.moveTo(0,gy);ctx.lineTo(W,gy);ctx.stroke();}
-  drawChaos(1);
+
+  // Cards
+  for(let i=0;i<3;i++) drawCard(STAGES[i],i);
+  drawRightCard(STAGES[3],3,CARD_Y_BI,ICON_Y_BI);
+  drawRightCard(STAGES[4],4,CARD_Y_AA,ICON_Y_AA);
+
+  // Arrows — horizontal for stages 0→1 and 1→2
+  drawHorizArrow(0);
+  drawHorizArrow(1);
+
+  // Arrows — diagonal from DB right-center to each right card left-center
+  const biCY = CARD_Y_BI + CARD_H_R / 2;
+  const aaCY = CARD_Y_AA + CARD_H_R / 2;
+  drawDiagArrow(DB_CENTER_X, DB_CENTER_Y, CARD_X[3], biCY, STAGES[2].color, STAGES[3].color);
+  drawDiagArrow(DB_CENTER_X, DB_CENTER_Y, CARD_X[3], aaCY, STAGES[2].color, STAGES[4].color);
 }
 
-// ── Replay ────────────────────────────────────────────────────────────────────
-replayBtn.addEventListener('click', () => {
-  particles = buildParticles();
-  phase=0; tick=0; phaseTimer=0;
-  tableReveal=0; connAlpha=0; checkAlpha=0;
-  tables.forEach((_,ti) => rowTimers[ti]=0);
-  replayBtn.style.display='none';
-  statusEl.textContent='Scanning raw data...';
-  if(!animRunning){ animRunning=true; frame(); }
+draw();
+
+// ── Interaction ───────────────────────────────────────────────────────────────
+canvas.addEventListener('mousemove', e => {
+  const rect=canvas.getBoundingClientRect();
+  const mx=(e.clientX-rect.left)*(W/rect.width);
+  const my=(e.clientY-rect.top)*(H/rect.height);
+  let hit=-1;
+  for(let i=0;i<3;i++){
+    if(mx>=CARD_X[i]&&mx<=CARD_X[i]+CARD_W&&my>=CARD_Y&&my<=CARD_Y+CARD_H) hit=i;
+  }
+  if(mx>=CARD_X[3]&&mx<=CARD_X[3]+CARD_W){
+    if(my>=CARD_Y_BI&&my<=CARD_Y_BI+CARD_H_R) hit=3;
+    if(my>=CARD_Y_AA&&my<=CARD_Y_AA+CARD_H_R) hit=4;
+  }
+  if(hit!==hoveredCard){ hoveredCard=hit; canvas.style.cursor=hit>=0?'pointer':'default'; draw(); }
 });
-
-// ── Scroll trigger ────────────────────────────────────────────────────────────
-drawStatic();
-const observer = new IntersectionObserver((entries) => {
-  if(entries[0].isIntersecting){
-    observer.disconnect();
-    animRunning = true;
-    statusEl.textContent = 'Scanning raw data...';
-    frame();
-  }
-}, { threshold: 0.5 });
-observer.observe(canvas);
+canvas.addEventListener('mouseleave',()=>{ if(hoveredCard!==-1){hoveredCard=-1;canvas.style.cursor='default';draw();} });
 </script>
 </body>
 </html>
