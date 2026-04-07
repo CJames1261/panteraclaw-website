@@ -408,9 +408,9 @@ export function SegmentationShowcase() {
   return (
     <section className="py-20 bg-black border-t border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <p className="text-yellow-400 text-xs uppercase tracking-widest mb-4 text-center">
-          See AI in Action
-        </p>
+        <p className="text-yellow-400 text-3xl uppercase tracking-widest md:text-4xl  mb-4 text-center">
+                See AI in Action
+              </p>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
           {/* Left — copy */}
@@ -450,9 +450,6 @@ export function SegmentationShowcase() {
           {/* Right — canvas */}
           <div className="flex flex-col items-center gap-2">
             <p className="text-white text-sm font-semibold">Customer Profiling</p>
-            <p className="text-green-400 text-xs font-semibold mb-1">
-              AI automatically discovers hidden customer groups
-            </p>
             <p className="text-xs text-yellow-300 bg-yellow-400/10 border border-yellow-400/30 rounded px-3 py-1 mb-2">
               ⚠ Synthetic data — generated for demonstration.
             </p>
