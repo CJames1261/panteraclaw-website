@@ -74,12 +74,13 @@ export function CaseStudySegmentation() {
       <Header />
 
       <main className="flex-1">
+        {/* Fixed ghost watermark — stays centered as user scrolls */}
+        <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-[1]">
+          <img src={logo} alt="" aria-hidden="true" className="w-[600px] md:w-[700px] max-w-full opacity-[0.05] select-none mix-blend-screen" />
+        </div>
 
         {/* Hero */}
         <section className="relative bg-gradient-to-br from-black to-gray-900 py-16 overflow-hidden">
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <img src={logo} alt="" aria-hidden="true" className="w-[600px] max-w-full opacity-[0.08] select-none" />
-          </div>
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <Link
               to="/projects"

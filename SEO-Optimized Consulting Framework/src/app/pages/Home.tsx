@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
+import { SegmentationShowcase } from "../components/SegmentationShowcase";
 import logo from "../../imports/Pantera_Claw.png";
 import {
   ArrowRight,
@@ -24,6 +25,11 @@ export function Home() {
       <Header />
 
       <main className="flex-1">
+        {/* Fixed ghost watermark — stays centered as user scrolls */}
+        <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-[1]">
+          <img src={logo} alt="" aria-hidden="true" className="w-[600px] md:w-[700px] max-w-full opacity-[0.05] select-none mix-blend-screen" />
+        </div>
+
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-black via-gray-900 to-gray-800 py-20 md:py-28">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -124,17 +130,10 @@ export function Home() {
           </div>
         </section>
 
+        <SegmentationShowcase />
+
         {/* Services — 4 Cards */}
         <section className="relative py-20 bg-gray-900 overflow-hidden">
-          {/* Ghost watermark logo */}
-          <div className="absolute inset-0 pointer-events-none">
-            <img
-              src={logo}
-              alt=""
-              aria-hidden="true"
-              className="w-full h-full object-cover opacity-[0.15] select-none"
-            />
-          </div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl text-white mb-3">

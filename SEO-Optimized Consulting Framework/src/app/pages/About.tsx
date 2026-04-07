@@ -9,12 +9,13 @@ export function About() {
       <Header />
 
       <main className="flex-1">
+        {/* Fixed ghost watermark — stays centered as user scrolls */}
+        <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-[1]">
+          <img src={logo} alt="" aria-hidden="true" className="w-[600px] md:w-[700px] max-w-full opacity-[0.05] select-none mix-blend-screen" />
+        </div>
 
         {/* Hero — Brand Story */}
         <section className="relative bg-gradient-to-br from-black via-gray-900 to-gray-800 py-20 overflow-hidden">
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <img src={logo} alt="" aria-hidden="true" className="w-[700px] opacity-[0.20] select-none" />
-          </div>
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <p className="text-yellow-400 tracking-wide uppercase text-sm mb-4">Our Story</p>
             <h1 className="text-4xl md:text-5xl text-white mb-6">

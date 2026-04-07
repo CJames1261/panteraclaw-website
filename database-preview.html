@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Database Creation — Animation Preview</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: 'Segoe UI', monospace;
+      color: white;
+    }
+    h1 { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.15em; color: #facc15; margin-bottom: 6px; }
+    p.subtitle { font-size: 0.8rem; color: #4ade80; font-weight: 600; margin-bottom: 20px; letter-spacing: 0.05em; }
+    canvas { border-radius: 16px; display: block; }
+    #status { margin-top: 14px; font-size: 0.8rem; color: #9ca3af; letter-spacing: 0.05em; min-height: 1.2em; }
+    #replay-btn {
+      margin-top: 16px;
+      background: transparent;
+      border: 1px solid #374151;
+      color: #9ca3af;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 7px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+      display: none;
+    }
+    #replay-btn:hover { border-color: #facc15; color: #facc15; }
+  </style>
+</head>
+<body>
+  <div style="height:90vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;opacity:0.4;">
+    <div style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.15em;color:#facc15;">Pantera Claw</div>
+    <div style="font-size:1.1rem;color:#94a3b8;">↓ Scroll down to see the animation</div>
+  </div>
+
+  <h1>Database Management</h1>
+  <p class="subtitle">We turn raw messy data into a clean, structured database</p>
+  <canvas id="c" width="700" height="460"></canvas>
+  <div id="status">Scroll to start...</div>
+  <button id="replay-btn">↺ Replay</button>
+
+<script>
+const canvas   = document.getElementById('c');
+const ctx      = canvas.getContext('2d');
+const W = canvas.width, H = canvas.height;
+const statusEl = document.getElementById('status');
+const replayBtn= document.getElementById('replay-btn');
+
+// ── Raw chaotic data (left side) ──────────────────────────────────────────────
+const rawPool = [
+  'john.doe@email.com','$142.50','2024-03-12','PROD-881','cust_4421',
+  'NULL','New York','jane@co.com','99','2024-01-08','PROD-203',
+  'cust_0093','$8.99','Chicago','NULL','smith@biz.org','$310.00',
+  '2024-02-28','PROD-554','cust_7712','Los Angeles','NULL','$55.20',
+  'alex@mail.com','2024-03-01','PROD-109','cust_2281','$201.75','NULL',
+  'Miami','sara@net.com','PROD-772','$18.40','cust_9901','2024-01-15',
+  'Dallas','NULL','raj@corp.io','$88.00','2024-02-10','PROD-340',
+  'cust_3350','NULL','Seattle','$430.10','kim@data.ai','2024-03-20',
+];
+
+// ── Clean table definition ─────────────────────────────────────────────────────
+const tables = [
+  {
+    name: 'customers',
+    color: '#3b82f6',
+    x: 0.04, y: 0.12, w: 0.28,
+    cols: ['cust_id', 'name', 'email', 'city'],
+    rows: [
+      ['cust_0093', 'Jane Smith',  'jane@co.com',    'Chicago'    ],
+      ['cust_2281', 'Alex Brown',  'alex@mail.com',  'Los Angeles'],
+      ['cust_3350', 'Raj Patel',   'raj@corp.io',    'Seattle'    ],
+      ['cust_4421', 'John Doe',    'john.doe@...',   'New York'   ],
+      ['cust_7712', 'Sara Lee',    'sara@net.com',   'Miami'      ],
+    ],
+  },
+  {
+    name: 'products',
+    color: '#a855f7',
+    x: 0.36, y: 0.12, w: 0.26,
+    cols: ['prod_id', 'name', 'price'],
+    rows: [
+      ['PROD-109', 'Widget A',  '$201.75'],
+      ['PROD-203', 'Widget B',  '$8.99'  ],
+      ['PROD-340', 'Widget C',  '$88.00' ],
+      ['PROD-554', 'Widget D',  '$310.00'],
+      ['PROD-772', 'Widget E',  '$18.40' ],
+      ['PROD-881', 'Widget F',  '$142.50'],
+    ],
+  },
+  {
+    name: 'orders',
+    color: '#14b8a6',
+    x: 0.66, y: 0.12, w: 0.30,
+    cols: ['order_id', 'cust_id', 'prod_id', 'date'],
+    rows: [
+      ['ORD-001', 'cust_4421', 'PROD-881', '2024-03-12'],
+      ['ORD-002', 'cust_0093', 'PROD-203', '2024-01-08'],
+      ['ORD-003', 'cust_7712', 'PROD-554', '2024-02-28'],
+      ['ORD-004', 'cust_2281', 'PROD-109', '2024-03-01'],
+      ['ORD-005', 'cust_9901', 'PROD-772', '2024-01-15'],
+    ],
+  },
+];
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
+function lerp(a,b,t){ return a+(b-a)*t; }
+function easeOut(t){ return 1-(1-t)*(1-t)*(1-t); }
+function easeInOut(t){ return t<0.5?2*t*t:-1+(4-2*t)*t; }
+function clamp(v,a,b){ return Math.max(a,Math.min(b,v)); }
+
+function roundRect(x,y,w,h,r){
+  ctx.beginPath();
+  ctx.moveTo(x+r,y); ctx.lineTo(x+w-r,y);
+  ctx.arcTo(x+w,y,x+w,y+r,r); ctx.lineTo(x+w,y+h-r);
+  ctx.arcTo(x+w,y+h,x+w-r,y+h,r); ctx.lineTo(x+r,y+h);
+  ctx.arcTo(x,y+h,x,y+h-r,r); ctx.lineTo(x,y+r);
+  ctx.arcTo(x,y,x+r,y,r); ctx.closePath();
+}
+
+// ── Chaos particles ───────────────────────────────────────────────────────────
+function buildParticles(){
+  const arr = [];
+  for(let i=0; i<rawPool.length; i++){
+    arr.push({
+      text: rawPool[i],
+      x: 60 + Math.random()*(W-120),
+      y: 60 + Math.random()*(H-120),
+      vx: (Math.random()-0.5)*0.6,
+      vy: (Math.random()-0.5)*0.6,
+      alpha: 0.15 + Math.random()*0.5,
+      size: 9 + Math.random()*3,
+      color: rawPool[i]==='NULL' ? '#ef4444' : '#64748b',
+      absorbed: false,
+      absorbT: 0,
+      ax: 0, ay: 0,
+    });
+  }
+  return arr;
+}
+let particles = buildParticles();
+
+// ── State ─────────────────────────────────────────────────────────────────────
+// 0: chaos hold
+// 1: chaos → sucked into tables
+// 2: tables build (header + rows pop in)
+// 3: hold with connection lines
+let phase = 0, tick = 0, phaseTimer = 0, animRunning = false;
+let tableReveal = 0;      // 0→1 overall table fade-in progress
+let rowTimers   = [];     // per-table row reveal progress
+let connAlpha   = 0;
+let checkAlpha  = 0;
+
+const CHAOS_HOLD   = 90;
+const SUCK_DUR     = 140;
+const BUILD_DUR    = 180;
+const CONN_DELAY   = 60;
+
+tables.forEach(() => rowTimers.push(0));
+
+// ── Draw raw chaos layer ───────────────────────────────────────────────────────
+function drawChaos(globalAlpha){
+  particles.forEach(p => {
+    if(p.absorbed) return;
+    ctx.save();
+    ctx.globalAlpha = p.alpha * globalAlpha;
+    ctx.font = `${p.size}px monospace`;
+    ctx.fillStyle = p.color;
+    ctx.fillText(p.text, p.x, p.y);
+    ctx.restore();
+  });
+}
+
+// ── Draw a table ──────────────────────────────────────────────────────────────
+const ROW_H  = 22;
+const HEAD_H = 28;
+const PAD    = 8;
+
+function drawTable(t, revealProgress, rowProgress){
+  const x  = t.x * W;
+  const y  = t.y * H;
+  const tw = t.w * W;
+  const totalRows = t.rows.length;
+  const visibleRows = Math.floor(rowProgress * totalRows);
+  const partialRow  = (rowProgress * totalRows) % 1;
+  const th = HEAD_H + (visibleRows + (partialRow>0?1:0)) * ROW_H + PAD;
+
+  ctx.save();
+  ctx.globalAlpha = easeOut(revealProgress);
+
+  // drop shadow
+  ctx.shadowColor = t.color + '55';
+  ctx.shadowBlur  = 18;
+
+  // table bg
+  ctx.fillStyle = '#0f172a';
+  roundRect(x, y, tw, HEAD_H + totalRows*ROW_H + PAD, 8); ctx.fill();
+  ctx.strokeStyle = t.color + '66'; ctx.lineWidth = 1;
+  roundRect(x, y, tw, HEAD_H + totalRows*ROW_H + PAD, 8); ctx.stroke();
+  ctx.shadowBlur = 0;
+
+  // header
+  ctx.fillStyle = t.color + '22';
+  roundRect(x, y, tw, HEAD_H, 8); ctx.fill();
+  ctx.strokeStyle = t.color + '88'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(x, y+HEAD_H); ctx.lineTo(x+tw, y+HEAD_H); ctx.stroke();
+
+  ctx.font = 'bold 11px monospace'; ctx.fillStyle = t.color;
+  ctx.fillText(t.name, x+PAD+2, y+HEAD_H-9);
+
+  // column headers
+  const colW = (tw - PAD*2) / t.cols.length;
+  ctx.font = 'bold 9px monospace'; ctx.fillStyle = '#475569';
+  t.cols.forEach((col, ci) => {
+    ctx.fillText(col.toUpperCase(), x+PAD + ci*colW, y+HEAD_H+14);
+  });
+
+  // divider under col headers
+  ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(x+PAD, y+HEAD_H+18); ctx.lineTo(x+tw-PAD, y+HEAD_H+18); ctx.stroke();
+
+  // rows
+  for(let ri=0; ri<visibleRows; ri++){
+    const ry = y + HEAD_H + 20 + ri*ROW_H;
+    if(ri % 2 === 1){
+      ctx.fillStyle = '#ffffff05';
+      ctx.fillRect(x+1, ry-10, tw-2, ROW_H);
+    }
+    ctx.font = '9.5px monospace';
+    t.rows[ri].forEach((val, ci) => {
+      const isId = ci===0;
+      ctx.fillStyle = isId ? t.color + 'cc' : '#94a3b8';
+      ctx.fillText(val, x+PAD + ci*colW, ry+4);
+    });
+  }
+
+  // partial row typing effect
+  if(partialRow > 0 && visibleRows < totalRows){
+    const ri = visibleRows;
+    const ry = y + HEAD_H + 20 + ri*ROW_H;
+    ctx.font = '9.5px monospace';
+    t.rows[ri].forEach((val, ci) => {
+      const chars = Math.floor(partialRow * val.length);
+      const isId  = ci===0;
+      ctx.fillStyle = isId ? t.color + 'cc' : '#94a3b8';
+      ctx.fillText(val.slice(0, chars) + (chars<val.length?'▌':''), x+PAD + ci*colW, ry+4);
+    });
+  }
+
+  ctx.restore();
+}
+
+// ── Draw connection lines between tables ──────────────────────────────────────
+function drawConnections(alpha){
+  if(alpha < 0.01) return;
+  // customers → orders  (cust_id)
+  // products  → orders  (prod_id)
+  const connections = [
+    { from: 0, to: 2, label: 'cust_id', color: '#3b82f6' },
+    { from: 1, to: 2, label: 'prod_id', color: '#a855f7' },
+  ];
+
+  connections.forEach(c => {
+    const a = tables[c.from], b = tables[c.to];
+    const x1 = (a.x + a.w) * W;
+    const y1 = (a.y + 0.08) * H;
+    const x2 = b.x * W;
+    const y2 = (b.y + 0.12) * H;
+    const mx = (x1+x2)/2;
+
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    ctx.strokeStyle = c.color + 'aa';
+    ctx.lineWidth   = 1.5;
+    ctx.setLineDash([4,4]);
+    ctx.beginPath();
+    ctx.moveTo(x1, y1);
+    ctx.bezierCurveTo(mx, y1, mx, y2, x2, y2);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    // label
+    ctx.font = 'bold 9px monospace';
+    ctx.fillStyle = c.color;
+    ctx.fillText(c.label, mx-14, (y1+y2)/2 - 4);
+
+    // arrow head
+    ctx.fillStyle = c.color + 'aa';
+    ctx.beginPath();
+    ctx.moveTo(x2, y2);
+    ctx.lineTo(x2-8, y2-4);
+    ctx.lineTo(x2-8, y2+4);
+    ctx.closePath(); ctx.fill();
+
+    ctx.restore();
+  });
+}
+
+// ── Draw the "database complete" checkmark ─────────────────────────────────────
+function drawCheck(alpha){
+  if(alpha < 0.01) return;
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  const cx = W/2, cy = H - 28;
+  ctx.font = '11px Segoe UI'; ctx.fillStyle = '#4ade80';
+  ctx.textAlign = 'center';
+  ctx.fillText('✓ Database structured and ready', cx, cy);
+  ctx.textAlign = 'left';
+  ctx.restore();
+}
+
+// ── Main loop ─────────────────────────────────────────────────────────────────
+function frame(){
+  tick++; phaseTimer++;
+
+  // background
+  ctx.clearRect(0,0,W,H);
+  const bg = ctx.createRadialGradient(W/2,H/2,0,W/2,H/2,W*0.8);
+  bg.addColorStop(0,'#0f172a'); bg.addColorStop(1,'#020617');
+  ctx.fillStyle=bg; ctx.fillRect(0,0,W,H);
+
+  // grid
+  ctx.strokeStyle='#ffffff05'; ctx.lineWidth=1;
+  for(let gx=0;gx<W;gx+=80){ctx.beginPath();ctx.moveTo(gx,0);ctx.lineTo(gx,H);ctx.stroke();}
+  for(let gy=0;gy<H;gy+=80){ctx.beginPath();ctx.moveTo(0,gy);ctx.lineTo(W,gy);ctx.stroke();}
+
+  // ── Phase transitions ──────────────────────────────────────────────────────
+  if(phase===0 && phaseTimer>CHAOS_HOLD){
+    phase=1; phaseTimer=0;
+    statusEl.textContent='Organizing raw data...';
+  }
+  if(phase===1 && phaseTimer>SUCK_DUR){
+    phase=2; phaseTimer=0;
+    statusEl.textContent='Building database structure...';
+  }
+  if(phase===2 && phaseTimer>BUILD_DUR+CONN_DELAY){
+    phase=3; phaseTimer=0;
+    statusEl.textContent='Database complete ✓';
+    replayBtn.style.display='inline-block';
+  }
+
+  // ── Update chaos particles ─────────────────────────────────────────────────
+  const suckProgress = phase>=1 ? clamp(phaseTimer/SUCK_DUR,0,1) : 0;
+
+  particles.forEach((p,pi) => {
+    if(p.absorbed) return;
+    if(phase===0){
+      // drift
+      p.x += p.vx; p.y += p.vy;
+      if(p.x<10||p.x>W-10) p.vx*=-1;
+      if(p.y<10||p.y>H-10) p.vy*=-1;
+    } else if(phase===1){
+      // suck toward nearest table center
+      const ti = pi % tables.length;
+      const t  = tables[ti];
+      const tx = (t.x + t.w/2)*W;
+      const ty = (t.y + 0.15)*H;
+      const ease = easeInOut(suckProgress);
+      p.x = lerp(p.x, tx, 0.04 + ease*0.06);
+      p.y = lerp(p.y, ty, 0.04 + ease*0.06);
+      p.alpha *= 0.985;
+      const dist = Math.hypot(p.x-tx, p.y-ty);
+      if(dist < 12) p.absorbed = true;
+    }
+  });
+
+  // ── Table reveal progress ──────────────────────────────────────────────────
+  if(phase>=2){
+    const buildT = clamp(phaseTimer/BUILD_DUR, 0, 1);
+    tableReveal = easeOut(buildT);
+    tables.forEach((t,ti) => {
+      const stagger = ti * 0.18;
+      rowTimers[ti] = clamp((buildT - stagger) / (1-stagger) * 1.4, 0, 1);
+    });
+  }
+
+  // ── Connection + check alpha ───────────────────────────────────────────────
+  if(phase===2 && phaseTimer>BUILD_DUR) connAlpha = Math.min(1, connAlpha+0.03);
+  if(phase===3){ connAlpha = Math.min(1, connAlpha+0.03); checkAlpha = Math.min(1, checkAlpha+0.02); }
+
+  // ── Draw ──────────────────────────────────────────────────────────────────
+  // chaos (fades out as tables appear)
+  const chaosFade = phase<=1 ? 1 : Math.max(0, 1 - tableReveal*2);
+  drawChaos(chaosFade);
+
+  // tables
+  if(phase>=2){
+    tables.forEach((t,ti) => drawTable(t, tableReveal, rowTimers[ti]));
+  }
+
+  drawConnections(connAlpha);
+  drawCheck(checkAlpha);
+
+  requestAnimationFrame(frame);
+}
+
+// ── Initial static render ─────────────────────────────────────────────────────
+function drawStatic(){
+  ctx.clearRect(0,0,W,H);
+  const bg = ctx.createRadialGradient(W/2,H/2,0,W/2,H/2,W*0.8);
+  bg.addColorStop(0,'#0f172a'); bg.addColorStop(1,'#020617');
+  ctx.fillStyle=bg; ctx.fillRect(0,0,W,H);
+  ctx.strokeStyle='#ffffff05'; ctx.lineWidth=1;
+  for(let gx=0;gx<W;gx+=80){ctx.beginPath();ctx.moveTo(gx,0);ctx.lineTo(gx,H);ctx.stroke();}
+  for(let gy=0;gy<H;gy+=80){ctx.beginPath();ctx.moveTo(0,gy);ctx.lineTo(W,gy);ctx.stroke();}
+  drawChaos(1);
+}
+
+// ── Replay ────────────────────────────────────────────────────────────────────
+replayBtn.addEventListener('click', () => {
+  particles = buildParticles();
+  phase=0; tick=0; phaseTimer=0;
+  tableReveal=0; connAlpha=0; checkAlpha=0;
+  tables.forEach((_,ti) => rowTimers[ti]=0);
+  replayBtn.style.display='none';
+  statusEl.textContent='Scanning raw data...';
+  if(!animRunning){ animRunning=true; frame(); }
+});
+
+// ── Scroll trigger ────────────────────────────────────────────────────────────
+drawStatic();
+const observer = new IntersectionObserver((entries) => {
+  if(entries[0].isIntersecting){
+    observer.disconnect();
+    animRunning = true;
+    statusEl.textContent = 'Scanning raw data...';
+    frame();
+  }
+}, { threshold: 0.5 });
+observer.observe(canvas);
+</script>
+</body>
+</html>

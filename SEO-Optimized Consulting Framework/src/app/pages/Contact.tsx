@@ -1,6 +1,7 @@
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
+import logo from "../../imports/Pantera_Claw.png";
 import { useState } from "react";
 
 export function Contact() {
@@ -30,6 +31,11 @@ export function Contact() {
       <Header />
 
       <main className="flex-1">
+        {/* Fixed ghost watermark — stays centered as user scrolls */}
+        <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-[1]">
+          <img src={logo} alt="" aria-hidden="true" className="w-[600px] md:w-[700px] max-w-full opacity-[0.05] select-none mix-blend-screen" />
+        </div>
+
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-black to-gray-900 py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -70,8 +76,8 @@ export function Contact() {
                     <Mail className="h-6 w-6 text-yellow-400 mr-4 mt-1 flex-shrink-0" />
                     <div>
                       <h3 className="text-lg mb-1 text-white">Email</h3>
-                      <a href="mailto:chrisjames313801@gmail.com" className="text-gray-300 hover:text-yellow-400 transition-colors">
-                        chrisjames313801@gmail.com
+                      <a href="mailto:info@panteraclaw.com" className="text-gray-300 hover:text-yellow-400 transition-colors">
+                        info@panteraclaw.com
                       </a>
                     </div>
                   </div>

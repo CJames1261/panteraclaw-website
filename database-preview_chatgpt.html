@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Data Pipeline Visualization</title>
+
+<style>
+body {
+  margin:0;
+  background:#000;
+  font-family:Segoe UI, monospace;
+  color:white;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+h1 {
+  margin-top:20px;
+  font-size:1.2rem;
+  color:#facc15;
+  letter-spacing:.1em;
+}
+
+.subtitle {
+  color:#4ade80;
+  margin-bottom:10px;
+}
+
+canvas {
+  margin-top:10px;
+}
+
+#status {
+  margin-top:12px;
+  color:#9ca3af;
+  font-size:.8rem;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Turn Messy Data Into Business Intelligence</h1>
+<div class="subtitle">From chaos → structure → insight</div>
+
+<canvas id="c" width="700" height="650"></canvas>
+<div id="status">Analyzing raw data...</div>
+
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+const W = canvas.width;
+const H = canvas.height;
+
+let phase = 0;
+let t = 0;
+
+// -------- HELPERS --------
+function lerp(a,b,x){return a+(b-a)*x;}
+function ease(x){return 1-(1-x)*(1-x);}
+
+// -------- TABLE DRAW --------
+function drawTable(x,y,w,h,title,color,alpha){
+  ctx.globalAlpha = alpha;
+
+  ctx.fillStyle='#0f172a';
+  ctx.fillRect(x,y,w,h);
+
+  ctx.fillStyle=color;
+  ctx.fillText(title,x+10,y+18);
+
+  ctx.strokeStyle=color;
+  ctx.strokeRect(x,y,w,h);
+}
+
+// -------- DATABASE ICON --------
+function drawDB(x,y,alpha,label){
+  ctx.globalAlpha = alpha;
+
+  ctx.fillStyle='#111';
+  ctx.strokeStyle='#22c55e';
+
+  // cylinder
+  ctx.beginPath();
+  ctx.ellipse(x,y,30,10,0,0,Math.PI*2);
+  ctx.fill(); ctx.stroke();
+
+  ctx.fillRect(x-30,y,60,30);
+  ctx.strokeRect(x-30,y,60,30);
+
+  ctx.beginPath();
+  ctx.ellipse(x,y+30,30,10,0,0,Math.PI);
+  ctx.stroke();
+
+  ctx.fillStyle='#4ade80';
+  ctx.fillText(label,x-20,y+50);
+}
+
+// -------- KPI DASHBOARD --------
+function drawDashboard(alpha){
+  ctx.globalAlpha = alpha;
+
+  const x = W/2 - 120;
+  const y = H - 140;
+
+  ctx.fillStyle='#0f172a';
+  ctx.fillRect(x,y,240,100);
+
+  ctx.strokeStyle='#22c55e';
+  ctx.strokeRect(x,y,240,100);
+
+  ctx.fillStyle='#4ade80';
+  ctx.fillText('Revenue: $1.2M', x+10,y+30);
+  ctx.fillText('Top Product: A', x+10,y+50);
+  ctx.fillText('Retention: 82%', x+10,y+70);
+
+  // bars
+  ctx.fillRect(x+150,y+80,20,-40);
+  ctx.fillRect(x+180,y+80,20,-60);
+  ctx.fillRect(x+210,y+80,20,-30);
+}
+
+// -------- ARROW --------
+function drawArrow(x1,y1,x2,y2,alpha){
+  ctx.globalAlpha = alpha;
+  ctx.strokeStyle='#facc15';
+  ctx.beginPath();
+  ctx.moveTo(x1,y1);
+  ctx.lineTo(x2,y2);
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.moveTo(x2,y2);
+  ctx.lineTo(x2-5,y2-5);
+  ctx.lineTo(x2+5,y2-5);
+  ctx.closePath();
+  ctx.fillStyle='#facc15';
+  ctx.fill();
+}
+
+// -------- MAIN LOOP --------
+function frame(){
+  t++;
+
+  ctx.clearRect(0,0,W,H);
+
+  ctx.fillStyle='#020617';
+  ctx.fillRect(0,0,W,H);
+
+  // PHASES
+  let tableAlpha = phase>=1 ? ease(Math.min(1,t/80)) : 0;
+  let dbAlpha = phase>=2 ? ease(Math.min(1,(t-80)/80)) : 0;
+  let rowsAlpha = phase>=3 ? ease(Math.min(1,(t-160)/80)) : 0;
+  let dashAlpha = phase>=4 ? ease(Math.min(1,(t-240)/80)) : 0;
+
+  // TABLES (VERTICAL STACK)
+  drawTable(250,50,200,80,'Customers','#3b82f6',tableAlpha);
+  drawTable(250,140,200,80,'Products','#a855f7',tableAlpha);
+  drawTable(250,230,200,80,'Orders','#14b8a6',tableAlpha);
+
+  // ARROW → DB
+  drawArrow(350,320,350,360,dbAlpha);
+
+  // DATABASE TYPES
+  drawDB(200,380,dbAlpha,'SQL');
+  drawDB(350,380,dbAlpha,'NoSQL');
+  drawDB(500,380,dbAlpha,'Cloud');
+
+  // ARROW → ROWS
+  drawArrow(350,420,350,460,rowsAlpha);
+
+  // STRUCTURED ROWS
+  ctx.globalAlpha = rowsAlpha;
+  ctx.fillStyle='#94a3b8';
+  ctx.fillText('cust_001 | John Doe | NY', 200,480);
+  ctx.fillText('cust_002 | Jane Smith | CA', 200,500);
+
+  // ARROW → DASHBOARD
+  drawArrow(350,520,350,560,dashAlpha);
+
+  // DASHBOARD
+  drawDashboard(dashAlpha);
+
+  // PHASE PROGRESSION
+  if(t===80){ phase=2; }
+  if(t===160){ phase=3; }
+  if(t===240){ phase=4; }
+
+  requestAnimationFrame(frame);
+}
+
+phase=1;
+frame();
+</script>
+
+</body>
+</html>
