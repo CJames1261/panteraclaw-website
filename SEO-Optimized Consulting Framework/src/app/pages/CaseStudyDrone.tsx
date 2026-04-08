@@ -60,7 +60,7 @@ export function CaseStudyDrone() {
               Drone Sound Classification
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mb-10">
-              Can a machine listen to a drone flying overhead and identify exactly which model it is —
+              Can a machine listen to a drone flying overhead and identify exactly which model it is,
               just from the sound? This project proves the answer is{" "}
               <span className="text-yellow-400 font-semibold">yes, with 99% accuracy.</span>
             </p>
@@ -87,7 +87,7 @@ export function CaseStudyDrone() {
             <div className="flex items-start gap-2 text-gray-400 text-sm">
               <Info className="h-4 w-4 text-yellow-400 flex-shrink-0 mt-0.5" />
               <p>
-                This is an <strong className="text-white">independent proof of concept</strong> — not client work.
+                This is an <strong className="text-white">independent proof of concept</strong>, not client work.
                 It's designed to show the kind of real-world solutions we can build for your organization.
               </p>
             </div>
@@ -103,7 +103,7 @@ export function CaseStudyDrone() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
               <div>
                 <p className="text-gray-300 text-lg mb-4">
-                  Every drone has a unique acoustic fingerprint — the hum of its motors, the spin of its
+                  Every drone has a unique acoustic fingerprint: the hum of its motors, the spin of its
                   rotors, and the vibration of its frame create a sound pattern specific to that model.
                 </p>
                 <p className="text-gray-300 text-lg">
@@ -118,7 +118,7 @@ export function CaseStudyDrone() {
                   {[
                     { label: "DJI Bebop 1",     count: "540 samples",    desc: "Aggressive rotor tone with sharp amplitude spikes" },
                     { label: "Parrot Mambo",     count: "518 samples",    desc: "Quieter, low-amplitude consistent oscillation" },
-                    { label: "Background Noise", count: "10,646 samples", desc: "Wind, traffic, ambient — the \"not a drone\" class" },
+                    { label: "Background Noise", count: "10,646 samples", desc: "Wind, traffic, ambient, the \"not a drone\" class" },
                   ].map(({ label, count, desc }) => (
                     <div key={label} className="flex items-start gap-3">
                       <div className="w-2 h-2 rounded-full bg-yellow-400 flex-shrink-0 mt-2" />
@@ -141,7 +141,7 @@ export function CaseStudyDrone() {
             <h2 className="text-3xl text-white mb-4">10 Models Tested. One Clear Winner.</h2>
             <p className="text-gray-300 text-lg mb-8">
               Nine industry-standard algorithms were benchmarked first to establish a baseline.
-              All performed well. A custom neural network was then built on top — and it
+              All performed well. A custom neural network was then built on top, and it
               outperformed every single one.
             </p>
 
@@ -155,7 +155,7 @@ export function CaseStudyDrone() {
               </div>
               <div className="hidden sm:block w-px h-20 bg-gray-700 flex-shrink-0" />
               <div className="text-center sm:text-left text-gray-300 text-base max-w-xs">
-                The model correctly identified the drone — or confirmed none was present —
+                The model correctly identified the drone, or confirmed none was present,
                 in <strong className="text-white">99 out of every 100 audio files</strong> it had never encountered before.
               </div>
             </div>
@@ -205,7 +205,7 @@ export function CaseStudyDrone() {
         <section className="py-16 bg-black border-b border-gray-800">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <p className="text-yellow-400 uppercase tracking-wide text-sm mb-3">The Discovery</p>
-            <h2 className="text-3xl text-white mb-4">The Sounds Look Different — Even to the Human Eye</h2>
+            <h2 className="text-3xl text-white mb-4">The Sounds Look Different, Even to the Human Eye</h2>
             <p className="text-gray-300 text-lg mb-8">
               Before building anything, the audio from each class was visualized. The result was
               immediate — the three sound types already look distinct from each other. When humans can
@@ -229,14 +229,14 @@ export function CaseStudyDrone() {
 
             {/* Pattern analysis — 2x2 */}
             <p className="text-gray-300 text-base mb-4">
-              Each audio file was then analyzed from four different angles — think of it like examining
+              Each audio file was then analyzed from four different angles, think of it like examining
               a voice for its tone, rhythm, pitch, and energy all at once. Together, these views give
               the model a complete acoustic fingerprint for each drone.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {[
                 { src: stftImg,   caption: "How frequency energy shifts over time",           note: "Shows when rotor frequency is most active throughout the recording" },
-                { src: mfcImg,    caption: "The drone's overall tonal shape",                 note: "A compact acoustic signature — consistent within each drone model" },
+                { src: mfcImg,    caption: "The drone's overall tonal shape",                 note: "A compact acoustic signature, consistent within each drone model" },
                 { src: melImg,    caption: "Sound energy mapped the way human ears hear it",  note: "Emphasizes the lower frequencies where rotor noise lives" },
                 { src: chromaImg, caption: "Harmonic and pitch patterns over time",           note: "Reveals tonal characteristics that are unique to each drone model" },
               ].map(({ src, caption, note }) => (
@@ -258,7 +258,7 @@ export function CaseStudyDrone() {
             <p className="text-yellow-400 uppercase tracking-wide text-sm mb-3">How It Was Done</p>
             <h2 className="text-3xl text-white mb-4">From Raw Audio to a Structured Dataset</h2>
             <p className="text-gray-300 text-lg mb-8">
-              Raw audio files can't be handed directly to a model — they first need to be converted
+              Raw audio files can't be handed directly to a model. They first need to be converted
               into numbers that capture the meaningful patterns. Each of those four visual analyses
               produces a set of measurements per file. Stack them together and you get one clean row
               of data per recording, ready to train on.
@@ -335,7 +335,7 @@ export function CaseStudyDrone() {
             <h2 className="text-3xl text-white mb-4">Any Machine That Makes Sound Can Be Classified</h2>
             <p className="text-gray-300 text-lg mb-8">
               Drones are the demo. The same approach works for any scenario where sound carries
-              useful information — and there are more of those than most businesses realize.
+              useful information, and there are more of those than most businesses realize.
               No cameras, no hardware changes, no new sensors. Just audio and intelligence.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -353,12 +353,12 @@ export function CaseStudyDrone() {
                 {
                   icon: <ShieldCheck className="h-5 w-5 text-yellow-400" />,
                   title: "Security & Intrusion Detection",
-                  desc: "Detect and classify unauthorized drones, vehicles, or personnel using passive audio — no visual line of sight required.",
+                  desc: "Detect and classify unauthorized drones, vehicles, or personnel using passive audio, no visual line of sight required.",
                 },
                 {
                   icon: <TreePine className="h-5 w-5 text-yellow-400" />,
                   title: "Environmental & Field Monitoring",
-                  desc: "Classify sounds from remote equipment, wildlife activity, weather events, or industrial noise levels — without on-site staff.",
+                  desc: "Classify sounds from remote equipment, wildlife activity, weather events, or industrial noise levels, without on-site staff.",
                 },
               ].map(({ icon, title, desc }) => (
                 <div key={title} className="bg-gray-900 border border-gray-700 hover:border-yellow-400 transition-colors rounded-xl p-5">

@@ -15,8 +15,8 @@ const segments = [
     dot: "bg-purple-500",
     border: "border-purple-500/40",
     icon: <Star className="h-5 w-5 text-purple-400" />,
-    who: "Reliable, moderate spenders. They buy decent quantities at fair prices — consistent and predictable.",
-    opportunity: "Loyalty rewards and bundle deals convert this group well. They're already engaged — give them a reason to spend more.",
+    who: "Reliable, moderate spenders. They buy decent quantities at fair prices, consistent and predictable.",
+    opportunity: "Loyalty rewards and bundle deals convert this group well. They're already engaged. Give them a reason to spend more.",
   },
   {
     name: "High-Price, Low-Frequency Buyers",
@@ -51,7 +51,7 @@ const segments = [
     dot: "bg-green-500",
     border: "border-green-500/40",
     icon: <TrendingUp className="h-5 w-5 text-green-400" />,
-    who: "Your largest segment — occasional, price-sensitive buyers with low average order value.",
+    who: "Your largest segment, occasional price-sensitive buyers with low average order value.",
     opportunity: "This is your biggest re-engagement opportunity. Converting even 10% of this group to the next tier up would be your highest-ROI marketing move.",
   },
   {
@@ -64,7 +64,7 @@ const segments = [
     border: "border-yellow-500/40",
     icon: <CheckCircle className="h-5 w-5 text-yellow-400" />,
     who: "Regular, habit-driven shoppers. They buy consistently in moderate volumes at low-mid prices.",
-    opportunity: "Subscriptions and auto-replenishment offers are a natural fit. The buying habit is already there — make it frictionless.",
+    opportunity: "Subscriptions and auto-replenishment offers are a natural fit. The buying habit is already there. Make it frictionless.",
   },
 ];
 
@@ -108,7 +108,7 @@ export function CaseStudySegmentation() {
             <p className="text-xl text-gray-300 max-w-3xl mb-10">
               Most businesses send the same message to every customer and wonder why conversion rates are low.
               This analysis found <span className="text-yellow-400 font-semibold">5 distinct buyer profiles</span> inside
-              530,000 transactions — each one requiring a completely different strategy.
+              530,000 transactions, each one requiring a completely different strategy.
             </p>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -134,7 +134,7 @@ export function CaseStudySegmentation() {
               <Info className="h-4 w-4 text-yellow-400 flex-shrink-0 mt-0.5" />
               <p>
                 This is an <strong className="text-white">independent proof of concept</strong> built on
-                a public retail dataset — not client data. It demonstrates the type of segmentation
+                a public retail dataset, not client data. It demonstrates the type of segmentation
                 analysis we can run directly on your customer records.
               </p>
             </div>
@@ -145,7 +145,7 @@ export function CaseStudySegmentation() {
         <section className="py-16 bg-black border-b border-gray-800">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <p className="text-yellow-400 uppercase tracking-wide text-sm mb-3">The Problem</p>
-            <h2 className="text-3xl text-white mb-8">Not All Customers Are the Same — So Why Treat Them That Way?</h2>
+            <h2 className="text-3xl text-white mb-8">Not All Customers Are the Same. So Why Treat Them That Way?</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
               <div>
@@ -156,7 +156,7 @@ export function CaseStudySegmentation() {
                 </p>
                 <p className="text-gray-300 text-lg">
                   When you send the same campaign to both, one of them ignores it. Customer segmentation
-                  automatically finds these groups inside your existing data — so you can talk to each
+                  automatically finds these groups inside your existing data, so you can talk to each
                   one in a way that actually resonates.
                 </p>
               </div>
@@ -166,7 +166,7 @@ export function CaseStudySegmentation() {
                 <div className="space-y-3">
                   {[
                     "Ad spend wasted on customers who will never convert at that price point",
-                    "Premium buyers receiving discount promotions — training them to wait for sales",
+                    "Premium buyers receiving discount promotions, training them to wait for sales",
                     "High-volume buyers never offered the bulk pricing they'd jump at",
                     "At-risk customers going cold because no one identified them in time",
                   ].map((point, i) => (
@@ -187,8 +187,8 @@ export function CaseStudySegmentation() {
             <p className="text-yellow-400 uppercase tracking-wide text-sm mb-3">The Discovery</p>
             <h2 className="text-3xl text-white mb-4">5 Groups Emerged Automatically</h2>
             <p className="text-gray-300 text-lg mb-8">
-              By analyzing 530,000 transactions — looking at how much customers buy, how often,
-              and at what price — the analysis surfaced five naturally distinct groups.
+              By analyzing 530,000 transactions, looking at how much customers buy, how often,
+              and at what price, the analysis surfaced five naturally distinct groups.
               Nobody defined these groups in advance. The data revealed them on its own.
             </p>
 
@@ -201,7 +201,7 @@ export function CaseStudySegmentation() {
               <div className="px-6 py-4 border-t border-gray-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div>
                   <p className="text-white text-sm font-semibold">Each dot is a customer. Each color is a buying profile.</p>
-                  <p className="text-gray-500 text-xs mt-0.5">The clear separation between groups confirms these are genuinely distinct segments — not random noise</p>
+                  <p className="text-gray-500 text-xs mt-0.5">The clear separation between groups confirms these are genuinely distinct segments, not random noise</p>
                 </div>
                 <div className="flex gap-3 flex-wrap">
                   {[
@@ -228,7 +228,7 @@ export function CaseStudySegmentation() {
             <p className="text-yellow-400 uppercase tracking-wide text-sm mb-3">The Profiles</p>
             <h2 className="text-3xl text-white mb-4">Meet Your 5 Customer Types</h2>
             <p className="text-gray-300 text-lg mb-10">
-              Each group has a name, a defined behavior, and most importantly —
+              Each group has a name, a defined behavior, and most importantly:
               a clear strategy for how to market to them.
             </p>
 
@@ -284,7 +284,7 @@ export function CaseStudySegmentation() {
             <p className="text-yellow-400 uppercase tracking-wide text-sm mb-3">How It Was Done</p>
             <h2 className="text-3xl text-white mb-4">Starting From Raw, Messy Data</h2>
             <p className="text-gray-300 text-lg mb-8">
-              No clean spreadsheet. No pre-sorted categories. Just a raw transaction log —
+              No clean spreadsheet. No pre-sorted categories. Just a raw transaction log,
               one row per item purchased, across hundreds of thousands of orders. The analysis
               handled the heavy lifting: cleaning the data, summarizing each customer's behavior,
               and finding the groups automatically.
@@ -338,7 +338,7 @@ export function CaseStudySegmentation() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {[
                 { step: "01", title: "Clean & Summarize",  desc: "Raw transactions condensed into per-customer behavioral profiles." },
-                { step: "02", title: "Find the Groups",    desc: "AI automatically discovers the natural groups — no guessing, no manual labeling." },
+                { step: "02", title: "Find the Groups",    desc: "AI automatically discovers the natural groups, no guessing, no manual labeling." },
                 { step: "03", title: "Profile & Strategize", desc: "Each group is named, sized, and paired with a targeted action." },
               ].map(({ step, title, desc }) => (
                 <div key={step} className="bg-gray-800 rounded-xl p-5">
@@ -357,7 +357,7 @@ export function CaseStudySegmentation() {
             <p className="text-yellow-400 uppercase tracking-wide text-sm mb-3">Business Value</p>
             <h2 className="text-3xl text-white mb-4">What You Can Do With This</h2>
             <p className="text-gray-300 text-lg mb-8">
-              Knowing your customer segments isn't just an analytics exercise —
+              Knowing your customer segments isn't just an analytics exercise,
               it directly changes how you spend your marketing budget, structure your offers,
               and retain the customers worth keeping.
             </p>
@@ -381,7 +381,7 @@ export function CaseStudySegmentation() {
                 {
                   icon: <Users className="h-5 w-5 text-yellow-400" />,
                   title: "Build Loyalty in the Right Places",
-                  desc: "Focus retention efforts on high-value segments. Not every customer is worth the same investment — segmentation tells you who is.",
+                  desc: "Focus retention efforts on high-value segments. Not every customer is worth the same investment. Segmentation tells you who is.",
                 },
               ].map(({ icon, title, desc }) => (
                 <div key={title} className="bg-gray-900 border border-gray-700 hover:border-yellow-400 transition-colors rounded-xl p-5">
@@ -409,7 +409,7 @@ export function CaseStudySegmentation() {
                 Who's Hiding in Your Customer Data?
               </h2>
               <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-                If you have transaction history — even messy, unorganized data —
+                If you have transaction history, even messy unorganized data,
                 we can find your segments, profile each group, and hand you a clear
                 strategy for marketing to each one differently.
               </p>

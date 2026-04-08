@@ -447,7 +447,7 @@ export function Services() {
               icon={<Globe className="h-7 w-7 text-yellow-400" />}
               title="Business Web Development"
               tagline="High-converting websites and web apps built with the same technology powering Silicon Valley"
-              description="Your website is your hardest-working salesperson — it should look the part. We design and build fast, responsive, SEO-optimized websites and web applications using modern frameworks like React and Next.js, tailored for businesses that want to convert visitors into customers."
+              description="Your website is your hardest-working salesperson. It should look the part. We design and build fast, responsive, SEO-optimized websites and web applications using modern frameworks like React and Next.js, tailored for businesses that want to convert visitors into customers."
               defaultOpen={false}
             >
               {/* Key Differentiators */}
@@ -459,7 +459,7 @@ export function Services() {
                   </div>
                   <h4 className="text-lg text-white mb-2">Performance-First Architecture</h4>
                   <p className="text-gray-300 text-sm">
-                    Every site we build scores 90+ on Google Lighthouse out of the box — faster load times mean higher search rankings and lower bounce rates. Speed isn't an afterthought; it's the foundation.
+                    Every site we build scores 90+ on Google Lighthouse out of the box. Faster load times mean higher search rankings and lower bounce rates. Speed isn't an afterthought; it's the foundation.
                   </p>
                 </div>
                 <div className="bg-gray-800 border border-emerald-500/30 rounded-lg p-6">
@@ -575,7 +575,7 @@ export function Services() {
               <div className="bg-gray-800 border-l-4 border-yellow-400 p-6 rounded-r-lg mb-8">
                 <h4 className="text-lg text-white mb-2">Built With What We Sell</h4>
                 <p className="text-gray-300">
-                  This very website — <strong>PanteraClaw.com</strong> — is built with React, TypeScript, and Tailwind CSS, demonstrating the same modern tech stack, responsive design, and SEO-optimized architecture we deliver to every client. What you're browsing right now is our proof of work.
+                  This very website, <strong>PanteraClaw.com</strong>, is built with React, TypeScript, and Tailwind CSS, demonstrating the same modern tech stack, responsive design, and SEO-optimized architecture we deliver to every client. What you're browsing right now is our proof of work.
                 </p>
               </div>
 
@@ -583,7 +583,7 @@ export function Services() {
               <div className="bg-gray-800 border border-yellow-400/30 rounded-xl p-8 text-center">
                 <h4 className="text-xl text-white mb-2">Need a website that actually converts?</h4>
                 <p className="text-gray-300 mb-5 text-sm max-w-xl mx-auto">
-                  Whether it's a consulting site, a web app, or a complete redesign — let's build something that works as hard as you do.
+                  Whether it's a consulting site, a web app, or a complete redesign, let's build something that works as hard as you do.
                 </p>
                 <Link
                   to="/contact"
@@ -745,7 +745,7 @@ export function Services() {
               icon={<LayoutDashboard className="h-7 w-7 text-yellow-400" />}
               title="Dashboard & Visualization Development"
               tagline="Turn complex data into clear decisions your entire organization can act on"
-              description="Your data is only as valuable as the decisions it drives. We build interactive dashboards and visualization systems that surface the right metrics, at the right time, for the right people—from C-suite strategy views to operational monitoring."
+              description="Your data is only as valuable as the decisions it drives. We build interactive dashboards and visualization systems that surface the right metrics, at the right time, for the right people, from C-suite strategy views to operational monitoring."
             >
               {/* Key Differentiators */}
               <div className="mb-10 grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -756,7 +756,7 @@ export function Services() {
                   </div>
                   <h4 className="text-lg text-white mb-2">AI-Powered Cost Prediction Dashboards</h4>
                   <p className="text-gray-300 text-sm">
-                    Go beyond historical reporting. Our dashboards integrate predictive models that forecast costs, flag anomalies, and recommend actions—turning passive charts into active decision tools.
+                    Go beyond historical reporting. Our dashboards integrate predictive models that forecast costs, flag anomalies, and recommend actions, turning passive charts into active decision tools.
                   </p>
                 </div>
                 <div className="bg-gray-800 border border-rose-500/30 rounded-lg p-6">
@@ -766,7 +766,7 @@ export function Services() {
                   </div>
                   <h4 className="text-lg text-white mb-2">Causal Analysis Visualizations</h4>
                   <p className="text-gray-300 text-sm">
-                    Most dashboards show what happened. Ours show why it happened and what to do next—combining R Shiny with causal inference to identify the true drivers behind your KPIs.
+                    Most dashboards show what happened. Ours show why it happened and what to do next, combining R Shiny with causal inference to identify the true drivers behind your KPIs.
                   </p>
                 </div>
               </div>
@@ -798,7 +798,7 @@ export function Services() {
                     name="R Shiny"
                     icon={<LineChart className="h-6 w-6 text-emerald-500" />}
                     languages={["R", "ggplot2", "Plotly (R)", "RStudio"]}
-                    description="Custom statistical applications with reactive UIs—ideal for causal analysis dashboards, predictive analytics, and research-grade visualizations."
+                    description="Custom statistical applications with reactive UIs, ideal for causal analysis dashboards, predictive analytics, and research-grade visualizations."
                   >
                     <ShinyExamples />
                   </PlatformCard>
@@ -811,13 +811,13 @@ export function Services() {
                       color: "blue",
                       icon: <BarChart3 className="h-5 w-5 text-yellow-400" />,
                       pros: [
-                        "Drag-and-drop — fastest time to dashboard",
+                        "Drag-and-drop, fastest time to dashboard",
                         "Best for executive & stakeholder presentations",
                         "100+ native data source connectors",
                       ],
                       cons: [
                         "~$70/mo per Creator license",
-                        "Limited UI customization — locked to Tableau's look",
+                        "Limited UI customization, locked to Tableau's look",
                         "Weak for statistical or causal analysis",
                       ],
                     },
@@ -826,7 +826,7 @@ export function Services() {
                       color: "amber",
                       icon: <LayoutDashboard className="h-5 w-5 text-amber-600" />,
                       pros: [
-                        "Lowest cost — ~$10/mo Pro license",
+                        "Lowest cost, ~$10/mo Pro license",
                         "Deep Microsoft 365 integration (Excel, Teams, SharePoint)",
                         "Row-level security built in",
                       ],
@@ -841,7 +841,7 @@ export function Services() {
                       color: "emerald",
                       icon: <LineChart className="h-5 w-5 text-emerald-400" />,
                       pros: [
-                        "Fully customizable UI — pixel-level control",
+                        "Fully customizable UI, pixel-level control",
                         "No per-user licensing costs (open source)",
                         "Native support for statistical & causal analysis",
                       ],
@@ -983,7 +983,7 @@ export function Services() {
                   </div>
                   <h4 className="text-lg text-white mb-2">Natural Language to SQL</h4>
                   <p className="text-gray-300 text-sm">
-                    Let your team query databases in plain English. Our NLP-to-SQL agents translate business questions into optimized queries—no SQL knowledge required, instant insights delivered.
+                    Let your team query databases in plain English. Our NLP-to-SQL agents translate business questions into optimized queries, no SQL knowledge required, instant insights delivered.
                   </p>
                 </div>
                 <div className="bg-gray-800 border border-amber-500/30 rounded-lg p-6">
@@ -1127,7 +1127,7 @@ export function Services() {
                       <h4 className="text-lg ml-3 text-white">Local LLM Deployment</h4>
                     </div>
                     <p className="text-gray-400 text-sm mb-4">
-                      Run powerful language models entirely on your own hardware—no API calls, no data leaving your network.
+                      Run powerful language models entirely on your own hardware, no API calls, no data leaving your network.
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {["Ollama", "GGUF / Quantized Models", "HuggingFace Model Integration"].map((t) => (
@@ -1217,7 +1217,7 @@ export function Services() {
               icon={<BrainCircuit className="h-7 w-7 text-yellow-400" />}
               title="Advanced Analytics"
               tagline="From 98% accuracy ML models to causal policy analysis that drives multi-million dollar decisions"
-              description="We build, validate, and deploy the full spectrum of analytical solutions—ML model development for classification, regression, and sound recognition alongside rigorous causal inference methods that move beyond correlation to answer why things happen and what to do about it."
+              description="We build, validate, and deploy the full spectrum of analytical solutions, including ML model development for classification, regression, and sound recognition alongside rigorous causal inference methods that move beyond correlation to answer why things happen and what to do about it."
             >
               {/* Key Differentiators */}
               <div className="mb-10 grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -1228,7 +1228,7 @@ export function Services() {
                   </div>
                   <h4 className="text-lg text-white mb-2">98% Drone Sound Classification</h4>
                   <p className="text-gray-300 text-sm">
-                    Built a production-grade audio classification model using MFCCs and Mel spectrograms that achieved 98% accuracy for real-time drone detection—proving our models exceed industry benchmarks where mission-critical precision matters most.
+                    Built a production-grade audio classification model using MFCCs and Mel spectrograms that achieved 98% accuracy for real-time drone detection, proving our models exceed industry benchmarks where mission-critical precision matters most.
                   </p>
                 </div>
                 <div className="bg-gray-800 border border-purple-500/30 rounded-lg p-6">
@@ -1238,7 +1238,7 @@ export function Services() {
                   </div>
                   <h4 className="text-lg text-white mb-2">Causal Policy Analysis with Multi-Million Dollar Impact</h4>
                   <p className="text-gray-300 text-sm">
-                    Applied causal inference methodologies to model Air Force policy changes, delivering actionable insights that directly resulted in multi-million dollar cost savings—not just correlation, but true causation.
+                    Applied causal inference methodologies to model Air Force policy changes, delivering actionable insights that directly resulted in multi-million dollar cost savings, not just correlation, but true causation.
                   </p>
                 </div>
               </div>
@@ -1336,7 +1336,7 @@ export function Services() {
                   Segmentation Analysis
                 </h3>
                 <p className="text-gray-400 mb-6 text-sm">
-                  Your customers, products, and operations aren't one-size-fits-all — so your data shouldn't be either. Segmentation analysis uses machine learning to uncover hidden groups in your data that you didn't know existed, revealing distinct patterns in behavior, risk, spending, or performance that get lost in averages.
+                  Your customers, products, and operations aren't one-size-fits-all, so your data shouldn't be either. Segmentation analysis uses machine learning to uncover hidden groups in your data that you didn't know existed, revealing distinct patterns in behavior, risk, spending, or performance that get lost in averages.
                 </p>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-5">
                   <div className="rounded-xl overflow-hidden border border-gray-700 shadow-sm">
@@ -1370,7 +1370,7 @@ export function Services() {
                   ML Model Health Monitoring
                 </h3>
                 <p className="text-gray-400 mb-6 text-sm">
-                  A model that was 95% accurate six months ago might be making bad predictions today — and you'd never know without monitoring. The real world changes: customer behavior shifts, markets move, and data patterns evolve. We continuously watch your models for signs of drift and automatically retrain them when accuracy starts to slip, so your predictions stay reliable without you having to think about it.
+                  A model that was 95% accurate six months ago might be making bad predictions today, and you'd never know without monitoring. The real world changes: customer behavior shifts, markets move, and data patterns evolve. We continuously watch your models for signs of drift and automatically retrain them when accuracy starts to slip, so your predictions stay reliable without you having to think about it.
                 </p>
                 <div className="bg-gray-800 border border-amber-500/30 rounded-lg p-5">
                   <h4 className="text-white mb-2">How it works in plain terms</h4>
@@ -1390,7 +1390,7 @@ export function Services() {
                       </div>
                       <div>
                         <p className="text-sm text-white mb-1">We catch it early</p>
-                        <p className="text-xs text-gray-400">When a model starts drifting — predicting outside the norm — we flag it before it impacts your decisions.</p>
+                        <p className="text-xs text-gray-400">When a model starts drifting, predicting outside the norm, we flag it before it impacts your decisions.</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
@@ -1399,7 +1399,7 @@ export function Services() {
                       </div>
                       <div>
                         <p className="text-sm text-white mb-1">We retrain & redeploy</p>
-                        <p className="text-xs text-gray-400">Updated models are retrained on fresh data and pushed live — no downtime, no manual intervention.</p>
+                        <p className="text-xs text-gray-400">Updated models are retrained on fresh data and pushed live, no downtime, no manual intervention.</p>
                       </div>
                     </div>
                   </div>
@@ -1480,7 +1480,7 @@ export function Services() {
               "@type": "Service",
               name: "Business Web Development",
               description:
-                "High-converting websites and web applications built with React, Next.js, TypeScript, and Tailwind CSS — SEO and AI-search optimized",
+                "High-converting websites and web applications built with React, Next.js, TypeScript, and Tailwind CSS, SEO and AI-search optimized",
               provider: { "@type": "Organization", name: "Pantera Claw" },
             },
             {

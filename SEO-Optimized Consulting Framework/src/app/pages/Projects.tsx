@@ -12,7 +12,7 @@ const highlights = [
   "Detect equipment faults or security threats from sound alone",
   "Turn raw data into clear, actionable business profiles",
   "AI that finds patterns your team doesn't have time to look for",
-  "99%+ accuracy — results you can actually act on",
+  "99%+ accuracy, results you can actually act on",
   "Real examples built on real data, not theory",
 ];
 
@@ -49,14 +49,14 @@ const services = [
       {
         icon: <AudioLines className="h-6 w-6 text-yellow-400" />,
         title: "Sound Classification",
-        desc: "Trained an AI model to listen to audio and identify exactly what it's hearing — with 99% accuracy. In your business, it could detect equipment faults, production line issues, or security threats from sound alone.",
-        value: "If a problem in your operation makes a sound, AI can be trained to hear it — catching issues before they become costly.",
+        desc: "Trained an AI model to listen to audio and identify exactly what it's hearing, with 99% accuracy. In your business, it could detect equipment faults, production line issues, or security threats from sound alone.",
+        value: "If a problem in your operation makes a sound, AI can be trained to hear it, catching issues before they become costly.",
         link: "/case-study/drone-classification",
       },
       {
         icon: <Users className="h-6 w-6 text-yellow-400" />,
         title: "Customer Profiling",
-        desc: "Used AI to analyze 530,000+ customer records and automatically discovered 5 distinct buyer types — each with its own behavior and recommended marketing strategy.",
+        desc: "Used AI to analyze 530,000+ customer records and automatically discovered 5 distinct buyer types, each with its own behavior and recommended marketing strategy.",
         value: "Stop sending the same message to everyone. We find the hidden groups in your customer data so you can market smarter and increase revenue per customer.",
         link: "/case-study/customer-segmentation",
       },
@@ -89,7 +89,7 @@ export function Projects() {
               Real Problems. Real Results.
             </h1>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              Each project below is a working proof of concept built on real data —
+              Each project below is a working proof of concept built on real data,
               showing exactly what we can build and tailor for your business.
             </p>
           </div>
@@ -102,7 +102,7 @@ export function Projects() {
               <Info className="h-4 w-4 text-yellow-400 flex-shrink-0 mt-0.5" />
               <p>
                 These are <strong className="text-white">independent proof of concepts</strong> built on
-                public datasets — not client work. They demonstrate the types of solutions
+                public datasets, not client work. They demonstrate the types of solutions
                 we deliver for real organizations.
               </p>
             </div>
@@ -175,7 +175,7 @@ export function Projects() {
                   </div>
                 ) : (
                   <p className="text-gray-600 text-sm italic">
-                    Projects for this service are in progress — check back soon.
+                    Projects for this service are in progress. Check back soon.
                   </p>
                 )}
               </div>

@@ -23,7 +23,7 @@ export function About() {
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               The panther doesn't hesitate. It moves with precision, adapts to any environment,
-              and strikes with purpose. That's the standard we hold ourselves to at Pantera Claw —
+              and strikes with purpose. That's the standard we hold ourselves to at Pantera Claw,
               and it's the standard we bring to every business we work with.
             </p>
           </div>
@@ -39,14 +39,14 @@ export function About() {
               <div>
                 <h2 className="text-3xl text-white mb-6">Why the Panther?</h2>
                 <p className="text-gray-300 text-lg mb-4">
-                  In nature, the panther is the apex predator of adaptability — thriving in jungles,
+                  In nature, the panther is the apex predator of adaptability, thriving in jungles,
                   mountains, and urban landscapes alike. In business, that translates to one thing:
                   <span className="text-yellow-400"> the ability to evolve faster than the competition.</span>
                 </p>
                 <p className="text-gray-300 text-lg mb-4">
                   At Pantera Claw, we combine that predatory precision with cutting-edge technology.
-                  The claw represents our ability to cut through complexity — outdated systems,
-                  inefficient workflows, and missed opportunities — and replace them with solutions
+                  The claw represents our ability to cut through complexity: outdated systems,
+                  inefficient workflows, and missed opportunities, and replace them with solutions
                   that are fast, sharp, and built to last.
                 </p>
                 <p className="text-gray-300 text-lg">
@@ -63,14 +63,14 @@ export function About() {
             <h2 className="text-3xl text-white mb-6">Our Mission</h2>
             <p className="text-xl text-gray-300 mb-6">
               Enterprise-grade technology has historically been out of reach for small and
-              mid-size businesses — too expensive, too complex, too slow to deploy.
+              mid-size businesses: too expensive, too complex, too slow to deploy.
             </p>
             <p className="text-xl text-yellow-400">
               Pantera Claw exists to change that.
             </p>
             <p className="text-xl text-gray-300 mt-6">
               We bring the same caliber of AI systems, data infrastructure, and digital solutions
-              used by the world's largest organizations — and we make them accessible, affordable,
+              used by the world's largest organizations, and we make them accessible, affordable,
               and actionable for businesses ready to grow.
             </p>
           </div>
@@ -82,7 +82,7 @@ export function About() {
             <div className="text-center mb-12">
               <h2 className="text-3xl text-white mb-3">How We Help Businesses Win</h2>
               <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-                We integrate the technologies that define the next decade of business —
+                We integrate the technologies that define the next decade of business:
                 so you're not catching up, you're setting the pace.
               </p>
             </div>
@@ -97,7 +97,7 @@ export function About() {
                 </div>
                 <p className="text-gray-300">
                   Fast, modern, SEO-optimized websites and web applications built with React
-                  and the latest frameworks. Your digital storefront should work as hard as you do —
+                  and the latest frameworks. Your digital storefront should work as hard as you do,
                   converting visitors into clients around the clock.
                 </p>
               </div>
@@ -110,7 +110,7 @@ export function About() {
                   <h3 className="text-xl text-white">Database Management</h3>
                 </div>
                 <p className="text-gray-300">
-                  Your data is your most valuable asset — we make sure you can actually use it.
+                  Your data is your most valuable asset, and we make sure you can actually use it.
                   We design, optimize, and manage databases on PostgreSQL, Databricks, and Snowflake
                   so your systems are fast, reliable, and scalable.
                 </p>
@@ -138,7 +138,7 @@ export function About() {
                   <h3 className="text-xl text-white">AI Integration</h3>
                 </div>
                 <p className="text-gray-300">
-                  AI isn't the future — it's right now. We integrate autonomous agents,
+                  AI isn't the future. It's right now. We integrate autonomous agents,
                   machine learning models, and intelligent workflows directly into your
                   existing business operations so you can do more with less.
                 </p>
@@ -168,14 +168,14 @@ export function About() {
                   <Target className="h-7 w-7 text-yellow-400" />
                 </div>
                 <h3 className="text-white text-lg mb-2">Precision</h3>
-                <p className="text-gray-400 text-sm">Every solution is purpose-built for your specific problem — no bloat, no fluff.</p>
+                <p className="text-gray-400 text-sm">Every solution is purpose-built for your specific problem. No bloat, no fluff.</p>
               </div>
               <div className="text-center p-6">
                 <div className="inline-flex items-center justify-center w-14 h-14 bg-gray-800 rounded-full mb-4">
                   <Shield className="h-7 w-7 text-yellow-400" />
                 </div>
                 <h3 className="text-white text-lg mb-2">Reliability</h3>
-                <p className="text-gray-400 text-sm">We build systems that hold up under pressure — tested, scalable, and battle-ready.</p>
+                <p className="text-gray-400 text-sm">We build systems that hold up under pressure: tested, scalable, and battle-ready.</p>
               </div>
               <div className="text-center p-6">
                 <div className="inline-flex items-center justify-center w-14 h-14 bg-gray-800 rounded-full mb-4">

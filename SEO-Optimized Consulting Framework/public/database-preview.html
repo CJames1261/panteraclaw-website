@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Data Pipeline</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html, body { width:100%; height:100%; background:#020617; overflow:hidden; }
+    .label { display:none; }
+    canvas { display:block; width:100%; height:auto; border-radius:12px; }
+  </style>
+</head>
+<body>
+  <div class="label">Data Pipeline — From Raw Input to Business Intelligence</div>
+  <canvas id="c" width="1100" height="580"></canvas>
+<script>
+const canvas = document.getElementById('c');
+const ctx    = canvas.getContext('2d');
+const W = canvas.width, H = canvas.height;
+
+// ── Layout ────────────────────────────────────────────────────────────────────
+const CARD_W  = 195, CARD_H = 400;
+const CARD_Y  = (H - CARD_H) / 2;           // 90  — left card top
+const GAP     = (W - 4 * CARD_W) / 5;       // 64
+const CARD_X  = Array.from({length:4}, (_,i) => GAP + i*(CARD_W+GAP));
+const CARD_CX = CARD_X.map(x => x + CARD_W/2);
+const TOP_H   = 175;
+const ICON_Y  = CARD_Y + TOP_H * 0.53;      // icon center for full cards
+
+// Right column — two stacked compact cards, total height = CARD_H
+const RIGHT_GAP = 22;
+const CARD_H_R  = (CARD_H - RIGHT_GAP) / 2; // ~189
+const TOP_H_R   = 90;
+const CARD_Y_BI = CARD_Y;
+const CARD_Y_AA = CARD_Y + CARD_H_R + RIGHT_GAP;
+const ICON_Y_BI = CARD_Y_BI + TOP_H_R * 0.62;
+const ICON_Y_AA = CARD_Y_AA + TOP_H_R * 0.62;
+
+// DB card center — origin of the two diagonal arrows
+const DB_CENTER_X = CARD_X[2] + CARD_W;
+const DB_CENTER_Y = CARD_Y + CARD_H / 2;
+
+// ── Stages ────────────────────────────────────────────────────────────────────
+const STAGES = [
+  { color:'#94a3b8', step:1, title:'Raw Data',           subtitle:'Unstructured Input',    lines:['Scattered records,','nulls & errors'],        draw:drawRawIcon       },
+  { color:'#3b82f6', step:2, title:'Clean Tables',       subtitle:'Normalized Schema',     lines:['Typed columns,','relational keys'],           draw:drawTableIcon     },
+  { color:'#facc15', step:3, title:'Database',           subtitle:'Centralized Storage',   lines:['Indexed, scalable,','query-optimized'],       draw:drawDatabaseIcon  },
+  { color:'#4ade80', step:4, title:'BI Dashboard',       subtitle:'Business Intelligence', lines:['Real-time metrics,','actionable analytics'],  draw:drawBIIcon        },
+  { color:'#a78bfa', step:5, title:'Advanced Analytics', subtitle:'Predictive Modeling',   lines:['ML models,','causal inference'],              draw:drawAnalyticsIcon },
+];
+
+let hoveredCard = -1;
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
+function rr(x,y,w,h,r){
+  ctx.beginPath();
+  ctx.moveTo(x+r,y); ctx.lineTo(x+w-r,y);
+  ctx.arcTo(x+w,y,x+w,y+r,r); ctx.lineTo(x+w,y+h-r);
+  ctx.arcTo(x+w,y+h,x+w-r,y+h,r); ctx.lineTo(x+r,y+h);
+  ctx.arcTo(x,y+h,x,y+h-r,r); ctx.lineTo(x,y+r);
+  ctx.arcTo(x,y,x+r,y,r); ctx.closePath();
+}
+
+// ── Icons ─────────────────────────────────────────────────────────────────────
+function drawRawIcon(cx, cy, color) {
+  const iw=52,ih=66,fold=13,r=5,x=cx-iw/2,y=cy-ih/2;
+  ctx.save();
+  ctx.shadowColor=color+'55'; ctx.shadowBlur=18;
+  ctx.fillStyle='#1e293b';
+  ctx.beginPath();
+  ctx.moveTo(x+r,y); ctx.lineTo(x+iw-fold,y); ctx.lineTo(x+iw,y+fold);
+  ctx.lineTo(x+iw,y+ih-r); ctx.arcTo(x+iw,y+ih,x+iw-r,y+ih,r);
+  ctx.lineTo(x+r,y+ih); ctx.arcTo(x,y+ih,x,y+ih-r,r);
+  ctx.lineTo(x,y+r); ctx.arcTo(x,y,x+r,y,r); ctx.closePath();
+  ctx.fill(); ctx.strokeStyle=color+'55'; ctx.lineWidth=1.5; ctx.stroke(); ctx.shadowBlur=0;
+  ctx.fillStyle=color+'22';
+  ctx.beginPath(); ctx.moveTo(x+iw-fold,y); ctx.lineTo(x+iw,y+fold); ctx.lineTo(x+iw-fold,y+fold); ctx.closePath(); ctx.fill();
+  ctx.strokeStyle=color+'44'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(x+iw-fold,y); ctx.lineTo(x+iw-fold,y+fold); ctx.lineTo(x+iw,y+fold); ctx.stroke();
+  const lines=[{w:30,err:false},{w:16,err:true},{w:38,err:false},{w:12,err:true},{w:24,err:false},{w:34,err:false},{w:18,err:true}];
+  const jit=[2,-1,3,-2,1,-3,2];
+  lines.forEach((l,i)=>{
+    ctx.fillStyle=(l.err?'#ef4444':'#475569')+'bb';
+    ctx.fillRect(x+7+jit[i],y+20+i*7,l.w,3.5);
+    if(l.err){
+      ctx.strokeStyle='#ef444488'; ctx.lineWidth=1;
+      const ex=x+7+jit[i]+l.w+5,ey=y+20+i*7+1;
+      ctx.beginPath(); ctx.moveTo(ex,ey); ctx.lineTo(ex+5,ey+4); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(ex+5,ey); ctx.lineTo(ex,ey+4); ctx.stroke();
+    }
+  });
+  ctx.restore();
+}
+
+function drawTableIcon(cx, cy, color) {
+  const tw=78,th=70,cols=3,rows=4,r=5,x=cx-tw/2,y=cy-th/2;
+  const CW=tw/cols,RH=th/rows;
+  ctx.save();
+  ctx.shadowColor=color+'44'; ctx.shadowBlur=16;
+  ctx.fillStyle='#0f172a'; rr(x,y,tw,th,r); ctx.fill();
+  ctx.strokeStyle=color+'55'; ctx.lineWidth=1.5; rr(x,y,tw,th,r); ctx.stroke(); ctx.shadowBlur=0;
+  ctx.fillStyle=color+'28'; ctx.fillRect(x+1,y+1,tw-2,RH-1);
+  ctx.strokeStyle=color+'66'; ctx.lineWidth=0.8;
+  ctx.beginPath(); ctx.moveTo(x,y+RH); ctx.lineTo(x+tw,y+RH); ctx.stroke();
+  for(let c=0;c<cols;c++){ctx.fillStyle=color+'cc'; ctx.fillRect(x+c*CW+5,y+RH*0.28,CW-10,4);}
+  ctx.strokeStyle='#1e293b66'; ctx.lineWidth=0.8;
+  for(let c=1;c<cols;c++){ctx.beginPath();ctx.moveTo(x+c*CW,y+RH);ctx.lineTo(x+c*CW,y+th);ctx.stroke();}
+  for(let r2=1;r2<rows;r2++){
+    ctx.strokeStyle='#1e293b'; ctx.lineWidth=0.6;
+    ctx.beginPath(); ctx.moveTo(x+1,y+r2*RH); ctx.lineTo(x+tw-1,y+r2*RH); ctx.stroke();
+    if(r2%2===0){ctx.fillStyle='#ffffff06'; ctx.fillRect(x+1,y+r2*RH,tw-2,RH);}
+    for(let c=0;c<cols;c++){
+      ctx.fillStyle=c===0?color+'88':'#47556988';
+      ctx.fillRect(x+c*CW+4,y+r2*RH+(RH-3.5)/2,c===0?CW*0.55:CW*0.38,3.5);
+    }
+  }
+  ctx.restore();
+}
+
+function drawDatabaseIcon(cx, cy, color) {
+  const rx=34,ry=11,lh=22,nl=3,top=cy-nl*lh/2;
+  ctx.save(); ctx.shadowColor=color+'55'; ctx.shadowBlur=20;
+  for(let i=nl-1;i>=0;i--){
+    const ty=top+i*lh,bright=i===0;
+    ctx.fillStyle=bright?'#0f172a':'rgba(10,18,36,0.85)';
+    ctx.strokeStyle=bright?color+'cc':color+'44'; ctx.lineWidth=1.5;
+    ctx.beginPath();
+    ctx.moveTo(cx-rx,ty+ry); ctx.lineTo(cx-rx,ty+lh);
+    ctx.ellipse(cx,ty+lh,rx,ry,0,Math.PI,0,true);
+    ctx.lineTo(cx+rx,ty+ry); ctx.closePath();
+    ctx.fill(); ctx.stroke();
+    ctx.beginPath(); ctx.ellipse(cx,ty,rx,ry,0,0,Math.PI*2);
+    ctx.fillStyle=bright?color+'2a':color+'12'; ctx.fill();
+    ctx.strokeStyle=bright?color+'cc':color+'44'; ctx.stroke();
+  }
+  ctx.shadowBlur=0; ctx.restore();
+}
+
+function drawBIIcon(cx, cy, color) {
+  const BW=86,BH=66,bars=[0.38,0.62,0.48,0.82,1.0,0.72];
+  const n=bars.length,bw=(BW-(n-1)*6)/n,baseY=cy+BH/2,sx=cx-BW/2;
+  ctx.save(); ctx.shadowColor=color+'44'; ctx.shadowBlur=16;
+  bars.forEach((h,i)=>{
+    const bh=h*BH,bx=sx+i*(bw+6),by=baseY-bh;
+    const g=ctx.createLinearGradient(bx,by,bx,baseY);
+    g.addColorStop(0,color+'cc'); g.addColorStop(1,color+'22');
+    ctx.fillStyle=g; rr(bx,by,bw,bh,2); ctx.fill();
+    ctx.strokeStyle=color+'55'; ctx.lineWidth=0.8; ctx.stroke();
+  });
+  ctx.shadowBlur=0;
+  ctx.strokeStyle='#ffffff99'; ctx.lineWidth=1.5; ctx.setLineDash([3,2]);
+  ctx.beginPath();
+  bars.forEach((h,i)=>{const bx=sx+i*(bw+6)+bw/2,by=baseY-h*BH; i?ctx.lineTo(bx,by):ctx.moveTo(bx,by);});
+  ctx.stroke(); ctx.setLineDash([]);
+  bars.forEach((h,i)=>{
+    const last=i===n-1;
+    ctx.fillStyle=last?color:'#ffffff55';
+    ctx.shadowColor=last?color:'transparent'; ctx.shadowBlur=last?8:0;
+    ctx.beginPath(); ctx.arc(sx+i*(bw+6)+bw/2,baseY-h*BH,3.5,0,Math.PI*2); ctx.fill();
+  });
+  ctx.shadowBlur=0;
+  ctx.strokeStyle=color+'55'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(sx-4,baseY+2); ctx.lineTo(sx+BW+4,baseY+2); ctx.stroke();
+  ctx.restore();
+}
+
+function drawAnalyticsIcon(cx, cy, color) {
+  // Scatter plot with regression trend line
+  const pts=[{x:-28,y:22},{x:-20,y:10},{x:-14,y:14},{x:-6,y:2},{x:2,y:-6},{x:10,y:-14},{x:18,y:-18},{x:28,y:-26}];
+  ctx.save(); ctx.shadowColor=color+'44'; ctx.shadowBlur=14;
+  ctx.strokeStyle=color+'44'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(cx-34,cy+28); ctx.lineTo(cx+34,cy+28); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(cx-34,cy-30); ctx.lineTo(cx-34,cy+28); ctx.stroke();
+  pts.forEach(p=>{
+    ctx.fillStyle=color+'88'; ctx.shadowBlur=5;
+    ctx.beginPath(); ctx.arc(cx+p.x,cy+p.y,3,0,Math.PI*2); ctx.fill();
+  });
+  ctx.shadowBlur=0;
+  ctx.strokeStyle=color+'cc'; ctx.lineWidth=1.8;
+  ctx.beginPath();
+  pts.forEach((p,i)=>i?ctx.lineTo(cx+p.x,cy+p.y):ctx.moveTo(cx+p.x,cy+p.y));
+  ctx.stroke();
+  ctx.fillStyle=color; ctx.shadowColor=color; ctx.shadowBlur=12;
+  ctx.beginPath(); ctx.arc(cx+pts[pts.length-1].x,cy+pts[pts.length-1].y,4.5,0,Math.PI*2); ctx.fill();
+  ctx.shadowBlur=0; ctx.restore();
+}
+
+// ── Full-height card (left 3) ─────────────────────────────────────────────────
+function drawCard(stage, i) {
+  const cx=CARD_CX[i],x=CARD_X[i],y=CARD_Y,c=stage.color;
+  const hov=i===hoveredCard;
+  ctx.save();
+  ctx.shadowColor=c+(hov?'55':'1a'); ctx.shadowBlur=hov?50:30;
+  ctx.fillStyle=hov?'#111d35':'#0b1221'; rr(x,y,CARD_W,CARD_H,14); ctx.fill();
+  ctx.shadowBlur=0;
+  ctx.save();
+  ctx.beginPath();
+  ctx.moveTo(x+14,y); ctx.lineTo(x+CARD_W-14,y);
+  ctx.arcTo(x+CARD_W,y,x+CARD_W,y+14,14); ctx.lineTo(x+CARD_W,y+TOP_H);
+  ctx.lineTo(x,y+TOP_H); ctx.lineTo(x,y+14); ctx.arcTo(x,y,x+14,y,14); ctx.closePath(); ctx.clip();
+  const tg=ctx.createLinearGradient(x,y,x,y+TOP_H);
+  tg.addColorStop(0,c+(hov?'44':'28')); tg.addColorStop(1,'transparent');
+  ctx.fillStyle=tg; ctx.fillRect(x,y,CARD_W,TOP_H);
+  ctx.restore();
+  ctx.strokeStyle=c+(hov?'99':'33'); ctx.lineWidth=hov?1.5:1; rr(x,y,CARD_W,CARD_H,14); ctx.stroke();
+  const ag=ctx.createLinearGradient(x,y,x+CARD_W,y);
+  ag.addColorStop(0,'transparent'); ag.addColorStop(0.15,c+'dd'); ag.addColorStop(0.85,c+'dd'); ag.addColorStop(1,'transparent');
+  ctx.strokeStyle=ag; ctx.lineWidth=2;
+  ctx.beginPath(); ctx.moveTo(x+14,y+1); ctx.lineTo(x+CARD_W-14,y+1); ctx.stroke();
+  ctx.fillStyle=c+'22'; ctx.strokeStyle=c+'88'; ctx.lineWidth=1.5;
+  ctx.beginPath(); ctx.arc(x+CARD_W-20,y+20,13,0,Math.PI*2); ctx.fill(); ctx.stroke();
+  ctx.font='bold 11px system-ui'; ctx.fillStyle=c; ctx.textAlign='center'; ctx.textBaseline='middle';
+  ctx.fillText(stage.step,x+CARD_W-20,y+20); ctx.textBaseline='alphabetic';
+  stage.draw(cx,ICON_Y,c);
+  ctx.strokeStyle=c+'20'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(x+16,y+TOP_H); ctx.lineTo(x+CARD_W-16,y+TOP_H); ctx.stroke();
+  ctx.font='bold 17px system-ui'; ctx.fillStyle='#ffffff'; ctx.textAlign='center';
+  ctx.fillText(stage.title,cx,y+TOP_H+26);
+  ctx.font='12px system-ui'; ctx.fillStyle=c+'cc';
+  ctx.fillText(stage.subtitle,cx,y+TOP_H+44);
+  ctx.strokeStyle='#1e293b'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(x+22,y+TOP_H+54); ctx.lineTo(x+CARD_W-22,y+TOP_H+54); ctx.stroke();
+  ctx.font='10px system-ui'; ctx.fillStyle='#e2e8f0';
+  stage.lines.forEach((l,li)=>ctx.fillText(l,cx,y+TOP_H+70+li*16));
+  ctx.restore();
+}
+
+// ── Compact card (right stacked pair) ────────────────────────────────────────
+function drawRightCard(stage, cardIdx, cardY, iconY) {
+  const cx=CARD_CX[3],x=CARD_X[3],y=cardY,c=stage.color;
+  const cw=CARD_W,ch=CARD_H_R,th=TOP_H_R;
+  const hov=cardIdx===hoveredCard;
+  ctx.save();
+  ctx.shadowColor=c+(hov?'55':'1a'); ctx.shadowBlur=hov?40:20;
+  ctx.fillStyle=hov?'#111d35':'#0b1221'; rr(x,y,cw,ch,14); ctx.fill();
+  ctx.shadowBlur=0;
+  ctx.save();
+  ctx.beginPath();
+  ctx.moveTo(x+14,y); ctx.lineTo(x+cw-14,y);
+  ctx.arcTo(x+cw,y,x+cw,y+14,14); ctx.lineTo(x+cw,y+th);
+  ctx.lineTo(x,y+th); ctx.lineTo(x,y+14); ctx.arcTo(x,y,x+14,y,14); ctx.closePath(); ctx.clip();
+  const tg=ctx.createLinearGradient(x,y,x,y+th);
+  tg.addColorStop(0,c+(hov?'44':'28')); tg.addColorStop(1,'transparent');
+  ctx.fillStyle=tg; ctx.fillRect(x,y,cw,th);
+  ctx.restore();
+  ctx.strokeStyle=c+(hov?'99':'33'); ctx.lineWidth=hov?1.5:1; rr(x,y,cw,ch,14); ctx.stroke();
+  const ag=ctx.createLinearGradient(x,y,x+cw,y);
+  ag.addColorStop(0,'transparent'); ag.addColorStop(0.15,c+'dd'); ag.addColorStop(0.85,c+'dd'); ag.addColorStop(1,'transparent');
+  ctx.strokeStyle=ag; ctx.lineWidth=2;
+  ctx.beginPath(); ctx.moveTo(x+14,y+1); ctx.lineTo(x+cw-14,y+1); ctx.stroke();
+  ctx.fillStyle=c+'22'; ctx.strokeStyle=c+'88'; ctx.lineWidth=1.5;
+  ctx.beginPath(); ctx.arc(x+cw-18,y+18,11,0,Math.PI*2); ctx.fill(); ctx.stroke();
+  ctx.font='bold 10px system-ui'; ctx.fillStyle=c; ctx.textAlign='center'; ctx.textBaseline='middle';
+  ctx.fillText(stage.step,x+cw-18,y+18); ctx.textBaseline='alphabetic';
+  // Icon scaled down to fit compact card
+  ctx.save(); ctx.translate(cx,iconY); ctx.scale(0.58,0.58); stage.draw(0,0,c); ctx.restore();
+  ctx.strokeStyle=c+'20'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(x+16,y+th); ctx.lineTo(x+cw-16,y+th); ctx.stroke();
+  ctx.font='bold 14px system-ui'; ctx.fillStyle='#ffffff'; ctx.textAlign='center';
+  ctx.fillText(stage.title,cx,y+th+20);
+  ctx.font='11px system-ui'; ctx.fillStyle=c+'cc';
+  ctx.fillText(stage.subtitle,cx,y+th+35);
+  ctx.strokeStyle='#1e293b'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(x+22,y+th+44); ctx.lineTo(x+cw-22,y+th+44); ctx.stroke();
+  ctx.font='10px system-ui'; ctx.fillStyle='#e2e8f0';
+  stage.lines.forEach((l,li)=>ctx.fillText(l,cx,y+th+58+li*15));
+  ctx.restore();
+}
+
+// ── Arrows ────────────────────────────────────────────────────────────────────
+function drawHorizArrow(i) {
+  const x1=CARD_X[i]+CARD_W+10,x2=CARD_X[i+1]-10,y=ICON_Y;
+  const c1=STAGES[i].color,c2=STAGES[i+1].color;
+  const g=ctx.createLinearGradient(x1,y,x2,y);
+  g.addColorStop(0,c1+'88'); g.addColorStop(1,c2+'99');
+  ctx.strokeStyle=g; ctx.lineWidth=1.5;
+  ctx.beginPath(); ctx.moveTo(x1+8,y); ctx.lineTo(x2-4,y); ctx.stroke();
+  ctx.fillStyle=c2+'aa';
+  ctx.beginPath(); ctx.moveTo(x2+8,y); ctx.lineTo(x2,y-5); ctx.lineTo(x2,y+5); ctx.closePath(); ctx.fill();
+  ctx.fillStyle=c1+'88';
+  ctx.beginPath(); ctx.arc(x1+4,y,3,0,Math.PI*2); ctx.fill();
+}
+
+function drawDiagArrow(x1, y1, x2, y2, c1, c2) {
+  const dx=x2-x1,dy=y2-y1,len=Math.hypot(dx,dy);
+  const nx=dx/len,ny=dy/len;
+  const sx=x1+nx*10,sy=y1+ny*10;
+  const ex=x2-nx*12,ey=y2-ny*12;
+  const g=ctx.createLinearGradient(sx,sy,ex,ey);
+  g.addColorStop(0,c1+'88'); g.addColorStop(1,c2+'99');
+  ctx.strokeStyle=g; ctx.lineWidth=1.5;
+  ctx.beginPath(); ctx.moveTo(sx,sy); ctx.lineTo(ex,ey); ctx.stroke();
+  const ang=Math.atan2(dy,dx);
+  ctx.fillStyle=c2+'aa';
+  ctx.save(); ctx.translate(x2-nx*4,y2-ny*4); ctx.rotate(ang);
+  ctx.beginPath(); ctx.moveTo(8,0); ctx.lineTo(0,-5); ctx.lineTo(0,5); ctx.closePath(); ctx.fill();
+  ctx.restore();
+  ctx.fillStyle=c1+'88';
+  ctx.beginPath(); ctx.arc(sx,sy,3,0,Math.PI*2); ctx.fill();
+}
+
+// ── Render ────────────────────────────────────────────────────────────────────
+function draw() {
+  const bg=ctx.createRadialGradient(W/2,H/2,0,W/2,H/2,W*0.65);
+  bg.addColorStop(0,'#0f172a'); bg.addColorStop(1,'#020617');
+  ctx.fillStyle=bg; ctx.fillRect(0,0,W,H);
+  ctx.strokeStyle='#ffffff04'; ctx.lineWidth=1;
+  for(let gx=0;gx<W;gx+=80){ctx.beginPath();ctx.moveTo(gx,0);ctx.lineTo(gx,H);ctx.stroke();}
+  for(let gy=0;gy<H;gy+=80){ctx.beginPath();ctx.moveTo(0,gy);ctx.lineTo(W,gy);ctx.stroke();}
+
+  // Cards
+  for(let i=0;i<3;i++) drawCard(STAGES[i],i);
+  drawRightCard(STAGES[3],3,CARD_Y_BI,ICON_Y_BI);
+  drawRightCard(STAGES[4],4,CARD_Y_AA,ICON_Y_AA);
+
+  // Arrows — horizontal for stages 0→1 and 1→2
+  drawHorizArrow(0);
+  drawHorizArrow(1);
+
+  // Arrows — diagonal from DB right-center to each right card left-center
+  const biCY = CARD_Y_BI + CARD_H_R / 2;
+  const aaCY = CARD_Y_AA + CARD_H_R / 2;
+  drawDiagArrow(DB_CENTER_X, DB_CENTER_Y, CARD_X[3], biCY, STAGES[2].color, STAGES[3].color);
+  drawDiagArrow(DB_CENTER_X, DB_CENTER_Y, CARD_X[3], aaCY, STAGES[2].color, STAGES[4].color);
+}
+
+draw();
+
+// ── Interaction ───────────────────────────────────────────────────────────────
+canvas.addEventListener('mousemove', e => {
+  const rect=canvas.getBoundingClientRect();
+  const mx=(e.clientX-rect.left)*(W/rect.width);
+  const my=(e.clientY-rect.top)*(H/rect.height);
+  let hit=-1;
+  for(let i=0;i<3;i++){
+    if(mx>=CARD_X[i]&&mx<=CARD_X[i]+CARD_W&&my>=CARD_Y&&my<=CARD_Y+CARD_H) hit=i;
+  }
+  if(mx>=CARD_X[3]&&mx<=CARD_X[3]+CARD_W){
+    if(my>=CARD_Y_BI&&my<=CARD_Y_BI+CARD_H_R) hit=3;
+    if(my>=CARD_Y_AA&&my<=CARD_Y_AA+CARD_H_R) hit=4;
+  }
+  if(hit!==hoveredCard){ hoveredCard=hit; canvas.style.cursor=hit>=0?'pointer':'default'; draw(); }
+});
+canvas.addEventListener('mouseleave',()=>{ if(hoveredCard!==-1){hoveredCard=-1;canvas.style.cursor='default';draw();} });
+</script>
+</body>
+</html>

@@ -219,21 +219,21 @@ export function CaseStudyNLP() {
                 <li className="flex items-start">
                   <CheckCircle className="h-6 w-6 text-blue-600 mr-3 mt-0.5 flex-shrink-0" />
                   <span className="text-gray-700">
-                    <strong>Schema-Aware Prompting</strong> is critical—providing LLMs with database structure, 
+                    <strong>Schema-Aware Prompting</strong> is critical, providing LLMs with database structure,
                     relationships, and business context dramatically improves SQL generation accuracy.
                   </span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-6 w-6 text-blue-600 mr-3 mt-0.5 flex-shrink-0" />
                   <span className="text-gray-700">
-                    <strong>Security Cannot Be an Afterthought</strong>—building defense in depth (read-only access, 
+                    <strong>Security Cannot Be an Afterthought.</strong> Building defense in depth (read-only access,
                     query filtering, RLS) from day one is essential for enterprise adoption.
                   </span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-6 w-6 text-blue-600 mr-3 mt-0.5 flex-shrink-0" />
                   <span className="text-gray-700">
-                    <strong>GPU Acceleration Unlocks Real-Time UX</strong>—sub-second response times transform 
+                    <strong>GPU Acceleration Unlocks Real-Time UX.</strong> Sub-second response times transform
                     NLP-to-SQL from a novelty to a practical daily tool for business users.
                   </span>
                 </li>
