@@ -430,7 +430,7 @@ export function SegmentationShowcase() {
   }, []);
 
   return (
-    <section className="py-20 bg-black border-t border-gray-800">
+    <section className="py-20 bg-gray-900 border-t border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <p className="text-yellow-400 text-3xl uppercase tracking-widest md:text-4xl  mb-4 text-center">
                 See AI in Action

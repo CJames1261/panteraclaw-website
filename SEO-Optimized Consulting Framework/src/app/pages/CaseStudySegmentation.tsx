@@ -292,7 +292,7 @@ export function CaseStudySegmentation() {
 
             <div className="bg-black rounded-xl border border-gray-700 overflow-hidden mb-8">
               <div className="bg-gray-800 px-4 py-2 flex items-center justify-between">
-                <span className="text-gray-400 text-xs font-mono">transactions.csv — raw input data</span>
+                <span className="text-gray-400 text-xs font-mono">transactions.csv, raw input data</span>
                 <span className="text-gray-600 text-xs">530K+ records</span>
               </div>
               <div className="overflow-x-auto p-4">
@@ -330,7 +330,7 @@ export function CaseStudySegmentation() {
                 </table>
               </div>
               <p className="text-gray-600 text-xs px-4 py-2 border-t border-gray-800">
-                From this raw log, each customer's behavior was summarized into three numbers — average quantity, average price, and order frequency. Those numbers were all the analysis needed to find the 5 groups.
+                From this raw log, each customer's behavior was summarized into three numbers: average quantity, average price, and order frequency. Those numbers were all the analysis needed to find the 5 groups.
               </p>
             </div>
 

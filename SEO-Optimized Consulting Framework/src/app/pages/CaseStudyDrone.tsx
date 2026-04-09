@@ -208,7 +208,7 @@ export function CaseStudyDrone() {
             <h2 className="text-3xl text-white mb-4">The Sounds Look Different, Even to the Human Eye</h2>
             <p className="text-gray-300 text-lg mb-8">
               Before building anything, the audio from each class was visualized. The result was
-              immediate — the three sound types already look distinct from each other. When humans can
+              immediate. The three sound types already look distinct from each other. When humans can
               see the difference in a signal, a machine can be trained to recognize it.
             </p>
 
@@ -343,7 +343,7 @@ export function CaseStudyDrone() {
                 {
                   icon: <Wrench className="h-5 w-5 text-yellow-400" />,
                   title: "Predictive Maintenance",
-                  desc: "Catch a failing motor or bearing before it breaks down — based on how it sounds, weeks before a visual inspection would catch it.",
+                  desc: "Catch a failing motor or bearing before it breaks down, based on how it sounds, weeks before a visual inspection would catch it.",
                 },
                 {
                   icon: <CheckCircle className="h-5 w-5 text-yellow-400" />,

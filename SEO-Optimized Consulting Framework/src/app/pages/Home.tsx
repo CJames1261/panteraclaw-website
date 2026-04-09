@@ -132,7 +132,7 @@ export function Home() {
         </section>
 
         {/* ── End-to-End Solutions ─────────────────────────────────────────── */}
-        <section className="py-20 bg-black border-t border-gray-800">
+        <section className="py-20 bg-gray-900 border-t border-gray-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <p className="text-yellow-400 text-3xl uppercase tracking-widest md:text-4xl mb-4 text-center">
               End-to-End Solutions
@@ -188,7 +188,7 @@ export function Home() {
         </section>
 
         {/* ── Data That Works For You ──────────────────────────────────────────── */}
-        <section className="py-20 bg-gray-900 border-t border-gray-800">
+        <section className="py-20 bg-black border-t border-gray-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <p className="text-yellow-400 text-3xl uppercase tracking-widest md:text-4xl mb-4 text-center">
               Data That Works For You
@@ -425,7 +425,7 @@ export function Home() {
 
         
         {/* CTA */}
-        <section className="py-20 bg-gray-900 border-t border-yellow-400/20">
+        <section className="py-20 bg-black border-t border-yellow-400/20">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl md:text-4xl mb-4 text-white">
               Ready to Get Started?
