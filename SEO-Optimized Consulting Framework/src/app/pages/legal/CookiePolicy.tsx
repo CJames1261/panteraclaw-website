@@ -1,8 +1,14 @@
 import { LegalLayout } from "../../components/LegalLayout";
+import { Helmet } from "react-helmet-async";
 
 export function CookiePolicy() {
   return (
-    <LegalLayout title="Cookie Policy" lastUpdated="April 9, 2026">
+    <>
+      <Helmet>
+        <title>Cookie Policy | Pantera Claw</title>
+        <meta name="description" content="Learn how Pantera Claw uses cookies and similar tracking technologies on our website." />
+      </Helmet>
+      <LegalLayout title="Cookie Policy" lastUpdated="April 9, 2026">
       <h2>1. What Are Cookies?</h2>
       <p>
         Cookies are small text files placed on your device when you visit a website. They allow the site to recognize
@@ -77,5 +83,6 @@ export function CookiePolicy() {
         Questions about our use of cookies: <strong>info@panteraclaw.com</strong>
       </p>
     </LegalLayout>
+    </>
   );
 }

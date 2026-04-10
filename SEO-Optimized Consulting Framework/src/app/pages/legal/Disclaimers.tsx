@@ -1,8 +1,14 @@
 import { LegalLayout } from "../../components/LegalLayout";
+import { Helmet } from "react-helmet-async";
 
 export function Disclaimers() {
   return (
-    <LegalLayout title="Disclaimers" lastUpdated="April 9, 2026">
+    <>
+      <Helmet>
+        <title>Disclaimers | Pantera Claw</title>
+        <meta name="description" content="Important disclaimers regarding Pantera Claw's website content, data visualizations, AI outputs, and professional services." />
+      </Helmet>
+      <LegalLayout title="Disclaimers" lastUpdated="April 9, 2026">
       <h2>1. General Website Disclaimer</h2>
       <p>
         The information provided on this website is for general informational and marketing purposes only. Nothing
@@ -124,5 +130,6 @@ export function Disclaimers() {
         <strong>Email:</strong> info@panteraclaw.com
       </p>
     </LegalLayout>
+    </>
   );
 }

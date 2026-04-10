@@ -40,6 +40,7 @@ import {
   X,
 } from "lucide-react";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 import logo from "../../imports/Pantera_Claw.webp";
 import segImg1 from "../../imports/image.png";
@@ -399,6 +400,10 @@ function ServiceModule({
 export function Services() {
   return (
     <div className="min-h-screen flex flex-col bg-black">
+      <Helmet>
+        <title>AI & Data Consulting Services | Pantera Claw</title>
+        <meta name="description" content="Explore Pantera Claw's full range of services: custom analytics dashboards, database management, agentic AI workflows, ETL pipelines, LLM integration, and advanced analytics. Built for businesses ready to grow with their data." />
+      </Helmet>
       <Header />
 
       <main className="flex-1">

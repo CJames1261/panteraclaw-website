@@ -1,8 +1,14 @@
 import { LegalLayout } from "../../components/LegalLayout";
+import { Helmet } from "react-helmet-async";
 
 export function PrivacyPolicy() {
   return (
-    <LegalLayout title="Privacy Policy" lastUpdated="April 9, 2026">
+    <>
+      <Helmet>
+        <title>Privacy Policy | Pantera Claw</title>
+        <meta name="description" content="Pantera Claw's Privacy Policy. Learn how we collect, use, and protect your personal data in compliance with CCPA, GDPR, and applicable privacy laws." />
+      </Helmet>
+      <LegalLayout title="Privacy Policy" lastUpdated="April 9, 2026">
       <h2>1. Overview</h2>
       <p>
         PanteraClaw is committed to protecting the privacy of individuals who interact with our website and services.
@@ -117,5 +123,6 @@ export function PrivacyPolicy() {
         Salt Lake City, Utah
       </p>
     </LegalLayout>
+    </>
   );
 }

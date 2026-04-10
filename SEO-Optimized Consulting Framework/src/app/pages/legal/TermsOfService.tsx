@@ -1,8 +1,14 @@
 import { LegalLayout } from "../../components/LegalLayout";
+import { Helmet } from "react-helmet-async";
 
 export function TermsOfService() {
   return (
-    <LegalLayout title="Terms of Service" lastUpdated="April 9, 2026">
+    <>
+      <Helmet>
+        <title>Terms of Service | Pantera Claw</title>
+        <meta name="description" content="Pantera Claw's Terms of Service governing use of our website and consulting services." />
+      </Helmet>
+      <LegalLayout title="Terms of Service" lastUpdated="April 9, 2026">
       <h2>1. Acceptance of Terms</h2>
       <p>
         By accessing this website or engaging PanteraClaw for services, you agree to be bound by these Terms. If you
@@ -101,5 +107,6 @@ export function TermsOfService() {
         Salt Lake City, Utah
       </p>
     </LegalLayout>
+    </>
   );
 }

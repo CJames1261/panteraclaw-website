@@ -8,7 +8,8 @@
       "Bash(/c/Users/trivi/anaconda3/python:*)",
       "mcp__Claude_Preview__preview_start",
       "WebFetch(domain:www.lawinsider.com)",
-      "Read(//mnt/c/Users/trivi/Documents/Github_Projects/**)"
+      "Read(//mnt/c/Users/trivi/Documents/Github_Projects/**)",
+      "Bash(npm install:*)"
     ]
   }
 }

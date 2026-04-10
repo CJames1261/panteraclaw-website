@@ -2,10 +2,15 @@ import { Link } from "react-router";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { ArrowLeft, CheckCircle, Shield, Zap } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 
 export function CaseStudyNLP() {
   return (
     <div className="min-h-screen flex flex-col bg-white">
+      <Helmet>
+        <title>NLP to SQL Pipeline Case Study | Pantera Claw</title>
+        <meta name="description" content="How Pantera Claw built a natural language to SQL pipeline that lets business users query databases in plain English — no SQL knowledge required. A deep dive into our NLP and LLM integration work." />
+      </Helmet>
       <Header />
 
       <main className="flex-1">

@@ -1,8 +1,14 @@
 import { LegalLayout } from "../../components/LegalLayout";
+import { Helmet } from "react-helmet-async";
 
 export function AccessibilityStatement() {
   return (
-    <LegalLayout title="Accessibility Statement" lastUpdated="April 9, 2026">
+    <>
+      <Helmet>
+        <title>Accessibility Statement | Pantera Claw</title>
+        <meta name="description" content="Pantera Claw's commitment to web accessibility and WCAG 2.1 AA compliance." />
+      </Helmet>
+      <LegalLayout title="Accessibility Statement" lastUpdated="April 9, 2026">
       <h2>Our Commitment</h2>
       <p>
         PanteraClaw is committed to ensuring our website is accessible to all users, including people with
@@ -87,5 +93,6 @@ export function AccessibilityStatement() {
         <li><strong>United Kingdom:</strong> Equality and Human Rights Commission — equalityhumanrights.com</li>
       </ul>
     </LegalLayout>
+    </>
   );
 }

@@ -1,8 +1,14 @@
 import { LegalLayout } from "../../components/LegalLayout";
+import { Helmet } from "react-helmet-async";
 
 export function SecurityStatement() {
   return (
-    <LegalLayout title="Security Statement" lastUpdated="April 9, 2026">
+    <>
+      <Helmet>
+        <title>Security Statement | Pantera Claw</title>
+        <meta name="description" content="Pantera Claw's security practices and measures for protecting client data and systems." />
+      </Helmet>
+      <LegalLayout title="Security Statement" lastUpdated="April 9, 2026">
       <h2>Overview</h2>
       <p>
         PanteraClaw takes the security of client data and our systems seriously. As a data engineering and AI
@@ -97,5 +103,6 @@ export function SecurityStatement() {
         within 5 business days and work to address confirmed vulnerabilities promptly.
       </p>
     </LegalLayout>
+    </>
   );
 }

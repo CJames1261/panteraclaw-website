@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { Shield, FileText, Cookie, Bot, Lock, Accessibility, AlertTriangle, Scale } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 
 const legalDocs = [
   {
@@ -57,6 +58,10 @@ const legalDocs = [
 export function Legal() {
   return (
     <div className="min-h-screen bg-black text-white flex flex-col">
+      <Helmet>
+        <title>Legal Center | Pantera Claw</title>
+        <meta name="description" content="Access Pantera Claw's legal documents including Privacy Policy, Terms of Service, Disclaimers, Cookie Policy, AI Use Policy, and Accessibility Statement." />
+      </Helmet>
       <Header />
 
       <main className="flex-1">

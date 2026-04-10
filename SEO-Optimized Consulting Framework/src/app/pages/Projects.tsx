@@ -6,6 +6,7 @@ import {
   Globe, Database, LayoutDashboard, Bot, TrendingUp, CheckCircle,
 } from "lucide-react";
 import logo from "../../imports/Pantera_Claw.webp";
+import { Helmet } from "react-helmet-async";
 
 const highlights = [
   "Identify hidden customer groups and who to target",
@@ -67,6 +68,10 @@ const services = [
 export function Projects() {
   return (
     <div className="min-h-screen flex flex-col bg-black">
+      <Helmet>
+        <title>Projects & Case Studies | Pantera Claw</title>
+        <meta name="description" content="See real examples of Pantera Claw's work: customer segmentation models, NLP-to-SQL pipelines, drone image classification, and more. Explore how we turn data into business results." />
+      </Helmet>
       <Header />
 
       <main className="flex-1">

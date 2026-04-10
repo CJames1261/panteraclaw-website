@@ -1,8 +1,14 @@
 import { LegalLayout } from "../../components/LegalLayout";
+import { Helmet } from "react-helmet-async";
 
 export function AiUsePolicy() {
   return (
-    <LegalLayout title="AI Use Policy" lastUpdated="April 9, 2026">
+    <>
+      <Helmet>
+        <title>AI Use Policy | Pantera Claw</title>
+        <meta name="description" content="Pantera Claw's policy governing the use of artificial intelligence tools in our consulting services and deliverables." />
+      </Helmet>
+      <LegalLayout title="AI Use Policy" lastUpdated="April 9, 2026">
       <h2>1. Purpose</h2>
       <p>
         This Policy governs how PanteraClaw uses artificial intelligence in its services, how clients may use
@@ -100,5 +106,6 @@ export function AiUsePolicy() {
         Questions about this Policy: <strong>info@panteraclaw.com</strong>
       </p>
     </LegalLayout>
+    </>
   );
 }

@@ -2,10 +2,15 @@ import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { Zap, Target, Shield, Cpu, Globe, Database, Bot, Smartphone } from "lucide-react";
 import logo from "../../imports/Pantera_Claw.webp";
+import { Helmet } from "react-helmet-async";
 
 export function About() {
   return (
     <div className="min-h-screen flex flex-col bg-black">
+      <Helmet>
+        <title>About Pantera Claw | AI & Data Consulting Team</title>
+        <meta name="description" content="Meet the team behind Pantera Claw. We are AI and data engineers based in Salt Lake City, Utah, helping businesses of all sizes add analytics, automation, and AI capabilities to their operations." />
+      </Helmet>
       <Header />
 
       <main className="flex-1">

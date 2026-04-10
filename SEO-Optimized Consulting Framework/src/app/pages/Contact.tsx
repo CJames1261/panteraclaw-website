@@ -3,6 +3,7 @@ import { Footer } from "../components/Footer";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import logo from "../../imports/Pantera_Claw.webp";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -28,6 +29,10 @@ export function Contact() {
 
   return (
     <div className="min-h-screen flex flex-col bg-black">
+      <Helmet>
+        <title>Contact Pantera Claw | Free Data & AI Consultation</title>
+        <meta name="description" content="Ready to make smarter decisions with your data? Contact Pantera Claw for a free consultation. We help businesses add analytics, dashboards, and AI to their operations. Based in Salt Lake City, serving clients nationwide." />
+      </Helmet>
       <Header />
 
       <main className="flex-1">

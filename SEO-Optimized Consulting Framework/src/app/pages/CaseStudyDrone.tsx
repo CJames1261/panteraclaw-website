@@ -8,6 +8,7 @@ import stftImg from "../../imports/drone_stft.png";
 import mfcImg from "../../imports/drone_mfc.png";
 import melImg from "../../imports/drone_mel.png";
 import chromaImg from "../../imports/drone_chroma.png";
+import { Helmet } from "react-helmet-async";
 
 const allModels = [
   { model: "Custom Neural Network",           accuracy: 99.02, winner: true  },
@@ -25,6 +26,10 @@ const allModels = [
 export function CaseStudyDrone() {
   return (
     <div className="min-h-screen flex flex-col bg-black">
+      <Helmet>
+        <title>Drone Image Classification Case Study | Pantera Claw</title>
+        <meta name="description" content="How Pantera Claw built a drone image classification system using computer vision and machine learning, automating what previously required hours of manual review." />
+      </Helmet>
       <Header />
 
       <main className="flex-1">

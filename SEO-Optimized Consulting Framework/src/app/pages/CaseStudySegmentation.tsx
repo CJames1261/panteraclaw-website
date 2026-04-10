@@ -4,6 +4,7 @@ import { Footer } from "../components/Footer";
 import { ArrowLeft, ArrowRight, CheckCircle, Users, Info, TrendingUp, ShoppingCart, Tag, Star, DollarSign, Target } from "lucide-react";
 import logo from "../../imports/Pantera_Claw.webp";
 import clustersImg from "../../imports/segmentation_clusters.png";
+import { Helmet } from "react-helmet-async";
 
 const segments = [
   {
@@ -71,6 +72,10 @@ const segments = [
 export function CaseStudySegmentation() {
   return (
     <div className="min-h-screen flex flex-col bg-black">
+      <Helmet>
+        <title>Customer Segmentation AI Case Study | Pantera Claw</title>
+        <meta name="description" content="How Pantera Claw used machine learning to segment customers into distinct groups, enabling targeted marketing campaigns that increased retention and revenue. A real-world AI analytics case study." />
+      </Helmet>
       <Header />
 
       <main className="flex-1">
