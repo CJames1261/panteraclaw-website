@@ -99,7 +99,7 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 mt-10 pt-6 text-xs text-center">
-          <p className="text-gray-500">&copy; {new Date().getFullYear()} Agentic AI LLC. All rights reserved.</p>
+          <p className="text-gray-400">&copy; {new Date().getFullYear()} Agentic AI LLC. All rights reserved.</p>
         </div>
       </div>
 

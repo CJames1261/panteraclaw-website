@@ -284,20 +284,20 @@ export function Home() {
                     <span className="w-3 h-3 rounded-full bg-red-500" />
                     <span className="w-3 h-3 rounded-full bg-yellow-400" />
                     <span className="w-3 h-3 rounded-full bg-green-400" />
-                    <span className="ml-2 text-gray-500 text-xs">agent_workflow.py</span>
+                    <span className="ml-2 text-gray-400 text-xs">agent_workflow.py</span>
                   </div>
                   <div className="space-y-3">
                     <div className="flex gap-3">
-                      <span className="text-gray-500">User</span>
+                      <span className="text-gray-400">User</span>
                       <span className="text-gray-300">"Summarize last week's support tickets and flag urgent issues."</span>
                     </div>
                     <div className="border-l-2 border-purple-500 pl-3 space-y-1.5">
                       <p className="text-purple-400">🤖 Agent — planning steps...</p>
-                      <p className="text-gray-500 text-xs">→ tool_call: fetch_tickets(days=7)</p>
+                      <p className="text-gray-400 text-xs">→ tool_call: fetch_tickets(days=7)</p>
                       <p className="text-green-400 text-xs">✓ Retrieved 312 tickets</p>
-                      <p className="text-gray-500 text-xs">→ tool_call: classify_urgency(tickets)</p>
+                      <p className="text-gray-400 text-xs">→ tool_call: classify_urgency(tickets)</p>
                       <p className="text-green-400 text-xs">✓ 14 flagged as urgent</p>
-                      <p className="text-gray-500 text-xs">→ tool_call: generate_summary()</p>
+                      <p className="text-gray-400 text-xs">→ tool_call: generate_summary()</p>
                       <p className="text-green-400 text-xs">✓ Summary ready</p>
                     </div>
                     <div className="bg-purple-900/30 border border-purple-700/50 rounded p-3">
@@ -366,13 +366,13 @@ export function Home() {
                       { label: "F1 Score",  value: "98.1%", color: "text-yellow-400" },
                     ].map(m => (
                       <div key={m.label} className="bg-gray-800/60 rounded-lg p-3 border border-gray-700">
-                        <p className="text-gray-500 text-xs mb-1">{m.label}</p>
+                        <p className="text-gray-400 text-xs mb-1">{m.label}</p>
                         <p className={`text-xl font-bold ${m.color}`}>{m.value}</p>
                       </div>
                     ))}
                   </div>
                   <div className="bg-gray-800/40 rounded-lg p-3 border border-gray-700">
-                    <p className="text-gray-500 text-xs mb-2">Top Predictive Features</p>
+                    <p className="text-gray-400 text-xs mb-2">Top Predictive Features</p>
                     {[
                       { label: "Days since last purchase", pct: 88 },
                       { label: "Support ticket frequency",  pct: 74 },
