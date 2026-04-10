@@ -40,6 +40,7 @@ export function Footer() {
               <li><Link to="/" className="text-gray-400 hover:text-yellow-400 transition-colors text-sm">Home</Link></li>
               <li><Link to="/services" className="text-gray-400 hover:text-yellow-400 transition-colors text-sm">Services</Link></li>
               <li><Link to="/projects" className="text-gray-400 hover:text-yellow-400 transition-colors text-sm">Solutions Lab</Link></li>
+              <li><Link to="/blog" className="text-gray-400 hover:text-yellow-400 transition-colors text-sm">Blog</Link></li>
               <li><Link to="/about" className="text-gray-400 hover:text-yellow-400 transition-colors text-sm">About</Link></li>
               <li><Link to="/contact" className="text-gray-400 hover:text-yellow-400 transition-colors text-sm">Contact</Link></li>
             </ul>

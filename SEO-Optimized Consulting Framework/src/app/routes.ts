@@ -12,6 +12,8 @@ const CaseStudySegmentation = lazy(() => import("./pages/CaseStudySegmentation")
 const About               = lazy(() => import("./pages/About").then(m => ({ default: m.About })));
 const Contact             = lazy(() => import("./pages/Contact").then(m => ({ default: m.Contact })));
 const NotFound            = lazy(() => import("./pages/NotFound").then(m => ({ default: m.NotFound })));
+const Blog                = lazy(() => import("./pages/Blog").then(m => ({ default: m.Blog })));
+const BlogPostPage        = lazy(() => import("./pages/blog/BlogPostPage").then(m => ({ default: m.BlogPostPage })));
 const Legal               = lazy(() => import("./pages/Legal").then(m => ({ default: m.Legal })));
 const PrivacyPolicy       = lazy(() => import("./pages/legal/PrivacyPolicy").then(m => ({ default: m.PrivacyPolicy })));
 const TermsOfService      = lazy(() => import("./pages/legal/TermsOfService").then(m => ({ default: m.TermsOfService })));
@@ -30,6 +32,8 @@ export const router = createBrowserRouter([
   { path: "/case-study/customer-segmentation", Component: CaseStudySegmentation },
   { path: "/about",                          Component: About },
   { path: "/contact",                        Component: Contact },
+  { path: "/blog",                            Component: Blog },
+  { path: "/blog/:slug",                     Component: BlogPostPage },
   { path: "/legal",                          Component: Legal },
   { path: "/legal/privacy",                  Component: PrivacyPolicy },
   { path: "/legal/terms",                    Component: TermsOfService },

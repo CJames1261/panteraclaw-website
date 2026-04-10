@@ -19,6 +19,9 @@ export function Header() {
           <Link to="/projects" className="text-gray-300 hover:text-yellow-400 transition-colors text-base tracking-wide uppercase">
             Solutions Lab
           </Link>
+          <Link to="/blog" className="text-gray-300 hover:text-yellow-400 transition-colors text-base tracking-wide uppercase">
+            Blog
+          </Link>
           <Link to="/about" className="text-gray-300 hover:text-yellow-400 transition-colors text-base tracking-wide uppercase">
             About
           </Link>
@@ -63,6 +66,13 @@ export function Header() {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Solutions Lab
+              </Link>
+              <Link
+                to="/blog"
+                className="text-gray-300 hover:text-yellow-400 transition-colors text-base tracking-wide uppercase"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Blog
               </Link>
               <Link
                 to="/about"
