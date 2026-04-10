@@ -175,7 +175,7 @@ export function Home() {
             {/* Full-width visualization */}
             <div className="flex flex-col items-center gap-2 w-full">
               <p className="text-white text-sm font-semibold">Data Pipeline Visualization</p>
-              <div style={{ width: "100%", aspectRatio: "1100 / 580", borderRadius: 12, border: "1px solid #374151", background: "#0b1221", overflow: "hidden" }}>
+              <div style={{ width: "100%", aspectRatio: "1100 / 580", borderRadius: 12, border: "1px solid #374151", background: "#0b1221", overflow: "hidden", position: "relative", zIndex: 2 }}>
                 <iframe
                   src="/database-preview.html"
                   scrolling="no"
@@ -240,14 +240,14 @@ export function Home() {
                       { label: "Conversion", value: "4.2%", change: "+1.1%", color: "text-yellow-400" },
                     ].map(kpi => (
                       <div key={kpi.label} className="bg-gray-800/60 rounded-lg p-3 border border-gray-700">
-                        <p className="text-gray-500 text-xs mb-1">{kpi.label}</p>
+                        <p className="text-gray-200 text-xs mb-1">{kpi.label}</p>
                         <p className={`text-lg font-bold ${kpi.color}`}>{kpi.value}</p>
                         <p className="text-green-400 text-xs">{kpi.change} vs last month</p>
                       </div>
                     ))}
                   </div>
                   <div className="bg-gray-800/40 rounded-lg p-3 border border-gray-700">
-                    <p className="text-gray-500 text-xs mb-2">Weekly Revenue Trend</p>
+                    <p className="text-gray-200 text-xs mb-2">Weekly Revenue Trend</p>
                     <div className="flex items-end gap-1.5 h-16">
                       {[40, 55, 48, 70, 62, 85, 78].map((h, i) => (
                         <div key={i} className="flex-1 bg-teal-400/80 rounded-t" style={{ height: `${h}%` }} />
@@ -255,7 +255,7 @@ export function Home() {
                     </div>
                     <div className="flex justify-between mt-1">
                       {["Mon","Tue","Wed","Thu","Fri","Sat","Sun"].map(d => (
-                        <span key={d} className="text-gray-600 text-xs">{d}</span>
+                        <span key={d} className="text-gray-300 text-xs">{d}</span>
                       ))}
                     </div>
                   </div>

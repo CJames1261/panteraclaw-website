@@ -84,18 +84,18 @@ export function Legal() {
             {/* Disclaimers — featured full-width card */}
             <Link
               to="/legal/disclaimers"
-              className="group flex items-center justify-between gap-6 w-full bg-orange-400/5 border border-orange-400/40 rounded-xl p-6 hover:bg-orange-400/10 hover:border-orange-400/70 transition-all"
+              className="group flex items-center justify-between gap-6 w-full bg-orange-300/5 border border-orange-300/40 rounded-xl p-6 hover:bg-orange-300/10 hover:border-orange-300/70 transition-all"
             >
               <div className="flex items-center gap-5">
-                <div className="p-3 bg-orange-400/10 rounded-lg group-hover:bg-orange-400/20 transition-colors shrink-0">
-                  <AlertTriangle className="h-6 w-6 text-orange-400" />
+                <div className="p-3 bg-orange-300/10 rounded-lg group-hover:bg-orange-300/20 transition-colors shrink-0">
+                  <AlertTriangle className="h-6 w-6 text-orange-300" />
                 </div>
                 <div>
                   <div className="flex items-center gap-3 mb-1">
-                    <h2 className="text-white font-semibold text-lg group-hover:text-orange-400 transition-colors">
+                    <h2 className="text-white font-semibold text-lg group-hover:text-orange-300 transition-colors">
                       Disclaimers
                     </h2>
-                    <span className="text-xs font-medium px-2 py-0.5 rounded-full text-orange-400 bg-orange-400/10">
+                    <span className="text-xs font-medium px-2 py-0.5 rounded-full text-orange-300 bg-orange-300/10">
                       Read First
                     </span>
                   </div>
@@ -105,7 +105,7 @@ export function Legal() {
                   </p>
                 </div>
               </div>
-              <span className="text-orange-400 text-sm font-medium whitespace-nowrap shrink-0 hidden sm:block">
+              <span className="text-orange-300 text-sm font-medium whitespace-nowrap shrink-0 hidden sm:block">
                 View →
               </span>
             </Link>

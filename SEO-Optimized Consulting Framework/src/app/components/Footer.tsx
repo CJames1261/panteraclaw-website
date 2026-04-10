@@ -82,7 +82,7 @@ export function Footer() {
             <ul className="space-y-2">
               <li><Link to="/legal" className="text-gray-400 hover:text-yellow-400 transition-colors text-sm">Legal Center</Link></li>
               <li>
-                <Link to="/legal/disclaimers" className="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium border border-orange-400/40 hover:border-orange-400/70 px-2 py-0.5 rounded inline-block">
+                <Link to="/legal/disclaimers" className="text-orange-300 hover:text-orange-200 transition-colors text-sm font-medium border border-orange-300/60 hover:border-orange-300/90 px-2 py-0.5 rounded inline-block">
                   Disclaimers
                 </Link>
               </li>

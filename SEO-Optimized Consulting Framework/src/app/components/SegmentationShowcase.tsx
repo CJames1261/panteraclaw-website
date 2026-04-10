@@ -120,6 +120,7 @@ export function SegmentationShowcase() {
   const [status, setStatus]         = useState("Scanning customer data...");
   const [showReplay, setShowReplay] = useState(false);
 
+
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -204,22 +205,22 @@ export function SegmentationShowcase() {
       ctx.fillText(seg.name, bx+padX, by+20*S);
       ctx.font = `bold ${10*S}px 'Segoe UI', sans-serif`; ctx.fillStyle = seg.color;
       ctx.fillText(seg.pct+" of customers", bx+padX, by+35*S);
-      ctx.font = `${9.5*S}px 'Segoe UI', sans-serif`; ctx.fillStyle = "#94a3b8";
+      ctx.font = `${9.5*S}px 'Segoe UI', sans-serif`; ctx.fillStyle = "#f1f5f9";
       ctx.fillText(seg.desc, bx+padX, by+50*S);
-      ctx.strokeStyle = "#ffffff12"; ctx.lineWidth = 1;
+      ctx.strokeStyle = "#ffffff20"; ctx.lineWidth = 1;
       ctx.beginPath(); ctx.moveTo(bx+padX,by+60*S); ctx.lineTo(bx+bw-padX,by+60*S); ctx.stroke();
-      ctx.font = `bold ${9*S}px 'Segoe UI', sans-serif`; ctx.fillStyle = "#475569";
+      ctx.font = `bold ${9*S}px 'Segoe UI', sans-serif`; ctx.fillStyle = "#ffffff";
       ctx.fillText("CUSTOMER",  bx+padX,          by+74*S);
       ctx.fillText("AVG SPEND", bx+padX+120*S,    by+74*S);
       ctx.fillText("ORDERS",    bx+padX+192*S,    by+74*S);
       seg.customers.forEach((c, i) => {
         const ry = by + 74*S + 6*S + (i+1)*rowH;
-        if (i%2===0) { ctx.fillStyle="#ffffff05"; rrect(ctx,bx+padX-4*S,ry-12*S,bw-padX*2+8*S,rowH-2*S,3*S); ctx.fill(); }
-        ctx.font = `${10*S}px 'Segoe UI', sans-serif`; ctx.fillStyle = "#e2e8f0";
+        if (i%2===0) { ctx.fillStyle="#ffffff08"; rrect(ctx,bx+padX-4*S,ry-12*S,bw-padX*2+8*S,rowH-2*S,3*S); ctx.fill(); }
+        ctx.font = `${10*S}px 'Segoe UI', sans-serif`; ctx.fillStyle = "#ffffff";
         ctx.fillText(c.name, bx+padX, ry);
         ctx.font = `bold ${10*S}px 'Segoe UI', sans-serif`; ctx.fillStyle = seg.color;
         ctx.fillText(c.spend, bx+padX+120*S, ry);
-        ctx.font = `${10*S}px 'Segoe UI', sans-serif`; ctx.fillStyle = "#94a3b8";
+        ctx.font = `${10*S}px 'Segoe UI', sans-serif`; ctx.fillStyle = "#ffffff";
         ctx.fillText(c.orders, bx+padX+192*S, ry);
       });
       ctx.restore();

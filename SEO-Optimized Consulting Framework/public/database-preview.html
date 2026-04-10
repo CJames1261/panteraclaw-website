@@ -190,8 +190,8 @@ function drawCard(stage, i) {
   const cx=CARD_CX[i],x=CARD_X[i],y=CARD_Y,c=stage.color;
   const hov=i===hoveredCard;
   ctx.save();
-  ctx.shadowColor=c+(hov?'55':'1a'); ctx.shadowBlur=hov?50:30;
-  ctx.fillStyle=hov?'#111d35':'#0b1221'; rr(x,y,CARD_W,CARD_H,14); ctx.fill();
+  ctx.shadowColor=c+(hov?'ff':'cc'); ctx.shadowBlur=hov?90:65;
+  ctx.fillStyle=hov?'#1a2a50':'#111d35'; rr(x,y,CARD_W,CARD_H,14); ctx.fill();
   ctx.shadowBlur=0;
   ctx.save();
   ctx.beginPath();
@@ -199,10 +199,10 @@ function drawCard(stage, i) {
   ctx.arcTo(x+CARD_W,y,x+CARD_W,y+14,14); ctx.lineTo(x+CARD_W,y+TOP_H);
   ctx.lineTo(x,y+TOP_H); ctx.lineTo(x,y+14); ctx.arcTo(x,y,x+14,y,14); ctx.closePath(); ctx.clip();
   const tg=ctx.createLinearGradient(x,y,x,y+TOP_H);
-  tg.addColorStop(0,c+(hov?'44':'28')); tg.addColorStop(1,'transparent');
+  tg.addColorStop(0,c+(hov?'99':'77')); tg.addColorStop(1,'transparent');
   ctx.fillStyle=tg; ctx.fillRect(x,y,CARD_W,TOP_H);
   ctx.restore();
-  ctx.strokeStyle=c+(hov?'99':'33'); ctx.lineWidth=hov?1.5:1; rr(x,y,CARD_W,CARD_H,14); ctx.stroke();
+  ctx.strokeStyle=c+'cc'; ctx.lineWidth=2; rr(x,y,CARD_W,CARD_H,14); ctx.stroke();
   const ag=ctx.createLinearGradient(x,y,x+CARD_W,y);
   ag.addColorStop(0,'transparent'); ag.addColorStop(0.15,c+'dd'); ag.addColorStop(0.85,c+'dd'); ag.addColorStop(1,'transparent');
   ctx.strokeStyle=ag; ctx.lineWidth=2;
@@ -216,12 +216,12 @@ function drawCard(stage, i) {
   ctx.beginPath(); ctx.moveTo(x+16,y+TOP_H); ctx.lineTo(x+CARD_W-16,y+TOP_H); ctx.stroke();
   ctx.font='bold 17px system-ui'; ctx.fillStyle='#ffffff'; ctx.textAlign='center';
   ctx.fillText(stage.title,cx,y+TOP_H+26);
-  ctx.font='12px system-ui'; ctx.fillStyle=c+'cc';
-  ctx.fillText(stage.subtitle,cx,y+TOP_H+44);
+  ctx.font='600 15px system-ui'; ctx.fillStyle=c+'ff';
+  ctx.fillText(stage.subtitle,cx,y+TOP_H+46);
   ctx.strokeStyle='#1e293b'; ctx.lineWidth=1;
-  ctx.beginPath(); ctx.moveTo(x+22,y+TOP_H+54); ctx.lineTo(x+CARD_W-22,y+TOP_H+54); ctx.stroke();
-  ctx.font='10px system-ui'; ctx.fillStyle='#e2e8f0';
-  stage.lines.forEach((l,li)=>ctx.fillText(l,cx,y+TOP_H+70+li*16));
+  ctx.beginPath(); ctx.moveTo(x+22,y+TOP_H+56); ctx.lineTo(x+CARD_W-22,y+TOP_H+56); ctx.stroke();
+  ctx.font='13px system-ui'; ctx.fillStyle='#ffffff';
+  stage.lines.forEach((l,li)=>ctx.fillText(l,cx,y+TOP_H+73+li*18));
   ctx.restore();
 }
 
@@ -231,8 +231,8 @@ function drawRightCard(stage, cardIdx, cardY, iconY) {
   const cw=CARD_W,ch=CARD_H_R,th=TOP_H_R;
   const hov=cardIdx===hoveredCard;
   ctx.save();
-  ctx.shadowColor=c+(hov?'88':'44'); ctx.shadowBlur=hov?40:20;
-  ctx.fillStyle=hov?'#1a2744':'#0f1e36'; rr(x,y,cw,ch,14); ctx.fill();
+  ctx.shadowColor=c+(hov?'ff':'cc'); ctx.shadowBlur=hov?70:50;
+  ctx.fillStyle=hov?'#1e2e55':'#1a2744'; rr(x,y,cw,ch,14); ctx.fill();
   ctx.shadowBlur=0;
   ctx.save();
   ctx.beginPath();
@@ -240,10 +240,10 @@ function drawRightCard(stage, cardIdx, cardY, iconY) {
   ctx.arcTo(x+cw,y,x+cw,y+14,14); ctx.lineTo(x+cw,y+th);
   ctx.lineTo(x,y+th); ctx.lineTo(x,y+14); ctx.arcTo(x,y,x+14,y,14); ctx.closePath(); ctx.clip();
   const tg=ctx.createLinearGradient(x,y,x,y+th);
-  tg.addColorStop(0,c+(hov?'66':'44')); tg.addColorStop(1,'transparent');
+  tg.addColorStop(0,c+(hov?'99':'77')); tg.addColorStop(1,'transparent');
   ctx.fillStyle=tg; ctx.fillRect(x,y,cw,th);
   ctx.restore();
-  ctx.strokeStyle=c+(hov?'99':'33'); ctx.lineWidth=hov?1.5:1; rr(x,y,cw,ch,14); ctx.stroke();
+  ctx.strokeStyle=c+'cc'; ctx.lineWidth=2; rr(x,y,cw,ch,14); ctx.stroke();
   const ag=ctx.createLinearGradient(x,y,x+cw,y);
   ag.addColorStop(0,'transparent'); ag.addColorStop(0.15,c+'dd'); ag.addColorStop(0.85,c+'dd'); ag.addColorStop(1,'transparent');
   ctx.strokeStyle=ag; ctx.lineWidth=2;
@@ -258,12 +258,12 @@ function drawRightCard(stage, cardIdx, cardY, iconY) {
   ctx.beginPath(); ctx.moveTo(x+16,y+th); ctx.lineTo(x+cw-16,y+th); ctx.stroke();
   ctx.font='bold 14px system-ui'; ctx.fillStyle='#ffffff'; ctx.textAlign='center';
   ctx.fillText(stage.title,cx,y+th+20);
-  ctx.font='11px system-ui'; ctx.fillStyle=c+'cc';
-  ctx.fillText(stage.subtitle,cx,y+th+35);
+  ctx.font='600 13px system-ui'; ctx.fillStyle=c+'ff';
+  ctx.fillText(stage.subtitle,cx,y+th+36);
   ctx.strokeStyle='#1e293b'; ctx.lineWidth=1;
-  ctx.beginPath(); ctx.moveTo(x+22,y+th+44); ctx.lineTo(x+cw-22,y+th+44); ctx.stroke();
-  ctx.font='10px system-ui'; ctx.fillStyle='#e2e8f0';
-  stage.lines.forEach((l,li)=>ctx.fillText(l,cx,y+th+58+li*15));
+  ctx.beginPath(); ctx.moveTo(x+22,y+th+46); ctx.lineTo(x+cw-22,y+th+46); ctx.stroke();
+  ctx.font='12px system-ui'; ctx.fillStyle='#ffffff';
+  stage.lines.forEach((l,li)=>ctx.fillText(l,cx,y+th+61+li*16));
   ctx.restore();
 }
 

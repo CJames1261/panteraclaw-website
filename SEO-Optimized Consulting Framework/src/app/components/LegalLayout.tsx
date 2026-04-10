@@ -32,11 +32,11 @@ export function LegalLayout({ title, lastUpdated, children }: LegalLayoutProps) 
 
         <div className="
           text-gray-300 leading-relaxed max-w-none
-          [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-white [&_h2]:mt-14 [&_h2]:mb-5 [&_h2]:border-b [&_h2]:border-gray-800 [&_h2]:pb-3
-          [&_h3]:text-base [&_h3]:font-semibold [&_h3]:text-yellow-400 [&_h3]:mt-10 [&_h3]:mb-4
-          [&_p]:text-gray-300 [&_p]:leading-loose [&_p]:my-5
-          [&_ul]:my-6 [&_ul]:space-y-2 [&_ul]:list-disc [&_ul]:pl-6
-          [&_ol]:my-6 [&_ol]:space-y-2 [&_ol]:list-decimal [&_ol]:pl-6
+          [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-white [&_h2]:mt-10 [&_h2]:mb-4 [&_h2]:border-b [&_h2]:border-gray-800 [&_h2]:pb-2
+          [&_h3]:text-base [&_h3]:font-semibold [&_h3]:text-yellow-400 [&_h3]:mt-7 [&_h3]:mb-3
+          [&_p]:text-gray-300 [&_p]:leading-relaxed [&_p]:my-3
+          [&_ul]:my-4 [&_ul]:space-y-1.5 [&_ul]:list-disc [&_ul]:pl-6
+          [&_ol]:my-4 [&_ol]:space-y-1.5 [&_ol]:list-decimal [&_ol]:pl-6
           [&_li]:text-gray-300 [&_li]:leading-relaxed
           [&_strong]:text-white [&_strong]:font-semibold
           [&_a]:text-yellow-400 [&_a]:no-underline hover:[&_a]:underline
