@@ -1,0 +1,41 @@
+name: Weekly Blog Post
+
+on:
+  schedule:
+    # Every Monday at 8:00 AM Mountain Time (UTC-6 = 14:00 UTC)
+    - cron: '0 14 * * 1'
+  workflow_dispatch:
+    # Allows manual trigger from the GitHub Actions tab for testing
+
+jobs:
+  publish-blog-post:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install anthropic
+
+      - name: Generate blog post
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python .github/scripts/generate_blog_post.py
+
+      - name: Commit and push
+        run: |
+          git config user.name "Pantera Claw Blog Agent"
+          git config user.email "blog-agent@panteraclaw.com"
+          git add "SEO-Optimized Consulting Framework/src/app/pages/blog/posts/"
+          git diff --staged --quiet || git commit -m "blog: publish weekly post"
+          git push
