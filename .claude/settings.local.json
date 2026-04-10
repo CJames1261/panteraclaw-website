@@ -6,7 +6,8 @@
       "Read(//usr/**)",
       "Bash(echo $PATH)",
       "Bash(/c/Users/trivi/anaconda3/python:*)",
-      "mcp__Claude_Preview__preview_start"
+      "mcp__Claude_Preview__preview_start",
+      "WebFetch(domain:www.lawinsider.com)"
     ]
   }
 }

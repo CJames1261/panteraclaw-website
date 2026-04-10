@@ -5,7 +5,7 @@ export function Footer() {
   return (
     <footer className="bg-gray-900 text-gray-300 border-t border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
 
           {/* Brand */}
           <div className="col-span-1">
@@ -76,15 +76,30 @@ export function Footer() {
             </ul>
           </div>
 
+          {/* Legal */}
+          <div>
+            <h3 className="text-white text-sm font-semibold uppercase tracking-wide mb-4">Legal</h3>
+            <ul className="space-y-2">
+              <li><Link to="/legal" className="text-gray-400 hover:text-yellow-400 transition-colors text-sm">Legal Center</Link></li>
+              <li>
+                <Link to="/legal/disclaimers" className="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium border border-orange-400/40 hover:border-orange-400/70 px-2 py-0.5 rounded inline-block">
+                  Disclaimers
+                </Link>
+              </li>
+              <li><Link to="/legal/privacy" className="text-gray-400 hover:text-yellow-400 transition-colors text-sm">Privacy Policy</Link></li>
+              <li><Link to="/legal/terms" className="text-gray-400 hover:text-yellow-400 transition-colors text-sm">Terms of Service</Link></li>
+              <li><Link to="/legal/cookies" className="text-gray-400 hover:text-yellow-400 transition-colors text-sm">Cookie Policy</Link></li>
+              <li><Link to="/legal/ai-policy" className="text-gray-400 hover:text-yellow-400 transition-colors text-sm">AI Use Policy</Link></li>
+              <li><Link to="/legal/security" className="text-gray-400 hover:text-yellow-400 transition-colors text-sm">Security</Link></li>
+              <li><Link to="/legal/accessibility" className="text-gray-400 hover:text-yellow-400 transition-colors text-sm">Accessibility</Link></li>
+            </ul>
+          </div>
+
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-800 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-gray-500 text-sm">
-          <p>&copy; {new Date().getFullYear()} Agentic AI LLC. All rights reserved.</p>
-          <div className="flex gap-6">
-            <Link to="/contact" className="hover:text-yellow-400 transition-colors">Privacy Policy</Link>
-            <Link to="/contact" className="hover:text-yellow-400 transition-colors">Terms of Service</Link>
-          </div>
+        <div className="border-t border-gray-800 mt-10 pt-6 text-xs text-center">
+          <p className="text-gray-500">&copy; {new Date().getFullYear()} Agentic AI LLC. All rights reserved.</p>
         </div>
       </div>
 
