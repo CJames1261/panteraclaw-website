@@ -1,7 +1,7 @@
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { Zap, Target, Shield, Cpu, Globe, Database, Bot, Smartphone } from "lucide-react";
-import logo from "../../imports/Pantera_Claw.png";
+import logo from "../../imports/Pantera_Claw.webp";
 
 export function About() {
   return (

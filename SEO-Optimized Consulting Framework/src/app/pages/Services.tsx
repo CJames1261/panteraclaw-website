@@ -41,7 +41,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 
-import logo from "../../imports/Pantera_Claw.png";
+import logo from "../../imports/Pantera_Claw.webp";
 import segImg1 from "../../imports/image.png";
 import segImg2 from "../../imports/image-2.png";
 import segImg3 from "../../imports/image-3.png";

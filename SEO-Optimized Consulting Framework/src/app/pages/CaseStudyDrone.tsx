@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { ArrowLeft, ArrowRight, CheckCircle, AudioLines, Info, Star, Wrench, ShieldCheck, Activity, TreePine } from "lucide-react";
-import logo from "../../imports/Pantera_Claw.png";
+import logo from "../../imports/Pantera_Claw.webp";
 import waveformsImg from "../../imports/drone_waveforms.png";
 import stftImg from "../../imports/drone_stft.png";
 import mfcImg from "../../imports/drone_mfc.png";

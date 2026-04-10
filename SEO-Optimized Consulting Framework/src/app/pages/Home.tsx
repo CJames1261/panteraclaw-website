@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { SegmentationShowcase } from "../components/SegmentationShowcase";
-import logo from "../../imports/Pantera_Claw.png";
+import logo from "../../imports/Pantera_Claw.webp";
 import {
   ArrowRight,
   CheckCircle,
@@ -27,7 +27,7 @@ export function Home() {
       <main className="flex-1">
         {/* Fixed ghost watermark — stays centered as user scrolls */}
         <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-[1]">
-          <img src={logo} alt="" aria-hidden="true" className="w-[600px] md:w-[700px] max-w-full opacity-[0.05] select-none mix-blend-screen" />
+          <img src={logo} alt="" aria-hidden="true" loading="lazy" decoding="async" className="w-[600px] md:w-[700px] max-w-full opacity-[0.05] select-none mix-blend-screen" />
         </div>
 
         {/* Hero Section */}
@@ -69,6 +69,8 @@ export function Home() {
                 <img
                   src={logo}
                   alt="Pantera Claw"
+                  fetchPriority="high"
+                  decoding="sync"
                   className="w-full h-auto object-fill"
                 />
               </div>

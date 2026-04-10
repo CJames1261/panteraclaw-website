@@ -5,7 +5,7 @@ import {
   ArrowRight, FlaskConical, AudioLines, Users, Info,
   Globe, Database, LayoutDashboard, Bot, TrendingUp, CheckCircle,
 } from "lucide-react";
-import logo from "../../imports/Pantera_Claw.png";
+import logo from "../../imports/Pantera_Claw.webp";
 
 const highlights = [
   "Identify hidden customer groups and who to target",

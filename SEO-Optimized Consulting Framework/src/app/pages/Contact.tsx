@@ -1,7 +1,7 @@
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
-import logo from "../../imports/Pantera_Claw.png";
+import logo from "../../imports/Pantera_Claw.webp";
 import { useState } from "react";
 
 export function Contact() {

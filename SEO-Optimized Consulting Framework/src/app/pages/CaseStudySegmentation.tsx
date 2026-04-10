@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { ArrowLeft, ArrowRight, CheckCircle, Users, Info, TrendingUp, ShoppingCart, Tag, Star, DollarSign, Target } from "lucide-react";
-import logo from "../../imports/Pantera_Claw.png";
+import logo from "../../imports/Pantera_Claw.webp";
 import clustersImg from "../../imports/segmentation_clusters.png";
 
 const segments = [
