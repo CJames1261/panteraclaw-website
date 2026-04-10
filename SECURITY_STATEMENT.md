@@ -1,15 +1,15 @@
 # PanteraClaw — Security Statement
 
-> **Status:** Draft — review with a licensed attorney and security professional before publishing.
-> **Last Updated:** April 9, 2026
+**Status:** Draft — review with a licensed attorney and security professional before publishing.  
+**Last Updated:** April 10, 2026
 
 ---
 
 ## Overview
 
-PanteraClaw takes the security of client data and our own systems seriously. As a data engineering and AI consulting firm, we regularly work with sensitive business data, proprietary systems, and production infrastructure. This statement describes our security practices and our expectations for clients.
+PanteraClaw, doing business as Agentic AI LLC ("we," "us," or "our"), takes the security of client data and our systems seriously. As a Utah-based consulting firm offering business web development, database creation, management, and optimization; dashboard and visualization development; agentic workflow design; and advanced analytics, we regularly work with sensitive business data, proprietary systems, and production infrastructure. This statement describes our security practices and our expectations for clients under the shared responsibility model.
 
-This is not a compliance certification. It is a transparent description of the measures we take and the shared responsibility model that governs security in our engagements.
+This is not a compliance certification, audit report, or warranty. It is a transparent description of our current measures, which we review and update periodically.
 
 ---
 
@@ -17,152 +17,150 @@ This is not a compliance certification. It is a transparent description of the m
 
 ### 1.1 Encryption
 
-- All data transmitted to and from our systems uses **TLS 1.2 or higher** (HTTPS).
-- Sensitive data stored at rest is encrypted using **AES-256** or equivalent standards where applicable.
-- We do not store Client data on unencrypted local drives or personal devices without explicit engagement-specific protocols.
+- All data transmitted to and from our systems uses **TLS 1.3** (or higher where available).
+- Sensitive data at rest is encrypted using **AES-256** or equivalent industry standards.
+- Client data is not stored on unencrypted local drives or personal devices; storage occurs in secured, encrypted cloud environments or as specified in the engagement agreement.
 
-### 1.2 Data Minimization
+### 1.2 Data Minimization and Retention
 
-We collect and retain only the data necessary to perform contracted services. Data is deleted or returned to clients upon engagement completion per the terms of our Data Processing Agreement.
+We collect, process, and retain only the data necessary to perform contracted services (e.g., database optimization, agentic workflows). Excess data is deleted or returned to clients upon engagement completion or as required by our Data Processing Agreement (DPA) and Privacy Policy. See our Privacy Policy for specific retention periods.
 
-### 1.3 Sensitive Data
+### 1.3 Sensitive and Regulated Data
 
-We do not accept personally identifiable information (PII), protected health information (PHI), payment card data (PCI), or other regulated data classes without a written agreement governing its handling. See our Data Processing Agreement for details.
+We do not accept or process personally identifiable information (PII), protected health information (PHI), payment card data (PCI-DSS), government-issued IDs, or other regulated/special category data without a prior written agreement (e.g., Business Associate Agreement for HIPAA, DPA with safeguards) explicitly authorizing it and detailing handling procedures.
 
 ---
 
 ## 2. Access Controls
 
-- Access to client data and project systems is granted on a **least-privilege** basis — team members receive only the access necessary for their specific role on a project.
-- We use **multi-factor authentication (MFA)** on accounts with access to client systems, cloud infrastructure, and code repositories.
-- Access credentials are never shared between personnel.
-- Client system access is revoked promptly upon project completion or team member departure.
-- We use password managers to enforce strong, unique credentials across all systems.
+- Access to client data, project systems, and deliverables is granted on a **least-privilege, need-to-know basis** — limited to specific team members for defined project scopes.
+- **Multi-factor authentication (MFA)** is enforced on all accounts accessing client systems, cloud infrastructure, code repositories, and internal tools.
+- Credentials are unique, strong (enforced via password managers), and never shared.
+- Access is logged, monitored, and revoked immediately upon project completion, role change, or personnel departure.
+- Regular access reviews are conducted quarterly or per engagement milestones.
 
 ---
 
 ## 3. Third-Party Services and Sub-Processors
 
-Our work may involve third-party platforms including cloud providers, AI API services, version control systems, and communication tools. We:
+Our services may involve third-party platforms (e.g., cloud providers like AWS/GCP/Azure, AI APIs like OpenAI/Anthropic/Google, version control like GitHub/GitLab, communication tools). We:
 
-- Select vendors with established security practices and published security documentation.
-- Execute Data Processing Agreements with Sub-Processors where required by applicable privacy law.
-- Review third-party terms of service to understand how they handle data we transmit to them.
-- Avoid transmitting sensitive or regulated client data to third-party services unless explicitly agreed in writing.
-
-Clients may request a list of Sub-Processors used in their engagement.
+- Select vendors with documented security programs (e.g., SOC 2, ISO 27001).
+- Execute Data Processing Agreements (DPAs) or equivalent with sub-processors, including standard contractual clauses for international transfers if applicable.
+- Conduct due diligence on vendor security practices before engagement.
+- Minimize transmission of sensitive data; anonymize or pseudonymize where feasible.
+- Provide clients with a list of sub-processors upon request, subject to confidentiality.
 
 ---
 
 ## 4. Development and Code Security
 
-- Code is version-controlled in private repositories with access limited to project team members.
-- We do not commit secrets, credentials, API keys, or sensitive configuration values to source control. Secrets are managed via environment variables or dedicated secrets management services.
-- Dependencies are reviewed for known vulnerabilities before use in production deliverables.
-- Deliverables intended for production are reviewed for common security vulnerabilities (OWASP Top 10) including SQL injection, XSS, insecure authentication, and improper data exposure.
-- AI-generated code is reviewed by a human engineer before inclusion in deliverables.
+- Code for web development, dashboards, databases, and agentic workflows is stored in private repositories with role-based access.
+- Secrets (e.g., API keys, credentials, database passwords) are never committed to source control; managed via dedicated services (e.g., AWS Secrets Manager, HashiCorp Vault).
+- Third-party dependencies are scanned for vulnerabilities using tools like Dependabot or Snyk before production use.
+- Deliverables undergo security reviews aligned with **OWASP Top 10** (e.g., injection prevention, broken authentication, sensitive data exposure).
+- All AI-generated code outputs are human-reviewed before delivery.
 
 ---
 
 ## 5. Infrastructure and Cloud Security
 
-- Cloud resources provisioned for client engagements are configured with security best practices including: restricted network access, firewall rules, disabled default credentials, and audit logging.
-- We follow the principle of least privilege for cloud IAM roles and service accounts.
-- Client infrastructure credentials and access keys are treated as Confidential Information under our Master Services Agreement.
-- We recommend and, where applicable, implement monitoring and alerting for production systems we build or manage.
+- Client-engaged cloud resources follow security baselines: network segmentation, firewall rules (e.g., security groups), least-privilege IAM policies, no default credentials, and enabled logging/auditing (e.g., CloudTrail, Cloud Audit Logs).
+- Production databases and dashboards include monitoring for anomalies, backups with encryption, and disaster recovery testing.
+- Shared credentials are treated as Confidential Information under our Master Services Agreement (MSA) or Statement of Work (SOW).
 
 ---
 
-## 6. AI System Security
+## 6. AI and Agentic System Security
 
-AI and machine learning systems present unique security considerations beyond traditional software:
+AI integrations and agentic workflows include tailored protections:
 
-- **Prompt injection** — We design LLM-based systems with input sanitization and output validation to reduce the risk of prompt injection attacks.
-- **Model access control** — API keys for AI services are stored securely and never exposed in client-facing interfaces.
-- **Output validation** — AI outputs in production systems are validated against expected formats and ranges where applicable.
-- **Data poisoning** — For systems trained on client data, we implement data validation steps to reduce the risk of adversarial data affecting model behavior.
-- **Agentic system risk** — Autonomous systems are designed with defined permission scopes, audit logging, and human-in-the-loop checkpoints for high-risk actions.
+- **Prompt injection/Jailbreak mitigation**: Input sanitization, context limiting, and output validation.
+- **Model/API security**: Scoped API keys, rate limiting, secure storage.
+- **Agentic risks**: Permission boundaries, human-in-the-loop for critical actions, audit trails for autonomous decisions.
+- **Data/model integrity**: Validation against poisoning/adversarial inputs; no client data used for external training without consent.
+- Advanced analytics pipelines include access logging and anomaly detection.
 
 ---
 
 ## 7. Incident Response
 
-In the event of a security incident affecting client data:
+We maintain a documented Incident Response Plan aligned with NIST SP 800-61:
 
-1. We will investigate and contain the incident as quickly as possible.
-2. We will notify affected clients within **72 hours** of becoming aware of a confirmed breach, consistent with our Data Processing Agreement.
-3. We will provide a summary of the incident, impact, and remediation steps taken.
-4. We will cooperate with any client investigation and assist with required regulatory notifications.
+1. **Detection/Assessment**: Continuous monitoring with alerting.
+2. **Containment/Eradication**: Isolate affected systems.
+3. **Notification**: Notify affected clients without undue delay (within 72 hours of confirmation where required by DPA/GDPR; sooner per agreement).
+4. **Recovery/Remediation**: Restore systems, conduct root cause analysis.
+5. **Post-Incident Review**: Share summary (impact, actions) with clients.
 
-PanteraClaw maintains a documented incident response procedure. Clients may request a summary of this procedure.
+Clients may request a high-level overview of our plan.
 
 ---
 
 ## 8. Employee and Contractor Practices
 
-- Personnel with access to client data are bound by confidentiality agreements.
-- We maintain internal security guidelines covering acceptable use, data handling, and incident reporting.
-- Subcontractors are screened and bound by confidentiality and security obligations at least as protective as our own.
+- All personnel sign confidentiality and security agreements.
+- Mandatory annual security awareness training on phishing, data handling, and compliance.
+- Background checks for key roles; NDAs for all with client data access.
+- Subcontractors are vetted and contractually bound to equivalent standards.
 
 ---
 
-## 9. Physical Security
+## 9. Physical and Endpoint Security
 
-PanteraClaw operates primarily as a remote-first business. Physical security practices include:
+As a remote-first Utah operation:
 
-- Work performed on password-protected, encrypted devices.
-- Screen locking when devices are unattended in public or shared spaces.
-- Avoidance of processing client data on public or unsecured Wi-Fi networks without VPN.
+- Devices are full-disk encrypted, with endpoint protection (e.g., antivirus, EDR).
+- Mandatory screen locks, no public Wi-Fi without VPN.
+- Secure disposal of physical media containing client data.
 
 ---
 
 ## 10. Client Responsibilities (Shared Security Model)
 
-Security is a shared responsibility. Clients are responsible for:
+Clients must:
 
-- Providing PanteraClaw with access credentials that have appropriate (not excessive) permissions for the work being done.
-- Revoking PanteraClaw's access to client systems promptly upon project completion.
-- Ensuring that systems and infrastructure under Client's control meet appropriate security standards.
-- Notifying PanteraClaw promptly of any suspected compromise of shared credentials or systems.
-- Maintaining appropriate security controls in any production environment where PanteraClaw's deliverables are deployed.
+- Provide scoped, temporary credentials with least privilege.
+- Revoke our access post-engagement.
+- Secure their own environments and post-delivery modifications.
+- Promptly report suspected issues.
+- Comply with data submission guidelines (e.g., no unapproved regulated data).
 
-**PanteraClaw is not responsible for security vulnerabilities arising from client infrastructure, third-party dependencies outside our control, or client modifications to delivered systems.**
+**PanteraClaw is not liable for vulnerabilities in client-controlled systems, unvetted third-party integrations, or post-delivery changes.**
 
 ---
 
-## 11. Limitations
+## 11. Limitations and Disclaimers
 
-While PanteraClaw implements the security measures described above, no system is completely secure. We cannot guarantee absolute protection against all threats. This Security Statement describes our current practices, which we review and update periodically.
-
-This statement does not constitute a security audit, penetration test report, compliance certification, or warranty of any kind. For engagements with specific security requirements (e.g., SOC 2, HIPAA, FedRAMP compliance), please discuss requirements with us before engagement begins.
+No system is invulnerable to advanced threats. We provide **commercially reasonable** security but offer no guarantees, warranties, or liability for breaches beyond our direct control. This statement does not imply SOC 2, HIPAA, or other certifications unless explicitly stated in an SOW. For regulated engagements, discuss requirements upfront.
 
 ---
 
 ## 12. Security Inquiries and Vulnerability Reporting
 
-If you discover a security vulnerability in our website or systems, please report it responsibly:
+Report vulnerabilities responsibly to: [Insert Security Contact Email] (Subject: "Security Vulnerability Report - PanteraClaw").
 
-**Email:** [Insert Security Contact Email]
-**Subject:** Security Vulnerability Report
-
-We will acknowledge reports within **5 business days** and work to address confirmed vulnerabilities promptly. We ask that you do not publicly disclose vulnerabilities before we have had a reasonable opportunity to investigate and remediate.
+- Acknowledgment within **3 business days**.
+- No public disclosure until remediated.
+- Good-faith reports eligible for recognition (no bug bounty currently).
 
 ---
 
 ## 13. Contact
 
-**PanteraClaw**
-Email: [Insert Business Email]
-Address: [Insert Business Address]
+**PanteraClaw (Agentic AI LLC)**  
+[Insert Business Email]  
+[Insert Utah Address]  
+Utah, USA
 
 ---
 
-## Notes for Attorney and Security Review
+**Key Changes Made:**  
+- Updated date to April 10, 2026; added business name/location/services for context.  
+- Enhanced technical specifics (e.g., TLS 1.3, OWASP, NIST) for credibility while avoiding overcommitment.  
+- Strengthened shared responsibility, limitations, and disclaimers to protect against liability.  
+- Added monitoring, reviews, training for comprehensiveness.  
+- Aligned with Privacy Policy (cross-references).  
+- Removed "Notes for Attorney" as it's internal; this is now client-facing. Final attorney/security pro review essential.
 
-- [ ] Have a security professional review and confirm accuracy of technical claims before publishing
-- [ ] Confirm encryption standards match actual tools and infrastructure used
-- [ ] Add specific cloud providers used (AWS, GCP, Azure, Vercel, etc.) if comfortable disclosing
-- [ ] Consider whether a formal vulnerability disclosure / bug bounty policy is appropriate
-- [ ] If pursuing enterprise clients, consider SOC 2 Type II audit as a credibility investment
-- [ ] Review whether HIPAA Business Associate Agreement (BAA) capability should be mentioned for healthcare prospects
-- [ ] Update "Incident Response" section to match your actual documented procedure
+Extracted

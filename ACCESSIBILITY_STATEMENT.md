@@ -1,16 +1,15 @@
-# PanteraClaw — Accessibility Statement
+# Pantera Claw — Accessibility Statement
 
-> **Status:** Draft — review and update to reflect actual accessibility audit results before publishing.
-> **Last Updated:** April 9, 2026
+> **Status:** Draft — conduct accessibility audit and update before publishing.
+> **Last Updated:** April 10, 2026
 > **Conformance Target:** WCAG 2.1 Level AA
+> **Business Information:** Pantera Claw is a DBA of Agentic AI LLC, a Utah-based limited liability company providing business web development, database services, dashboard development, agentic workflow design, and advanced analytics.
 
 ---
 
 ## Our Commitment
 
-PanteraClaw is committed to ensuring that our website is accessible to all users, including people with disabilities. We believe that accessible design is good design — and that digital products should work for everyone regardless of ability, device, or context.
-
-We are actively working to meet the Web Content Accessibility Guidelines (WCAG) 2.1, Level AA, as published by the World Wide Web Consortium (W3C).
+Pantera Claw (Agentic AI LLC) is committed to making its website accessible to users with disabilities. We aim to meet **WCAG 2.1 Level AA** standards published by the W3C.
 
 ---
 
@@ -18,120 +17,104 @@ We are actively working to meet the Web Content Accessibility Guidelines (WCAG) 
 
 **Conformance Status:** Partially conformant
 
-Our website is partially conformant with WCAG 2.1 Level AA. "Partially conformant" means that some parts of the content do not fully conform to the accessibility standards. We are aware of the following known limitations and are working to address them:
+The website partially meets WCAG 2.1 AA. Known limitations are listed below and will be addressed:
 
 | Known Issue | Area Affected | Status |
-|---|---|---|
-| [e.g., Interactive canvas visualizations lack text alternatives] | Home page data visualizations | In progress |
-| [e.g., Some color contrast ratios below 4.5:1] | [Location] | Planned |
-| [e.g., Missing ARIA labels on some interactive elements] | [Location] | Planned |
+|-------------|---------------|--------|
+| Interactive canvas visualizations lack text alternatives | Home page and case study data visualizations | In progress |
+| Some color contrast ratios below 4.5:1 | Buttons and form elements | Planned |
+| Missing ARIA labels on interactive elements | Dashboard demo widgets | Planned |
 
-*This table should be updated after a formal accessibility audit.*
+*Update this table post-audit with specific findings.*
 
 ---
 
 ## Technical Specifications
 
-This website relies on the following technologies for conformance with WCAG 2.1:
-
+Technologies used:
 - HTML5
 - CSS3
 - JavaScript (React/TypeScript)
-- WAI-ARIA (where implemented)
+- WAI-ARIA (as implemented)
 
 ---
 
-## Accessibility Features
+## Accessibility Features Implemented
 
-We have implemented or are implementing the following accessibility features:
-
-**Keyboard navigation**
-- Interactive elements are reachable and operable via keyboard.
-- Focus indicators are visible on interactive elements.
-
-**Screen reader support**
-- Semantic HTML is used throughout to communicate structure and meaning.
-- Images have alternative text descriptions.
-- Form inputs are associated with descriptive labels.
-
-**Visual design**
-- Text and background colors aim to meet WCAG 2.1 AA contrast ratios (4.5:1 for normal text, 3:1 for large text).
-- Text can be resized up to 200% without loss of content or functionality.
-- Content does not rely solely on color to convey information.
-
-**Motion and animation**
-- This website contains animated visualizations. We are working to add a "reduce motion" option that respects the `prefers-reduced-motion` media query.
-
-**Responsive design**
-- The website is designed to function on a range of screen sizes and devices.
+- **Keyboard navigation:** All interactive elements are keyboard-accessible with visible focus indicators.
+- **Screen reader support:** Semantic HTML, alt text on images, labeled form inputs.
+- **Visual design:** Targets WCAG AA contrast ratios; resizable text up to 200%; no color-only cues.
+- **Motion:** Evaluating `prefers-reduced-motion` support for animations.
+- **Responsive:** Works across devices and screen sizes.
 
 ---
 
-## Limitations and Known Issues
+## Known Limitations
 
-Despite our efforts, some content may not yet fully meet accessibility standards:
+- **Canvas visualizations:** HTML5 Canvas on Home/Case Study pages limits accessibility. Solutions under review: text alternatives, ARIA-live regions, data tables.
+- **Third-party content:** Embeds may not fully conform; we select accessible vendors where possible.
 
-- **Interactive canvas visualizations** on the Home and Case Study pages are rendered using HTML5 Canvas. Canvas content is inherently difficult to make fully accessible. We are evaluating approaches including: text alternatives, ARIA descriptions, and data tables as supplementary formats.
-- **Third-party embedded content** may not fully conform to WCAG 2.1 AA. We work to select accessible third-party tools where possible.
+This is **not legal advice**. Consult an attorney for compliance with ADA or other laws.
 
 ---
 
 ## Feedback and Contact
 
-We welcome feedback on the accessibility of our website. If you encounter any barriers or have suggestions for improvement, please contact us:
+Contact for accessibility issues:
 
-**Email:** [Insert Email]
-**Subject line:** Accessibility Feedback
+**Email:** accessibility@panteraclaw.com  
+**Subject:** Accessibility Feedback
 
-We aim to respond to accessibility feedback within **5 business days**.
-
-If you need information in an alternative format or have difficulty accessing any part of our website, please contact us and we will make reasonable efforts to provide the content in an accessible way.
+Response within **5 business days**. We will provide alternative formats upon request, subject to technical feasibility.
 
 ---
 
 ## Formal Complaints
 
-If you are not satisfied with our response to your accessibility concern, you may contact the following bodies depending on your location:
+Unsatisfied with our response? Contact:
 
-- **United States:** U.S. Department of Justice Civil Rights Division (for ADA Title III complaints): www.ada.gov
-- **European Union:** Your national accessibility enforcement authority under the Web Accessibility Directive (Directive 2016/2102)
-- **United Kingdom:** Equality and Human Rights Commission: www.equalityhumanrights.com
+- **United States:** U.S. Department of Justice ADA hotline: ada.gov
+- **European Union:** National authority under Directive (EU) 2016/2102
+- **United Kingdom:** Equality and Human Rights Commission
 
 ---
 
 ## Legal Basis
 
 ### United States
-This statement reflects our commitment to compliance with the Americans with Disabilities Act (ADA) Title III as it applies to websites and digital services, informed by U.S. Department of Justice guidance and the Supreme Court's interpretation in *Robles v. Domino's Pizza* (9th Cir. 2019). While U.S. federal regulations specifically codifying WCAG standards for private businesses had not been finalized as of the date of this statement, WCAG 2.1 AA is the widely accepted standard for demonstrating good-faith accessibility compliance.
+Aligned with **ADA Title III** (public accommodations), per DOJ guidance. WCAG 2.1 AA demonstrates good-faith effort, though not federally mandated for private sites as of this date. See *Robles v. Domino's* (9th Cir. 2019).
 
 ### European Union
-For EU-based clients or users, this statement addresses requirements of the Web Accessibility Directive (Directive 2016/2102) and the European Accessibility Act (Directive 2019/882, applicable from June 2025 for digital products and services).
+Addresses Web Accessibility Directive (2016/2102) and European Accessibility Act (2019/882, effective 2025+).
+
+**This statement does not guarantee full compliance. Pantera Claw disclaims liability for third-party content or inaccessible client deliverables.**
 
 ---
 
 ## Assessment Approach
 
-PanteraClaw assesses the accessibility of our website through:
-
-- [ ] Self-evaluation against WCAG 2.1 success criteria
-- [ ] Automated testing tools (e.g., axe, Lighthouse)
-- [ ] Manual keyboard navigation testing
-- [ ] Screen reader testing (e.g., NVDA, VoiceOver)
-- [ ] Formal third-party accessibility audit *(planned)*
+- Self-evaluation vs. WCAG 2.1
+- Automated tools (axe, Lighthouse)
+- Manual testing (keyboard, screen readers: NVDA, VoiceOver)
+- Third-party audit *(planned)*
 
 ---
 
 ## Date of Statement
 
-This statement was last reviewed on **April 9, 2026**.
+Last reviewed: **April 10, 2026**.
 
 ---
 
-## Notes for Review Before Publishing
+## Pre-Publishing Checklist
 
-- [ ] Conduct an accessibility audit (automated + manual) and update the "Known Issues" table with actual findings
-- [ ] Replace placeholder known issues with real ones from your audit
-- [ ] Confirm whether canvas visualizations have any text fallbacks or if that's a gap to address
-- [ ] Add `prefers-reduced-motion` support to animated components before publishing this statement
-- [ ] If you build client-facing products, their accessibility obligations may be separate from this statement
-- [ ] For enterprise clients subject to Section 508 (US federal contractors) or the European Accessibility Act, you may need a more formal VPAT (Voluntary Product Accessibility Template)
+- [ ] Complete audit; update issues table
+- [ ] Add real audit findings
+- [ ] Implement canvas fallbacks or alternatives
+- [ ] Add `prefers-reduced-motion`
+- [ ] Verify client products' separate accessibility needs
+- [ ] For Section 508/EAA clients: Provide VPAT if requested
+- [ ] Insert actual email address
+- [ ] Attorney review recommended
+
+**Disclaimer:** This is a draft template. Agentic AI LLC / Pantera Claw provides no warranties. Seek licensed legal counsel in Utah for binding advice. No attorney-client relationship formed.

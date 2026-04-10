@@ -1,7 +1,8 @@
 # PanteraClaw — Legal Disclaimers & Terms of Service
 
-> **Status:** Draft — review with a licensed attorney before publishing.
-> **Last updated:** April 9, 2026
+**Status:** Draft — **MUST be reviewed and finalized by a licensed Utah attorney before publishing or use.**
+**Last updated:** April 10, 2026
+**Business:** Pantera Claw (dba of Agentic AI LLC), a Utah limited liability company
 
 ---
 
@@ -9,172 +10,148 @@
 
 | Disclaimer | Where to place |
 |---|---|
-| General Website Disclaimer | Dedicated `/legal` or `/disclaimer` page, linked from footer |
-| Terms of Service | Dedicated `/terms` page, linked from footer |
-| Data & AI Disclaimer | Footer (brief version) + full text on `/legal` page |
-| Results Disclaimer | Bottom of every Services/Case Study page |
-| Copyright Notice | Footer of every page |
-| Synthetic Data Notice | Directly beneath each demo visualization on Home/Case Study pages |
+| General Website Disclaimer | Dedicated `/legal` or `/disclaimer` page, **prominently linked from footer, homepage, and all forms** (conspicuous notice required for enforceability) |
+| Terms of Service | Dedicated `/terms` page, **linked from footer and pre-transaction** |
+| Data & AI Disclaimer | **Footer of every page** (brief version) + full text on `/legal` page |
+| Results Disclaimer | **Bottom of every Services/Case Study page** and demo |
+| Copyright Notice | **Footer of every page** |
+| Synthetic Data Notice | **Directly beneath each demo visualization** on Home/Case Study pages |
 
-Per best practices (ComplyDog, 2026): disclaimers must be **prominently displayed**, written in plain language, and placed **before** the point of commitment — not buried in footer fine print alone.
+**Legal requirement:** Disclaimers must be **conspicuously displayed**, in plain language, and placed **before** any commitment, payment, or data submission.
 
 ---
 
 ## 1. General Website Disclaimer
 
-The information provided on this website is for general informational and marketing purposes only. Nothing on this site constitutes professional, legal, financial, or technical advice. Viewing or using this website does not create a client, contractor, or advisory relationship between you and PanteraClaw.
+The information on this website is for **general informational and marketing purposes only**. It does **not** constitute professional, legal, financial, technical, business, investment, or other advice of any kind.
 
-While we make reasonable efforts to keep the information on this site accurate and up to date, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability of any information, services, or related graphics on this website. Any reliance you place on such information is strictly at your own risk.
+**No attorney-client, consultant-client, or advisory relationship** is created by viewing, using, contacting us, or submitting inquiries through this website.
 
-PanteraClaw reserves the right to modify, update, or remove any content on this website at any time without notice.
+We strive for accuracy but make **no representations or warranties**, express or implied, regarding the completeness, accuracy, reliability, suitability, availability, or timeliness of any information, services, products, or materials on this site. **Any reliance on such information is at your own risk.**
+
+Pantera Claw reserves the right to modify, suspend, or remove any content **without notice** or liability.
 
 ---
 
 ## 2. Data Disclaimer
 
-All data, metrics, statistics, and visualizations presented on this website — including but not limited to dashboards, charts, customer segmentation models, pipeline diagrams, and analytical outputs — are provided for **illustrative and demonstration purposes only**.
+**All data, metrics, statistics, dashboards, charts, models, and visualizations** on this website are **illustrative, synthetic, or for demonstration purposes only**.
 
-Unless explicitly stated otherwise:
+**Unless explicitly labeled as verified client data:**
 
-- Data shown in interactive visualizations is **synthetically generated** and does not represent any real individuals, organizations, transactions, or business outcomes.
-- All figures are approximations and are not intended to reflect actual market conditions, business performance, or predictive accuracy achievable in any specific implementation.
-- PanteraClaw makes no representation or warranty regarding the accuracy, completeness, or fitness for a particular purpose of any data displayed on this site.
+- **Synthetic/mock data** — does not represent real individuals, companies, transactions, or outcomes
+- **Approximate/hypothetical figures** — not reflective of actual performance, market conditions, or guarantees
+- **No warranty** of accuracy, completeness, reliability, or fitness for any purpose
 
-**Data provided "as is."** Neither PanteraClaw nor its affiliates warrant that any data, model output, or analytical result shown is free from human error, machine error, manipulation, omission, or delay. You acknowledge that any data shown may not be accurate and any use of it is at your sole risk.
+**"AS IS" AND "AS AVAILABLE" PROVISION.** Data may contain errors, omissions, delays, or inaccuracies. **Use at your sole risk.** Pantera Claw disclaims all liability arising from use.
 
-For any data delivered as part of a contracted engagement, the specific terms governing data accuracy, ownership, and liability are set forth in the applicable statement of work or service agreement.
+Contracted client data is governed **exclusively by the signed service agreement/statement of work (SOW)**.
 
 ---
 
-## 3. AI, Machine Learning, and Results Disclaimer
+## 3. AI, Agentic Workflows, Machine Learning, and Results Disclaimer
 
-Artificial intelligence and machine learning systems, including those developed or implemented by PanteraClaw, are probabilistic by nature. Results, accuracy, and performance will vary based on data quality, volume, infrastructure, business context, and many other factors outside our control.
+**AI systems** (including agentic workflows, autonomous agents, ML models, advanced analytics, dashboards) are **probabilistic, experimental, and non-deterministic**. Performance varies based on data quality, infrastructure, prompts, external factors, and model limitations.
 
-**No guarantee of results.** Case studies, sample outputs, and projected outcomes shown on this website reflect specific historical engagements or hypothetical scenarios. They do not guarantee that similar results will be achieved in any other implementation. Past performance of an AI system does not guarantee future performance.
+**NO GUARANTEED RESULTS.** Website demos, case studies, projections, benchmarks, and testimonials are **hypothetical, historical, or illustrative** — **not promises, warranties, or guarantees** of future performance, timelines, or outcomes.
 
-**Not a substitute for human judgment.** AI and ML outputs should be reviewed and validated by qualified professionals before being used to make business, financial, medical, legal, or other consequential decisions. PanteraClaw is not liable for decisions made based on AI-generated outputs without appropriate human oversight.
+**Human oversight required.** All AI outputs must be independently validated by qualified professionals before business, financial, or operational decisions. **Pantera Claw not liable** for un-reviewed, misused, or erroneous AI outputs.
 
-**Third-party models and APIs.** Some services may involve integration with third-party AI platforms (e.g., large language model providers). PanteraClaw does not control the availability, accuracy, or output of third-party systems and is not responsible for their performance or changes to their terms of service.
+**Prohibited uses:** Do not input site content (including demos/data) into third-party AI models for training, fine-tuning, or generation without written permission.
+
+**Third-party dependencies** (e.g., APIs, LLMs, cloud services) are outside our control. We disclaim responsibility for their performance, changes, availability, or compliance.
 
 ---
 
 ## 4. Professional Services Disclaimer
 
-While PanteraClaw strives to deliver high-quality consulting, engineering, and data services, we cannot guarantee specific business outcomes or results. Success depends on many variables beyond our control, including but not limited to:
+Pantera Claw provides **technical consulting services** (business web development, database creation/management/optimization, dashboard & visualization development, agentic workflow design, advanced analytics). **We cannot and do not guarantee specific business outcomes, ROI, timelines, or results.**
 
-- The quality and completeness of data provided by the client
-- Organizational readiness and internal adoption
-- Market conditions and external business factors
-- Timely client cooperation and feedback
+Success depends on factors beyond our control, including:
+- Client-provided data quality, completeness, and accuracy
+- Client cooperation, implementation, and adoption
+- External market, regulatory, or technological conditions
 
-Engagement timelines and deliverables are estimates. Specific outcomes, revenue impacts, or performance improvements referenced in any proposal or case study are illustrative and not contractual commitments unless explicitly stated in a signed agreement.
+**Estimates only.** Timelines, deliverables, and costs are **non-binding estimates**. No outcomes are contractual unless **explicitly stated in a signed SOW or MSA**.
 
-Clients are responsible for their own business decisions. PanteraClaw's services are advisory and technical in nature and do not constitute legal, financial, or regulatory compliance advice.
-
----
-
-## 5. Copyright Notice
-
-All content on this website, including but not limited to text, graphics, logos, images, visualizations, code examples, and software, is the property of PanteraClaw and is protected by applicable copyright and intellectual property laws.
-
-You may not reproduce, distribute, display, modify, or create derivative works from any materials on this site without the express prior written permission of PanteraClaw.
-
-You may share brief excerpts with proper attribution and a link back to the original source. Commercial use, republication, or redistribution without permission is prohibited.
-
-Copyright 2026 PanteraClaw. All rights reserved.
+Our services are **technical/advisory only** — not legal, financial, tax, accounting, regulatory, medical, or investment advice.
 
 ---
 
-## 6. No Endorsement of Third Parties
+## 5. Copyright & Intellectual Property Notice
 
-References to third-party companies, tools, platforms, or technologies on this website are for informational purposes only and do not constitute an endorsement, sponsorship, or recommendation. PanteraClaw is not affiliated with, sponsored by, or officially connected to any third-party products or services mentioned unless explicitly stated.
+**All website content** (text, graphics, code, visualizations, logos, demos, agentic workflows) is copyrighted © 2026 Pantera Claw / Agentic AI LLC. **Protected by U.S. federal and international IP laws.**
+
+**Prohibited without prior written permission:**
+- Reproduction, distribution, public display, modification, or creation of derivative works
+- Commercial use, scraping, automated extraction, or republication
+- Use in AI training datasets or models
+
+Fair use excerpts permitted with attribution and link back. **All rights reserved.**
+
+---
+
+##
+---
+
+## 6. No Third-Party Endorsements
+
+Mentions of third-party tools/platforms are **informational only** — **not endorsements** or affiliations unless explicitly stated.
 
 ---
 
 ## 7. Terms of Service
 
-### 7.1 Acceptance of Terms
+### 7.1 Acceptance
+By using this website, you **accept these Terms**. **Do not use if you disagree.**
 
-By accessing or using this website, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use this website.
+### 7.2 Permitted Use
+Use only for lawful purposes. **Prohibited:**
+- Unauthorized access/hacking
+- Scraping or automated extraction
+- Malware transmission
+- Spam or harassment
 
-### 7.2 Use of Website
-
-You agree to use this website only for lawful purposes and in a manner that does not infringe the rights of others. You may not:
-
-- Attempt to gain unauthorized access to any part of this website or its underlying systems
-- Use automated scraping, crawling, or data harvesting tools without prior written consent
-- Upload or transmit any malicious code, viruses, or harmful content
-- Use this website to transmit unsolicited commercial communications
-
-### 7.3 Intellectual Property
-
-All intellectual property rights in and to this website and its content are owned by PanteraClaw or its licensors. Nothing in these terms grants you any rights to use PanteraClaw's trademarks, logos, or proprietary materials.
+### 7.3 IP Rights
+All rights reserved by PanteraClaw/Agentic AI LLC. No usage rights granted.
 
 ### 7.4 Limitation of Liability
+**TO THE MAXIMUM EXTENT PERMITTED BY UTAH LAW:**
 
-To the maximum extent permitted by applicable law, PanteraClaw and its affiliates, officers, employees, and agents shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of, or inability to use, this website or any content herein — even if PanteraClaw has been advised of the possibility of such damages.
+PanteraClaw/affiliates **not liable** for indirect, consequential, special, or punitive damages.
 
-PanteraClaw's total liability for any claim arising out of or relating to this website shall not exceed one hundred dollars ($100.00).
+**Total liability capped at $100 USD** for all claims related to this website.
 
 ### 7.5 Indemnification
+You **indemnify** PanteraClaw against claims arising from **your use** or **violations**.
 
-You agree to indemnify, defend, and hold harmless PanteraClaw and its affiliates from any claims, losses, liabilities, damages, costs, or expenses (including reasonable legal fees) arising from your use of this website or violation of these terms.
+### 7.6 Third-Party Links
+Links provided for convenience. **We disclaim responsibility** for third-party content/sites.
 
-### 7.6 Links to Third-Party Websites
+### 7.7 Privacy Policy
+Subject to separate [Privacy Policy].
 
-This website may contain links to third-party websites. These links are provided for convenience only. PanteraClaw does not endorse, control, or take responsibility for the content or practices of any linked third-party sites. Accessing third-party links is at your own risk.
+### 7.8 Governing Law & Jurisdiction
+**Governed by Utah law.** Exclusive jurisdiction in **Utah state or federal courts** (Salt Lake County, Utah).
 
-### 7.7 Privacy
-
-Your use of this website is also subject to our Privacy Policy [link to Privacy Policy when created]. By using this website, you consent to the collection and use of information as described therein.
-
-### 7.8 Governing Law
-
-These terms shall be governed by and construed in accordance with the laws of the State of [YOUR STATE], without regard to its conflict of law principles. Any disputes arising under these terms shall be subject to the exclusive jurisdiction of the courts located in [YOUR COUNTY/STATE].
-
-### 7.9 Changes to Terms
-
-PanteraClaw reserves the right to update these terms at any time. Continued use of the website after any changes constitutes acceptance of the revised terms. We encourage you to review this page periodically.
+### 7.9 Changes
+We may update Terms. Continued use = acceptance.
 
 ### 7.10 Severability
-
-If any provision of these terms is found to be unenforceable, the remaining provisions will continue in full force and effect.
-
----
-
-## 8. Not a Registered Financial Advisor or Broker-Dealer
-
-PanteraClaw provides consulting services in data engineering, artificial intelligence, analytics, and technology development. We are **not** registered broker-dealers, investment advisors, or financial services providers. We do not provide investment advice, offer or recommend securities, or facilitate capital raising or fundraising activities.
-
-Nothing on this website or in any deliverable produced by PanteraClaw constitutes financial, investment, or securities advice. Any data outputs, predictive models, or analytical tools we build are for operational and informational purposes only. Clients and users are solely responsible for any financial decisions made using outputs from PanteraClaw's services, and should consult a licensed financial professional before making investment or capital allocation decisions.
+Invalid provisions don't affect remainder.
 
 ---
 
-## 9. Trademark Notice
+## 8. Not a Financial Advisor or Regulated Entity
 
-All trademarks, logos, service marks, and trade names displayed on this website are the property of their respective owners. References to third-party company names, products, or technologies (including but not limited to OpenAI, Anthropic, Amazon Web Services, Google, and Microsoft) are for identification and informational purposes only. Such references do not imply any affiliation with, endorsement by, or sponsorship from the trademark owner. PanteraClaw's own name, logo, and marks are the property of Agentic AI LLC.
+PanteraClaw/Agentic AI LLC provides **technology consulting only**. We are **NOT**:
+- Registered investment advisors
+- Broker-dealers
+- Financial services providers
+- Licensed professionals in finance/law/medicine
 
----
-
-## 10. Contact
-
-For questions about these disclaimers or terms, or to request permissions for content use, contact us at:
-
-**PanteraClaw**
-[Your business email]
-[Your business address, if applicable]
+**No investment, securities, financial, legal, or medical advice** provided. Consult qualified professionals for regulated advice.
 
 ---
 
-## Notes for Attorney Review
-
-The following items should be confirmed or completed before publishing:
-
-- [ ] Fill in governing state and county in Section 7.8
-- [ ] Confirm liability cap amount in Section 7.4 is appropriate for your business
-- [ ] Add email and address in Section 8
-- [ ] Create a separate Privacy Policy covering data collection practices (contact forms, analytics, cookies)
-- [ ] Consider adding a Cookie Notice if using Google Analytics or similar tracking
-- [ ] Review AI/ML disclaimer language against any specific claims made in case studies or service descriptions
-- [ ] Consider CCPA compliance if targeting California residents
-- [ ] If you ever run paid promotions or affiliate partnerships, add the relevant FTC disclosure language
+**FINAL NOTICE: This document provides general guidance but is NOT legal advice. Utah-specific laws (consumer protection, tech services, AI liability) require attorney review. Agentic AI LLC/PanteraClaw assumes no liability for use without attorney approval.**
