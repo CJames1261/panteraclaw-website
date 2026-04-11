@@ -41,4 +41,5 @@ jobs:
           git config user.email "blog-agent@panteraclaw.com"
           git add "SEO-Optimized Consulting Framework/src/app/pages/blog/posts/"
           git diff --staged --quiet || git commit -m "blog: publish weekly post"
+          git pull --rebase origin main
           git push
