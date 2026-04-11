@@ -37,9 +37,7 @@ jobs:
 
       - name: Debug - show generated files
         run: |
-          echo "=== Current directory ==="
-          pwd
-          echo "=== Posts directory contents ==="
+          echo "=== Posts directory ==="
           ls -la "SEO-Optimized Consulting Framework/src/app/pages/blog/posts/"
           echo "=== Git status ==="
           git status
@@ -49,6 +47,8 @@ jobs:
           git config user.name "Pantera Claw Blog Agent"
           git config user.email "blog-agent@panteraclaw.com"
           git add "SEO-Optimized Consulting Framework/src/app/pages/blog/posts/"
+          echo "=== Staged files ==="
+          git diff --staged --name-only
           if git diff --staged --quiet; then
             echo "No new post generated, nothing to commit."
             exit 0
