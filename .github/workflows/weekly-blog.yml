@@ -35,13 +35,6 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python .github/scripts/generate_blog_post.py
 
-      - name: Debug - show generated files
-        run: |
-          echo "=== Posts directory ==="
-          ls -la "SEO-Optimized Consulting Framework/src/app/pages/blog/posts/"
-          echo "=== Git status ==="
-          git status
-
       - name: Commit and push
         run: |
           git config user.name "Pantera Claw Blog Agent"
