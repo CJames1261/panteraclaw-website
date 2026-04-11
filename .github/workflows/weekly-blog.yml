@@ -35,10 +35,24 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python .github/scripts/generate_blog_post.py
 
+      - name: Debug - show generated files
+        run: |
+          echo "=== Current directory ==="
+          pwd
+          echo "=== Posts directory contents ==="
+          ls -la "SEO-Optimized Consulting Framework/src/app/pages/blog/posts/"
+          echo "=== Git status ==="
+          git status
+
       - name: Commit and push
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "blog: publish weekly post"
-          file_pattern: "SEO-Optimized Consulting Framework/src/app/pages/blog/posts/*.tsx SEO-Optimized Consulting Framework/src/app/pages/blog/posts/index.ts"
-          commit_user_name: "Pantera Claw Blog Agent"
-          commit_user_email: "blog-agent@panteraclaw.com"
+        run: |
+          git config user.name "Pantera Claw Blog Agent"
+          git config user.email "blog-agent@panteraclaw.com"
+          git add "SEO-Optimized Consulting Framework/src/app/pages/blog/posts/"
+          if git diff --staged --quiet; then
+            echo "No new post generated, nothing to commit."
+            exit 0
+          fi
+          git commit -m "blog: publish weekly post"
+          git fetch origin main
+          git push --force-with-lease origin HEAD:main
