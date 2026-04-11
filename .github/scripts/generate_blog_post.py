@@ -14,6 +14,8 @@ BASE = "SEO-Optimized Consulting Framework"
 CONFIG_PATH = f"{BASE}/blog-agent.config.json"
 INDEX_PATH = f"{BASE}/src/app/pages/blog/posts/index.ts"
 POSTS_DIR = f"{BASE}/src/app/pages/blog/posts"
+SITEMAP_PATH = f"{BASE}/public/sitemap.xml"
+SITE_URL = "https://panteraclaw.com"
 
 
 def load_config():
@@ -171,6 +173,26 @@ def update_index(index_content, meta):
     return index_content
 
 
+def update_sitemap(slug, date):
+    with open(SITEMAP_PATH, encoding="utf-8") as f:
+        sitemap = f.read()
+
+    new_entry = f"""
+  <url>
+    <loc>{SITE_URL}/blog/{slug}</loc>
+    <lastmod>{date}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+"""
+    sitemap = sitemap.replace("</urlset>", new_entry + "</urlset>")
+
+    with open(SITEMAP_PATH, "w", encoding="utf-8") as f:
+        f.write(sitemap)
+
+    print(f"Updated sitemap.xml with /blog/{slug}")
+
+
 def main():
     print("=== Pantera Claw Blog Agent ===")
 
@@ -202,6 +224,9 @@ def main():
     updated_index = update_index(index_content, meta)
     with open(INDEX_PATH, "w", encoding="utf-8") as f:
         f.write(updated_index)
+
+    print("Updating sitemap.xml...")
+    update_sitemap(slug, today)
 
     print(f"\n✓ Published: {meta['title']}")
     print(f"  Slug     : {meta['slug']}")

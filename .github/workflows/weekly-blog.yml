@@ -40,6 +40,7 @@ jobs:
           git config user.name "Pantera Claw Blog Agent"
           git config user.email "blog-agent@panteraclaw.com"
           git add "SEO-Optimized Consulting Framework/src/app/pages/blog/posts/"
+          git add "SEO-Optimized Consulting Framework/public/sitemap.xml"
           echo "=== Staged files ==="
           git diff --staged --name-only
           if git diff --staged --quiet; then
