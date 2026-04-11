@@ -24,6 +24,9 @@ export interface PostMeta {
 // ── Lazy-loaded post components ────────────────────────────────────────────────
 // The blog agent adds one entry here per new post.
 export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<ComponentType>> = {
+  "how-to-know-if-your-business-is-ready-for-a-data-analyst": lazy(
+    () => import("./how-to-know-if-your-business-is-ready-for-a-data-analyst")
+  ),
   "how-to-know-if-your-business-needs-analytics": lazy(
     () => import("./how-to-know-if-your-business-needs-analytics")
   ),
@@ -32,6 +35,21 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<Component
 // ── Post metadata list (newest first) ─────────────────────────────────────────
 // The blog agent prepends one entry here per new post.
 export const POST_META: PostMeta[] = [
+  {
+    slug: "how-to-know-if-your-business-is-ready-for-a-data-analyst",
+    title: "How to Know If Your Business Is Ready for a Data Analyst",
+    date: "2026-04-11",
+    readTime: "7 min read",
+    excerpt: "Hiring a data analyst can transform your business, but timing matters. Learn the key signs that indicate your organization is ready to bring on dedicated data talent and how to prepare for a successful hire.",
+    category: "Business Strategy",
+    tags: ["data analyst", "hiring", "business growth", "data strategy"],
+    heroImage: {
+      url: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
+      alt: "Business professional reviewing data charts and analytics on a computer screen",
+      credit: "Luke Chesser",
+      creditUrl: "https://unsplash.com/@lukechesser",
+    },
+  },
   {
     slug: "how-to-know-if-your-business-needs-analytics",
     title: "How to Know If Your Business Needs Analytics",
