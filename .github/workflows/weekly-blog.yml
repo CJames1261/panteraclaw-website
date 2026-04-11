@@ -39,7 +39,7 @@ jobs:
         run: |
           git config user.name "Pantera Claw Blog Agent"
           git config user.email "blog-agent@panteraclaw.com"
+          git pull --rebase origin main
           git add "SEO-Optimized Consulting Framework/src/app/pages/blog/posts/"
           git diff --staged --quiet || git commit -m "blog: publish weekly post"
-          git pull --rebase origin main
-          git push
+          git push origin main
