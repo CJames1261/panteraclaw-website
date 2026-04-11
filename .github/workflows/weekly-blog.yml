@@ -36,10 +36,9 @@ jobs:
         run: python .github/scripts/generate_blog_post.py
 
       - name: Commit and push
-        run: |
-          git config user.name "Pantera Claw Blog Agent"
-          git config user.email "blog-agent@panteraclaw.com"
-          git pull --rebase origin main
-          git add "SEO-Optimized Consulting Framework/src/app/pages/blog/posts/"
-          git diff --staged --quiet || git commit -m "blog: publish weekly post"
-          git push origin main
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "blog: publish weekly post"
+          file_pattern: "SEO-Optimized Consulting Framework/src/app/pages/blog/posts/*.tsx SEO-Optimized Consulting Framework/src/app/pages/blog/posts/index.ts"
+          commit_user_name: "Pantera Claw Blog Agent"
+          commit_user_email: "blog-agent@panteraclaw.com"
