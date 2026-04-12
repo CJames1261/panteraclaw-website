@@ -227,7 +227,7 @@ function drawCard(stage, i) {
   ctx.beginPath(); ctx.moveTo(x+16,y+TOP_H); ctx.lineTo(x+CARD_W-16,y+TOP_H); ctx.stroke();
   ctx.font=`bold ${Math.round(17*F)}px system-ui`; ctx.fillStyle='#ffffff'; ctx.textAlign='center';
   ctx.fillText(stage.title,cx,y+TOP_H+26);
-  ctx.font=`600 ${Math.round(15*F)}px system-ui`; ctx.fillStyle=c+'ff';
+  ctx.font=`600 ${Math.round((isMobile?13:15)*F)}px system-ui`; ctx.fillStyle=c+'ff';
   ctx.fillText(stage.subtitle,cx,y+TOP_H+46);
   ctx.strokeStyle='#1e293b'; ctx.lineWidth=1;
   ctx.beginPath(); ctx.moveTo(x+22,y+TOP_H+56); ctx.lineTo(x+CARD_W-22,y+TOP_H+56); ctx.stroke();
@@ -269,7 +269,7 @@ function drawRightCard(stage, cardIdx, cardY, iconY) {
   ctx.beginPath(); ctx.moveTo(x+16,y+th); ctx.lineTo(x+cw-16,y+th); ctx.stroke();
   ctx.font=`bold ${Math.round(14*F)}px system-ui`; ctx.fillStyle='#ffffff'; ctx.textAlign='center';
   ctx.fillText(stage.title,cx,y+th+20);
-  ctx.font=`600 ${Math.round(13*F)}px system-ui`; ctx.fillStyle=c+'ff';
+  ctx.font=`600 ${Math.round((isMobile?12:13)*F)}px system-ui`; ctx.fillStyle=c+'ff';
   ctx.fillText(stage.subtitle,cx,y+th+36);
   ctx.strokeStyle='#1e293b'; ctx.lineWidth=1;
   ctx.beginPath(); ctx.moveTo(x+22,y+th+46); ctx.lineTo(x+cw-22,y+th+46); ctx.stroke();
