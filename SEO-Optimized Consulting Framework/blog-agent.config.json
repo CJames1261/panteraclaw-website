@@ -7,6 +7,11 @@
   "blogIndexPage": "src/app/pages/Blog.tsx",
   "author": "Pantera Claw",
   "targetAudiences": ["business owners", "data engineers", "technical leads"],
+  "seoKeywords": {
+    "target": ["data consulting services", "data strategy consulting", "business intelligence solutions", "business analytics consulting", "analytics & ai consulting", "data consulting firm", "machine learning consulting", "raw data", "data into actionable insights", "deep technical expertise"],
+    "recommended": ["business goal", "informed decision", "supply chain", "competitive advantage", "data visualization", "data management", "data governance", "data analysis", "data sources", "business objectives", "data quality", "data driven decisions", "consulting firms", "business processes", "customer satisfaction", "strategic decisions", "data processing", "analyzed data", "data preparation", "predictive analytics"],
+    "instructions": "Naturally incorporate 3 to 5 of these keywords into every blog post. Do not force them; only use them where they fit the topic organically."
+  },
   "topicPool": [
     "How to know if your business is ready for a data analyst",
     "What is a KPI dashboard and does your business need one?",

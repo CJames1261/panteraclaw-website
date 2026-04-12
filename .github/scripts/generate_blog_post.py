@@ -69,6 +69,7 @@ STRICT RULES — follow every one exactly:
    Use realistic Unsplash photo IDs that are genuinely relevant to the topic.
 9. End the post with a practical "Where to Start" or equivalent closing section
 10. Include a final paragraph after <hr /> that mentions Pantera Claw by name
+11. SEO: Naturally incorporate 3 to 5 of these keywords where they fit the topic: data consulting services, data strategy consulting, business intelligence solutions, business analytics consulting, data driven decisions, predictive analytics, data visualization, data governance, data management, data quality, competitive advantage, informed decision, business processes, customer satisfaction, strategic decisions. Do NOT force them; only use keywords that are relevant to this specific topic.
 
 OUTPUT FORMAT — return exactly this structure with nothing before or after:
 
