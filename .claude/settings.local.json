@@ -9,7 +9,10 @@
       "mcp__Claude_Preview__preview_start",
       "WebFetch(domain:www.lawinsider.com)",
       "Read(//mnt/c/Users/trivi/Documents/Github_Projects/**)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Read(//c/Users/trivi/**)",
+      "Bash(pip install:*)",
+      "Bash(python -c ':*)"
     ]
   }
 }
