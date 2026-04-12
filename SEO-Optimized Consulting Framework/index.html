@@ -76,9 +76,10 @@
       </script>
     </head>
 
-    <body>
+    <body style="background:#000">
       <div id="root">
         <!-- Pre-render content for SEO crawlers — React replaces this on mount -->
+        <div style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">
         <h1>Pantera Claw | AI & Data Consulting</h1>
         <p>Pantera Claw is an AI and data consulting firm based in Salt Lake City, Utah, serving clients nationwide. We help businesses make smarter decisions by turning raw data into actionable insights. Whether you need custom analytics dashboards, automated reporting pipelines, or AI powered workflows, our team builds solutions tailored to your operations and growth goals.</p>
         <h2>Our Services</h2>
@@ -87,6 +88,7 @@
         <p>We do not just deliver reports. We build scalable data infrastructure that grows with your business. From startups exploring their first analytics platform to established companies modernizing legacy systems, Pantera Claw delivers measurable results. Our approach combines deep technical expertise with clear communication, so every stakeholder understands the value of their data.</p>
         <h2>Get Started</h2>
         <p>Schedule a free consultation to discuss how data and AI can transform your business operations. We offer flexible engagement models and work with teams of all sizes across industries including healthcare, finance, retail, logistics, and technology.</p>
+        </div>
       </div>
       <script type="module" src="/src/main.tsx"></script>
     </body>
