@@ -10,7 +10,7 @@
     canvas { display:block; width:100%; height:auto; border-radius:12px; }
     @media (max-width: 768px) {
       canvas {
-        transform: scale(1.15);
+        transform: scale(1.08);
         transform-origin: center center;
         height: 100%;
         width: 100%;
@@ -26,6 +26,8 @@
 const canvas = document.getElementById('c');
 const ctx    = canvas.getContext('2d');
 const W = canvas.width, H = canvas.height;
+const isMobile = window.innerWidth < 768;
+const F = isMobile ? 1.45 : 1; // font scale factor for mobile
 
 // ── Layout ────────────────────────────────────────────────────────────────────
 const CARD_W  = 195, CARD_H = 400;
@@ -218,18 +220,18 @@ function drawCard(stage, i) {
   ctx.beginPath(); ctx.moveTo(x+14,y+1); ctx.lineTo(x+CARD_W-14,y+1); ctx.stroke();
   ctx.fillStyle=c+'22'; ctx.strokeStyle=c+'88'; ctx.lineWidth=1.5;
   ctx.beginPath(); ctx.arc(x+CARD_W-20,y+20,13,0,Math.PI*2); ctx.fill(); ctx.stroke();
-  ctx.font='bold 11px system-ui'; ctx.fillStyle=c; ctx.textAlign='center'; ctx.textBaseline='middle';
+  ctx.font=`bold ${Math.round(11*F)}px system-ui`; ctx.fillStyle=c; ctx.textAlign='center'; ctx.textBaseline='middle';
   ctx.fillText(stage.step,x+CARD_W-20,y+20); ctx.textBaseline='alphabetic';
   stage.draw(cx,ICON_Y,c);
   ctx.strokeStyle=c+'20'; ctx.lineWidth=1;
   ctx.beginPath(); ctx.moveTo(x+16,y+TOP_H); ctx.lineTo(x+CARD_W-16,y+TOP_H); ctx.stroke();
-  ctx.font='bold 17px system-ui'; ctx.fillStyle='#ffffff'; ctx.textAlign='center';
+  ctx.font=`bold ${Math.round(17*F)}px system-ui`; ctx.fillStyle='#ffffff'; ctx.textAlign='center';
   ctx.fillText(stage.title,cx,y+TOP_H+26);
-  ctx.font='600 15px system-ui'; ctx.fillStyle=c+'ff';
+  ctx.font=`600 ${Math.round(15*F)}px system-ui`; ctx.fillStyle=c+'ff';
   ctx.fillText(stage.subtitle,cx,y+TOP_H+46);
   ctx.strokeStyle='#1e293b'; ctx.lineWidth=1;
   ctx.beginPath(); ctx.moveTo(x+22,y+TOP_H+56); ctx.lineTo(x+CARD_W-22,y+TOP_H+56); ctx.stroke();
-  ctx.font='13px system-ui'; ctx.fillStyle='#ffffff';
+  ctx.font=`${Math.round(13*F)}px system-ui`; ctx.fillStyle='#ffffff';
   stage.lines.forEach((l,li)=>ctx.fillText(l,cx,y+TOP_H+73+li*18));
   ctx.restore();
 }
@@ -259,19 +261,19 @@ function drawRightCard(stage, cardIdx, cardY, iconY) {
   ctx.beginPath(); ctx.moveTo(x+14,y+1); ctx.lineTo(x+cw-14,y+1); ctx.stroke();
   ctx.fillStyle=c+'22'; ctx.strokeStyle=c+'88'; ctx.lineWidth=1.5;
   ctx.beginPath(); ctx.arc(x+cw-18,y+18,11,0,Math.PI*2); ctx.fill(); ctx.stroke();
-  ctx.font='bold 10px system-ui'; ctx.fillStyle=c; ctx.textAlign='center'; ctx.textBaseline='middle';
+  ctx.font=`bold ${Math.round(10*F)}px system-ui`; ctx.fillStyle=c; ctx.textAlign='center'; ctx.textBaseline='middle';
   ctx.fillText(stage.step,x+cw-18,y+18); ctx.textBaseline='alphabetic';
   // Icon scaled down to fit compact card
   ctx.save(); ctx.translate(cx,iconY); ctx.scale(0.58,0.58); stage.draw(0,0,c); ctx.restore();
   ctx.strokeStyle=c+'20'; ctx.lineWidth=1;
   ctx.beginPath(); ctx.moveTo(x+16,y+th); ctx.lineTo(x+cw-16,y+th); ctx.stroke();
-  ctx.font='bold 14px system-ui'; ctx.fillStyle='#ffffff'; ctx.textAlign='center';
+  ctx.font=`bold ${Math.round(14*F)}px system-ui`; ctx.fillStyle='#ffffff'; ctx.textAlign='center';
   ctx.fillText(stage.title,cx,y+th+20);
-  ctx.font='600 13px system-ui'; ctx.fillStyle=c+'ff';
+  ctx.font=`600 ${Math.round(13*F)}px system-ui`; ctx.fillStyle=c+'ff';
   ctx.fillText(stage.subtitle,cx,y+th+36);
   ctx.strokeStyle='#1e293b'; ctx.lineWidth=1;
   ctx.beginPath(); ctx.moveTo(x+22,y+th+46); ctx.lineTo(x+cw-22,y+th+46); ctx.stroke();
-  ctx.font='12px system-ui'; ctx.fillStyle='#ffffff';
+  ctx.font=`${Math.round(12*F)}px system-ui`; ctx.fillStyle='#ffffff';
   stage.lines.forEach((l,li)=>ctx.fillText(l,cx,y+th+61+li*16));
   ctx.restore();
 }
