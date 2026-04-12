@@ -12,7 +12,10 @@
       "Bash(npm install:*)",
       "Read(//c/Users/trivi/**)",
       "Bash(pip install:*)",
-      "Bash(python -c ':*)"
+      "Bash(python -c ':*)",
+      "WebFetch(domain:agenticaiutah.com)",
+      "WebFetch(domain:panteraclaw.com)",
+      "WebFetch(domain:www.agenticaiutah.com)"
     ]
   }
 }

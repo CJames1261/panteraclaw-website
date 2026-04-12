@@ -177,11 +177,11 @@ export function Home() {
             {/* Full-width visualization */}
             <div className="flex flex-col items-center gap-2 w-full">
               <p className="text-white text-sm font-semibold">Data Pipeline Visualization</p>
-              <div style={{ width: "100%", aspectRatio: "1100 / 580", borderRadius: 12, border: "1px solid #374151", background: "#0b1221", overflow: "hidden", position: "relative", zIndex: 2 }}>
+              <div className="w-full rounded-xl border border-gray-700 overflow-hidden relative z-[2] h-[420px] md:h-auto md:aspect-[1100/580]" style={{ background: "#0b1221" }}>
                 <iframe
                   src="/database-preview.html"
                   scrolling="no"
-                  style={{ width: "100%", height: "100%", border: "none", display: "block" }}
+                  className="w-full h-full border-none block"
                   title="Data Pipeline"
                 />
               </div>
