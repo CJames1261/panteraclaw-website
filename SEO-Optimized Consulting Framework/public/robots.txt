@@ -4,4 +4,4 @@ Allow: /
 # Prevent indexing of source maps and build artifacts
 Disallow: /assets/*.map
 
-Sitemap: https://panteraclaw.com/sitemap.xml
+Sitemap: https://agenticaiutah.com/sitemap.xml

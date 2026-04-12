@@ -8,13 +8,13 @@ Pantera Claw is a consulting firm that specializes in business analytics, data e
 
 ## Services
 
-- [Business Analytics Consulting](https://panteraclaw.com/services): Custom analytics solutions that help businesses make data driven decisions.
-- [Custom Dashboard Development](https://panteraclaw.com/services): Interactive dashboards built to visualize your key performance indicators.
-- [AI Workflow Automation](https://panteraclaw.com/services): Agentic AI systems that automate repetitive business processes.
-- [Database Management](https://panteraclaw.com/services): Scalable database architecture and data pipeline engineering.
-- [Data Strategy Consulting](https://panteraclaw.com/services): Strategic roadmaps for becoming a data driven organization.
-- [Business Intelligence Solutions](https://panteraclaw.com/services): End to end BI platforms for reporting and operational insights.
-- [Machine Learning Consulting](https://panteraclaw.com/services): Custom ML models for prediction, segmentation, and classification.
+- [Business Analytics Consulting](https://agenticaiutah.com/services): Custom analytics solutions that help businesses make data driven decisions.
+- [Custom Dashboard Development](https://agenticaiutah.com/services): Interactive dashboards built to visualize your key performance indicators.
+- [AI Workflow Automation](https://agenticaiutah.com/services): Agentic AI systems that automate repetitive business processes.
+- [Database Management](https://agenticaiutah.com/services): Scalable database architecture and data pipeline engineering.
+- [Data Strategy Consulting](https://agenticaiutah.com/services): Strategic roadmaps for becoming a data driven organization.
+- [Business Intelligence Solutions](https://agenticaiutah.com/services): End to end BI platforms for reporting and operational insights.
+- [Machine Learning Consulting](https://agenticaiutah.com/services): Custom ML models for prediction, segmentation, and classification.
 
 ## Technical Specialties
 
@@ -22,17 +22,17 @@ Agentic AI systems, LangGraph orchestration, ETL pipelines, causal inference mod
 
 ## Case Studies
 
-- [Drone Image Classification](https://panteraclaw.com/case-study/drone-classification): Deep learning model for classifying aerial drone imagery.
-- [NLP to SQL Pipeline](https://panteraclaw.com/case-study/nlp-sql): Natural language interface that converts plain English questions into SQL queries.
-- [Customer Segmentation](https://panteraclaw.com/case-study/customer-segmentation): AI powered customer segmentation for targeted marketing and retention.
+- [Drone Image Classification](https://agenticaiutah.com/case-study/drone-classification): Deep learning model for classifying aerial drone imagery.
+- [NLP to SQL Pipeline](https://agenticaiutah.com/case-study/nlp-sql): Natural language interface that converts plain English questions into SQL queries.
+- [Customer Segmentation](https://agenticaiutah.com/case-study/customer-segmentation): AI powered customer segmentation for targeted marketing and retention.
 
 ## Blog
 
-- [Blog](https://panteraclaw.com/blog): Practical guides on data analytics, AI, and business intelligence written for business owners and technical teams.
+- [Blog](https://agenticaiutah.com/blog): Practical guides on data analytics, AI, and business intelligence written for business owners and technical teams.
 
 ## Contact
 
-- [Schedule a Free Consultation](https://panteraclaw.com/contact)
-- Email: info@panteraclaw.com
+- [Schedule a Free Consultation](https://agenticaiutah.com/contact)
+- Email: info@agenticaiutah.com
 - Phone: +1 801 898 0911
 - Location: Salt Lake City, Utah (serving clients nationwide)

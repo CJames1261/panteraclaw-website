@@ -15,7 +15,7 @@ CONFIG_PATH = f"{BASE}/blog-agent.config.json"
 INDEX_PATH = f"{BASE}/src/app/pages/blog/posts/index.ts"
 POSTS_DIR = f"{BASE}/src/app/pages/blog/posts"
 SITEMAP_PATH = f"{BASE}/public/sitemap.xml"
-SITE_URL = "https://panteraclaw.com"
+SITE_URL = "https://agenticaiutah.com"
 
 
 def load_config():
