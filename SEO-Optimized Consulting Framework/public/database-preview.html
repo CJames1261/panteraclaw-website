@@ -8,6 +8,15 @@
     html, body { width:100%; height:100%; background:#020617; overflow:hidden; }
     .label { display:none; }
     canvas { display:block; width:100%; height:auto; border-radius:12px; }
+    @media (max-width: 768px) {
+      canvas {
+        transform: scale(1.45);
+        transform-origin: center center;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
   </style>
 </head>
 <body>
