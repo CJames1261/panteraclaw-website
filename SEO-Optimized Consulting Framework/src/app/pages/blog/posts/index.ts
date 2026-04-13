@@ -24,6 +24,9 @@ export interface PostMeta {
 // ── Lazy-loaded post components ────────────────────────────────────────────────
 // The blog agent adds one entry here per new post.
 export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<ComponentType>> = {
+  "what-is-a-kpi-dashboard-and-does-your-business-need-one": lazy(
+    () => import("./what-is-a-kpi-dashboard-and-does-your-business-need-one")
+  ),
   "how-to-know-if-your-business-is-ready-for-a-data-analyst": lazy(
     () => import("./how-to-know-if-your-business-is-ready-for-a-data-analyst")
   ),
@@ -35,6 +38,21 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<Component
 // ── Post metadata list (newest first) ─────────────────────────────────────────
 // The blog agent prepends one entry here per new post.
 export const POST_META: PostMeta[] = [
+  {
+    slug: "what-is-a-kpi-dashboard-and-does-your-business-need-one",
+    title: "What Is a KPI Dashboard and Does Your Business Need One?",
+    date: "2026-04-13",
+    readTime: "6 min read",
+    excerpt: "A KPI dashboard transforms scattered metrics into a unified view of business performance. Learn what makes an effective dashboard, when your organization is ready for one, and how to get started building a solution that drives data driven decisions.",
+    category: "Analytics",
+    tags: ["KPI dashboards", "business intelligence", "data visualization", "performance metrics"],
+    heroImage: {
+      url: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
+      alt: "Modern analytics dashboard displayed on a large monitor showing charts and performance metrics",
+      credit: "Luke Chesser",
+      creditUrl: "https://unsplash.com/@lukechesser",
+    },
+  },
   {
     slug: "how-to-know-if-your-business-is-ready-for-a-data-analyst",
     title: "How to Know If Your Business Is Ready for a Data Analyst",
