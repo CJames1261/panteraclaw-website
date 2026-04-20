@@ -24,6 +24,9 @@ export interface PostMeta {
 // ── Lazy-loaded post components ────────────────────────────────────────────────
 // The blog agent adds one entry here per new post.
 export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<ComponentType>> = {
+  "5-signs-your-business-is-leaving-money-on-the-table-with-its-data": lazy(
+    () => import("./5-signs-your-business-is-leaving-money-on-the-table-with-its-data")
+  ),
   "what-is-a-kpi-dashboard-and-does-your-business-need-one": lazy(
     () => import("./what-is-a-kpi-dashboard-and-does-your-business-need-one")
   ),
@@ -38,6 +41,21 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<Component
 // ── Post metadata list (newest first) ─────────────────────────────────────────
 // The blog agent prepends one entry here per new post.
 export const POST_META: PostMeta[] = [
+  {
+    slug: "5-signs-your-business-is-leaving-money-on-the-table-with-its-data",
+    title: "5 Signs Your Business Is Leaving Money on the Table with Its Data",
+    date: "2026-04-20",
+    readTime: "7 min read",
+    excerpt: "Many businesses sit on goldmines of data without realizing its potential value. Discover the five warning signs that your organization is missing revenue opportunities hidden in your existing data assets and learn how to turn things around.",
+    category: "Business Strategy",
+    tags: ["data strategy", "business intelligence", "revenue optimization", "data management", "competitive advantage"],
+    heroImage: {
+      url: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
+      alt: "Business analytics dashboard displaying charts and graphs on a modern computer screen",
+      credit: "Luke Chesser",
+      creditUrl: "https://unsplash.com/@lukechesser",
+    },
+  },
   {
     slug: "what-is-a-kpi-dashboard-and-does-your-business-need-one",
     title: "What Is a KPI Dashboard and Does Your Business Need One?",
