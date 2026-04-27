@@ -24,6 +24,9 @@ export interface PostMeta {
 // ── Lazy-loaded post components ────────────────────────────────────────────────
 // The blog agent adds one entry here per new post.
 export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<ComponentType>> = {
+  "the-difference-between-a-report-and-a-dashboard-and-why-it-matters": lazy(
+    () => import("./the-difference-between-a-report-and-a-dashboard-and-why-it-matters")
+  ),
   "5-signs-your-business-is-leaving-money-on-the-table-with-its-data": lazy(
     () => import("./5-signs-your-business-is-leaving-money-on-the-table-with-its-data")
   ),
@@ -41,6 +44,21 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<Component
 // ── Post metadata list (newest first) ─────────────────────────────────────────
 // The blog agent prepends one entry here per new post.
 export const POST_META: PostMeta[] = [
+  {
+    slug: "the-difference-between-a-report-and-a-dashboard-and-why-it-matters",
+    title: "The Difference Between a Report and a Dashboard — And Why It Matters",
+    date: "2026-04-27",
+    readTime: "7 min read",
+    excerpt: "Reports and dashboards serve fundamentally different purposes in your data strategy. Understanding when to use each can transform how your organization makes data driven decisions and gains competitive advantage.",
+    category: "Analytics",
+    tags: ["business intelligence", "data visualization", "reporting", "dashboards"],
+    heroImage: {
+      url: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
+      alt: "Modern analytics dashboard displayed on a computer monitor showing various charts and data visualizations",
+      credit: "Luke Chesser",
+      creditUrl: "https://unsplash.com/@lukechesser",
+    },
+  },
   {
     slug: "5-signs-your-business-is-leaving-money-on-the-table-with-its-data",
     title: "5 Signs Your Business Is Leaving Money on the Table with Its Data",
