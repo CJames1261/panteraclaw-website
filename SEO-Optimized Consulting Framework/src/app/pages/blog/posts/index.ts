@@ -24,6 +24,9 @@ export interface PostMeta {
 // ── Lazy-loaded post components ────────────────────────────────────────────────
 // The blog agent adds one entry here per new post.
 export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<ComponentType>> = {
+  "what-is-etl-and-why-should-nontechnical-business-owners-care": lazy(
+    () => import("./what-is-etl-and-why-should-nontechnical-business-owners-care")
+  ),
   "the-difference-between-a-report-and-a-dashboard-and-why-it-matters": lazy(
     () => import("./the-difference-between-a-report-and-a-dashboard-and-why-it-matters")
   ),
@@ -44,6 +47,21 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<Component
 // ── Post metadata list (newest first) ─────────────────────────────────────────
 // The blog agent prepends one entry here per new post.
 export const POST_META: PostMeta[] = [
+  {
+    slug: "what-is-etl-and-why-should-nontechnical-business-owners-care",
+    title: "What Is ETL and Why Should Non Technical Business Owners Care?",
+    date: "2026-05-04",
+    readTime: "7 min read",
+    excerpt: "ETL stands for Extract, Transform, and Load. It is the backbone of modern data management, enabling businesses to consolidate information from multiple sources into actionable insights. Understanding ETL empowers business owners to make data driven decisions with confidence.",
+    category: "Data Engineering",
+    tags: ["ETL", "data management", "business intelligence", "data integration", "data quality"],
+    heroImage: {
+      url: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=80",
+      alt: "Modern data center with illuminated server racks representing data infrastructure",
+      credit: "Taylor Vick",
+      creditUrl: "https://unsplash.com/@tvick",
+    },
+  },
   {
     slug: "the-difference-between-a-report-and-a-dashboard-and-why-it-matters",
     title: "The Difference Between a Report and a Dashboard — And Why It Matters",
