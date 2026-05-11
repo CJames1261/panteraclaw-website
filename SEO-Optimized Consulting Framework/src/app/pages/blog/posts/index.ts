@@ -24,6 +24,9 @@ export interface PostMeta {
 // ── Lazy-loaded post components ────────────────────────────────────────────────
 // The blog agent adds one entry here per new post.
 export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<ComponentType>> = {
+  "how-ai-can-automate-your-most-repetitive-business-tasks": lazy(
+    () => import("./how-ai-can-automate-your-most-repetitive-business-tasks")
+  ),
   "what-is-etl-and-why-should-nontechnical-business-owners-care": lazy(
     () => import("./what-is-etl-and-why-should-nontechnical-business-owners-care")
   ),
@@ -47,6 +50,21 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<Component
 // ── Post metadata list (newest first) ─────────────────────────────────────────
 // The blog agent prepends one entry here per new post.
 export const POST_META: PostMeta[] = [
+  {
+    slug: "how-ai-can-automate-your-most-repetitive-business-tasks",
+    title: "How AI Can Automate Your Most Repetitive Business Tasks",
+    date: "2026-05-11",
+    readTime: "5 min read",
+    excerpt: "Every team has a long tail of small repetitive tasks that drain hours every week. Modern AI is now cheap enough and reliable enough to clear most of them off the plate. Learn which tasks to automate first, how to spot good candidates, and how to pick a starting project that pays for itself within a month.",
+    category: "AI & Automation",
+    tags: ["AI automation", "business automation", "machine learning", "workflow automation"],
+    heroImage: {
+      url: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1200&q=80",
+      alt: "Small white humanoid robot reaching out, representing practical AI assistance for business tasks",
+      credit: "Franck",
+      creditUrl: "https://unsplash.com/@franckinjapan",
+    },
+  },
   {
     slug: "what-is-etl-and-why-should-nontechnical-business-owners-care",
     title: "What Is ETL and Why Should Non Technical Business Owners Care?",
