@@ -24,6 +24,9 @@ export interface PostMeta {
 // ── Lazy-loaded post components ────────────────────────────────────────────────
 // The blog agent adds one entry here per new post.
 export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<ComponentType>> = {
+  "customer-segmentation-how-to-stop-sending-the-same-email-to-everyone": lazy(
+    () => import("./customer-segmentation-how-to-stop-sending-the-same-email-to-everyone")
+  ),
   "how-ai-can-automate-your-most-repetitive-business-tasks": lazy(
     () => import("./how-ai-can-automate-your-most-repetitive-business-tasks")
   ),
@@ -50,6 +53,21 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<Component
 // ── Post metadata list (newest first) ─────────────────────────────────────────
 // The blog agent prepends one entry here per new post.
 export const POST_META: PostMeta[] = [
+  {
+    slug: "customer-segmentation-how-to-stop-sending-the-same-email-to-everyone",
+    title: "Customer Segmentation: How to Stop Sending the Same Email to Everyone",
+    date: "2026-05-11",
+    readTime: "7 min read",
+    excerpt: "Sending identical messages to your entire customer base is leaving money on the table. Learn how customer segmentation powered by data can transform your marketing from generic broadcasts into personalized conversations that drive real results.",
+    category: "Business Strategy",
+    tags: ["customer segmentation", "email marketing", "personalization", "data strategy", "marketing analytics"],
+    heroImage: {
+      url: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200&q=80",
+      alt: "Colorful data visualization showing different customer segments represented as distinct groups",
+      credit: "Carlos Muza",
+      creditUrl: "https://unsplash.com/@kmuza",
+    },
+  },
   {
     slug: "how-ai-can-automate-your-most-repetitive-business-tasks",
     title: "How AI Can Automate Your Most Repetitive Business Tasks",
