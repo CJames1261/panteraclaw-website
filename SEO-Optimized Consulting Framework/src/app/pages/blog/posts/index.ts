@@ -24,6 +24,9 @@ export interface PostMeta {
 // ── Lazy-loaded post components ────────────────────────────────────────────────
 // The blog agent adds one entry here per new post.
 export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<ComponentType>> = {
+  "what-is-business-intelligence-and-how-much-does-it-cost": lazy(
+    () => import("./what-is-business-intelligence-and-how-much-does-it-cost")
+  ),
   "customer-segmentation-how-to-stop-sending-the-same-email-to-everyone": lazy(
     () => import("./customer-segmentation-how-to-stop-sending-the-same-email-to-everyone")
   ),
@@ -53,6 +56,21 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<Component
 // ── Post metadata list (newest first) ─────────────────────────────────────────
 // The blog agent prepends one entry here per new post.
 export const POST_META: PostMeta[] = [
+  {
+    slug: "what-is-business-intelligence-and-how-much-does-it-cost",
+    title: "What Is Business Intelligence and How Much Does It Cost?",
+    date: "2026-05-18",
+    readTime: "7 min read",
+    excerpt: "Business intelligence transforms raw data into actionable insights that drive smarter decisions. Learn what BI actually involves, what pricing looks like for different solutions, and how to determine the right investment level for your organization.",
+    category: "Business Strategy",
+    tags: ["business intelligence", "BI costs", "data analytics", "reporting tools"],
+    heroImage: {
+      url: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
+      alt: "Modern dashboard displaying business analytics charts and graphs on a computer monitor",
+      credit: "Luke Chesser",
+      creditUrl: "https://unsplash.com/@lukechesser",
+    },
+  },
   {
     slug: "customer-segmentation-how-to-stop-sending-the-same-email-to-everyone",
     title: "Customer Segmentation: How to Stop Sending the Same Email to Everyone",
