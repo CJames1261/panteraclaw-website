@@ -24,6 +24,9 @@ export interface PostMeta {
 // ── Lazy-loaded post components ────────────────────────────────────────────────
 // The blog agent adds one entry here per new post.
 export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<ComponentType>> = {
+  "how-to-choose-the-right-database-for-your-growing-business": lazy(
+    () => import("./how-to-choose-the-right-database-for-your-growing-business")
+  ),
   "what-is-business-intelligence-and-how-much-does-it-cost": lazy(
     () => import("./what-is-business-intelligence-and-how-much-does-it-cost")
   ),
@@ -56,6 +59,21 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<Component
 // ── Post metadata list (newest first) ─────────────────────────────────────────
 // The blog agent prepends one entry here per new post.
 export const POST_META: PostMeta[] = [
+  {
+    slug: "how-to-choose-the-right-database-for-your-growing-business",
+    title: "How to Choose the Right Database for Your Growing Business",
+    date: "2026-05-25",
+    readTime: "7 min read",
+    excerpt: "Selecting the right database is a critical decision that impacts your company's scalability, performance, and ability to make data driven decisions. This guide walks you through the key factors to consider when evaluating database options for your growing organization.",
+    category: "Data Engineering",
+    tags: ["database selection", "data management", "scalability", "business growth"],
+    heroImage: {
+      url: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=1200&q=80",
+      alt: "Server room with rows of database servers illuminated by blue lights",
+      credit: "Taylor Vick",
+      creditUrl: "https://unsplash.com/@tvick",
+    },
+  },
   {
     slug: "what-is-business-intelligence-and-how-much-does-it-cost",
     title: "What Is Business Intelligence and How Much Does It Cost?",
