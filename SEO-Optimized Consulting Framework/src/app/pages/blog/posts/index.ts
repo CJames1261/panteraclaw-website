@@ -24,6 +24,9 @@ export interface PostMeta {
 // ── Lazy-loaded post components ────────────────────────────────────────────────
 // The blog agent adds one entry here per new post.
 export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<ComponentType>> = {
+  "agentic-ai-explained-for-business-owners-no-jargon": lazy(
+    () => import("./agentic-ai-explained-for-business-owners-no-jargon")
+  ),
   "how-to-choose-the-right-database-for-your-growing-business": lazy(
     () => import("./how-to-choose-the-right-database-for-your-growing-business")
   ),
@@ -59,6 +62,21 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<Component
 // ── Post metadata list (newest first) ─────────────────────────────────────────
 // The blog agent prepends one entry here per new post.
 export const POST_META: PostMeta[] = [
+  {
+    slug: "agentic-ai-explained-for-business-owners-no-jargon",
+    title: "Agentic AI Explained for Business Owners: What It Actually Means for Your Company",
+    date: "2026-06-01",
+    readTime: "7 min read",
+    excerpt: "Agentic AI is reshaping how businesses operate by enabling software that can think, plan, and act independently. Learn what this technology actually does, why it matters for your bottom line, and how to evaluate whether your organization is ready to adopt it.",
+    category: "AI & Automation",
+    tags: ["agentic AI", "business automation", "AI strategy", "digital transformation"],
+    heroImage: {
+      url: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80",
+      alt: "Abstract visualization of artificial intelligence networks and connected nodes",
+      credit: "Steve Johnson",
+      creditUrl: "https://unsplash.com/@steve_j",
+    },
+  },
   {
     slug: "how-to-choose-the-right-database-for-your-growing-business",
     title: "How to Choose the Right Database for Your Growing Business",
