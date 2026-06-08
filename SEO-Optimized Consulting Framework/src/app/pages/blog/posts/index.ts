@@ -24,6 +24,9 @@ export interface PostMeta {
 // ── Lazy-loaded post components ────────────────────────────────────────────────
 // The blog agent adds one entry here per new post.
 export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<ComponentType>> = {
+  "why-your-excel-spreadsheets-are-slowing-your-business-down": lazy(
+    () => import("./why-your-excel-spreadsheets-are-slowing-your-business-down")
+  ),
   "agentic-ai-explained-for-business-owners-no-jargon": lazy(
     () => import("./agentic-ai-explained-for-business-owners-no-jargon")
   ),
@@ -62,6 +65,21 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<Component
 // ── Post metadata list (newest first) ─────────────────────────────────────────
 // The blog agent prepends one entry here per new post.
 export const POST_META: PostMeta[] = [
+  {
+    slug: "why-your-excel-spreadsheets-are-slowing-your-business-down",
+    title: "Why Your Excel Spreadsheets Are Slowing Your Business Down",
+    date: "2026-06-08",
+    readTime: "7 min read",
+    excerpt: "Excel helped build your business, but it may now be holding you back. Learn why spreadsheet dependency creates bottlenecks and how modern data management solutions can unlock faster, more informed decision making.",
+    category: "Business Strategy",
+    tags: ["data management", "business efficiency", "digital transformation", "spreadsheet alternatives"],
+    heroImage: {
+      url: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80",
+      alt: "Business professional analyzing data on multiple screens showing charts and spreadsheets",
+      credit: "Carlos Muza",
+      creditUrl: "https://unsplash.com/@kmuza",
+    },
+  },
   {
     slug: "agentic-ai-explained-for-business-owners-no-jargon",
     title: "Agentic AI Explained for Business Owners: What It Actually Means for Your Company",
