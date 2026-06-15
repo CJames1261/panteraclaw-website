@@ -24,6 +24,9 @@ export interface PostMeta {
 // ── Lazy-loaded post components ────────────────────────────────────────────────
 // The blog agent adds one entry here per new post.
 export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<ComponentType>> = {
+  "how-to-measure-the-roi-of-a-data-analytics-project": lazy(
+    () => import("./how-to-measure-the-roi-of-a-data-analytics-project")
+  ),
   "why-your-excel-spreadsheets-are-slowing-your-business-down": lazy(
     () => import("./why-your-excel-spreadsheets-are-slowing-your-business-down")
   ),
@@ -65,6 +68,21 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<Component
 // ── Post metadata list (newest first) ─────────────────────────────────────────
 // The blog agent prepends one entry here per new post.
 export const POST_META: PostMeta[] = [
+  {
+    slug: "how-to-measure-the-roi-of-a-data-analytics-project",
+    title: "How to Measure the ROI of a Data Analytics Project: A Practical Guide for Business Leaders",
+    date: "2026-06-15",
+    readTime: "7 min read",
+    excerpt: "Understanding the return on investment for your data analytics initiatives is essential for making informed decisions about future projects. Learn how to quantify the value of your analytics investments using proven frameworks and metrics that speak to stakeholders at every level.",
+    category: "Business Strategy",
+    tags: ["ROI measurement", "data analytics", "business value", "analytics strategy"],
+    heroImage: {
+      url: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
+      alt: "Business analytics dashboard displaying charts and metrics on a computer screen",
+      credit: "Luke Chesser",
+      creditUrl: "https://unsplash.com/@lukechesser",
+    },
+  },
   {
     slug: "why-your-excel-spreadsheets-are-slowing-your-business-down",
     title: "Why Your Excel Spreadsheets Are Slowing Your Business Down",
