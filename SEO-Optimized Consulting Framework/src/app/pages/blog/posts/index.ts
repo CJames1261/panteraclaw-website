@@ -24,6 +24,9 @@ export interface PostMeta {
 // ── Lazy-loaded post components ────────────────────────────────────────────────
 // The blog agent adds one entry here per new post.
 export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<ComponentType>> = {
+  "what-is-causal-inference-and-why-it-beats-correlation-for-business-decisions": lazy(
+    () => import("./what-is-causal-inference-and-why-it-beats-correlation-for-business-decisions")
+  ),
   "how-to-measure-the-roi-of-a-data-analytics-project": lazy(
     () => import("./how-to-measure-the-roi-of-a-data-analytics-project")
   ),
@@ -68,6 +71,21 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<Component
 // ── Post metadata list (newest first) ─────────────────────────────────────────
 // The blog agent prepends one entry here per new post.
 export const POST_META: PostMeta[] = [
+  {
+    slug: "what-is-causal-inference-and-why-it-beats-correlation-for-business-decisions",
+    title: "What Is Causal Inference and Why It Beats Correlation for Business Decisions",
+    date: "2026-06-22",
+    readTime: "7 min read",
+    excerpt: "Understanding the difference between correlation and causation can transform how your business makes strategic decisions. Learn why causal inference methods give you the confidence to act, not just observe.",
+    category: "Analytics",
+    tags: ["causal inference", "data analytics", "business intelligence", "decision making", "statistical analysis"],
+    heroImage: {
+      url: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
+      alt: "Data visualization dashboard showing interconnected metrics and analytics",
+      credit: "Luke Chesser",
+      creditUrl: "https://unsplash.com/@lukechesser",
+    },
+  },
   {
     slug: "how-to-measure-the-roi-of-a-data-analytics-project",
     title: "How to Measure the ROI of a Data Analytics Project: A Practical Guide for Business Leaders",
