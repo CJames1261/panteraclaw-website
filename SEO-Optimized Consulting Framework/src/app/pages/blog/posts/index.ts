@@ -24,6 +24,9 @@ export interface PostMeta {
 // ── Lazy-loaded post components ────────────────────────────────────────────────
 // The blog agent adds one entry here per new post.
 export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<ComponentType>> = {
+  "langgraph-and-agentic-workflows-a-technical-deep-dive": lazy(
+    () => import("./langgraph-and-agentic-workflows-a-technical-deep-dive")
+  ),
   "what-is-causal-inference-and-why-it-beats-correlation-for-business-decisions": lazy(
     () => import("./what-is-causal-inference-and-why-it-beats-correlation-for-business-decisions")
   ),
@@ -71,6 +74,21 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<Component
 // ── Post metadata list (newest first) ─────────────────────────────────────────
 // The blog agent prepends one entry here per new post.
 export const POST_META: PostMeta[] = [
+  {
+    slug: "langgraph-and-agentic-workflows-a-technical-deep-dive",
+    title: "LangGraph and Agentic Workflows: A Technical Deep Dive for Modern Data Teams",
+    date: "2026-06-29",
+    readTime: "8 min read",
+    excerpt: "Explore how LangGraph enables sophisticated agentic workflows that go beyond simple chatbots. Learn the architecture, key concepts, and practical applications that give organizations a competitive advantage in AI automation.",
+    category: "AI & Automation",
+    tags: ["LangGraph", "agentic workflows", "AI automation", "LLM orchestration", "data engineering"],
+    heroImage: {
+      url: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=80",
+      alt: "Abstract network of interconnected nodes representing AI workflow systems",
+      credit: "Alina Grubnyak",
+      creditUrl: "https://unsplash.com/@alinnnaaaa",
+    },
+  },
   {
     slug: "what-is-causal-inference-and-why-it-beats-correlation-for-business-decisions",
     title: "What Is Causal Inference and Why It Beats Correlation for Business Decisions",
