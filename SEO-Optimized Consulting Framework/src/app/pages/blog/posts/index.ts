@@ -24,6 +24,9 @@ export interface PostMeta {
 // ── Lazy-loaded post components ────────────────────────────────────────────────
 // The blog agent adds one entry here per new post.
 export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<ComponentType>> = {
+  "how-databricks-snowflake-and-postgresql-compare-for-enterprise-data": lazy(
+    () => import("./how-databricks-snowflake-and-postgresql-compare-for-enterprise-data")
+  ),
   "langgraph-and-agentic-workflows-a-technical-deep-dive": lazy(
     () => import("./langgraph-and-agentic-workflows-a-technical-deep-dive")
   ),
@@ -74,6 +77,21 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<Component
 // ── Post metadata list (newest first) ─────────────────────────────────────────
 // The blog agent prepends one entry here per new post.
 export const POST_META: PostMeta[] = [
+  {
+    slug: "how-databricks-snowflake-and-postgresql-compare-for-enterprise-data",
+    title: "How Databricks, Snowflake, and PostgreSQL Compare for Enterprise Data",
+    date: "2026-07-06",
+    readTime: "7 min read",
+    excerpt: "Choosing the right data platform is critical for enterprise success. We break down how Databricks, Snowflake, and PostgreSQL compare across performance, cost, and use cases to help you make an informed decision.",
+    category: "Data Engineering",
+    tags: ["data platforms", "Databricks", "Snowflake", "PostgreSQL", "enterprise architecture"],
+    heroImage: {
+      url: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=80",
+      alt: "Modern data center with rows of illuminated servers representing enterprise data infrastructure",
+      credit: "Taylor Vick",
+      creditUrl: "https://unsplash.com/@tvick",
+    },
+  },
   {
     slug: "langgraph-and-agentic-workflows-a-technical-deep-dive",
     title: "LangGraph and Agentic Workflows: A Technical Deep Dive for Modern Data Teams",
