@@ -24,6 +24,9 @@ export interface PostMeta {
 // ── Lazy-loaded post components ────────────────────────────────────────────────
 // The blog agent adds one entry here per new post.
 export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<ComponentType>> = {
+  "what-is-data-governance-and-why-growing-businesses-cannot-ignore-it": lazy(
+    () => import("./what-is-data-governance-and-why-growing-businesses-cannot-ignore-it")
+  ),
   "how-databricks-snowflake-and-postgresql-compare-for-enterprise-data": lazy(
     () => import("./how-databricks-snowflake-and-postgresql-compare-for-enterprise-data")
   ),
@@ -77,6 +80,21 @@ export const POST_COMPONENTS: Record<string, React.LazyExoticComponent<Component
 // ── Post metadata list (newest first) ─────────────────────────────────────────
 // The blog agent prepends one entry here per new post.
 export const POST_META: PostMeta[] = [
+  {
+    slug: "what-is-data-governance-and-why-growing-businesses-cannot-ignore-it",
+    title: "What Is Data Governance and Why Growing Businesses Cannot Ignore It",
+    date: "2026-08-19",
+    readTime: "6 min read",
+    excerpt: "Data governance is not just an enterprise concern. Learn what it actually means, why ungoverned data quietly costs growing businesses money, and how to build a lightweight framework for ownership, definitions, access, and quality that scales with you.",
+    category: "Data Engineering",
+    tags: ["data governance", "data quality", "data management", "data strategy"],
+    heroImage: {
+      url: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=1200&q=80",
+      alt: "Red padlock resting on a black computer keyboard, representing data protection and access control",
+      credit: "FlyD",
+      creditUrl: "https://unsplash.com/@flyd2069",
+    },
+  },
   {
     slug: "how-databricks-snowflake-and-postgresql-compare-for-enterprise-data",
     title: "How Databricks, Snowflake, and PostgreSQL Compare for Enterprise Data",
